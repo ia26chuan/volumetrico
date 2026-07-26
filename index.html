@@ -1,0 +1,1649 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matriz VolumÃ©trica LED - Proyecto Completo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6c5ce7;
+            --primary-dark: #5a4bd1;
+            --secondary: #00cec9;
+            --accent: #fd79a8;
+            --dark: #0a0a1a;
+            --darker: #050510;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --text: #e0e0e0;
+            --text-muted: #888;
+            --gradient-1: linear-gradient(135deg, #6c5ce7, #00cec9);
+            --gradient-2: linear-gradient(135deg, #fd79a8, #6c5ce7);
+            --gradient-3: linear-gradient(135deg, #00cec9, #55efc4);
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--darker);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .bg-animation::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at 20% 50%, rgba(108, 92, 231, 0.08) 0%, transparent 50%),
+                        radial-gradient(ellipse at 80% 20%, rgba(0, 206, 201, 0.06) 0%, transparent 50%),
+                        radial-gradient(ellipse at 50% 80%, rgba(253, 121, 168, 0.05) 0%, transparent 50%);
+            animation: bgFloat 20s ease-in-out infinite;
+        }
+
+        @keyframes bgFloat {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -30px) rotate(1deg); }
+            66% { transform: translate(-20px, 20px) rotate(-1deg); }
+        }
+
+        /* Grid pattern overlay */
+        .grid-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 60px 60px;
+            z-index: -1;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 2rem;
+            background: rgba(5, 5, 16, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--card-border);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 0.7rem 2rem;
+            background: rgba(5, 5, 16, 0.95);
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 700;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--gradient-1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-1);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .cta-nav {
+            background: var(--gradient-1);
+            color: white;
+            padding: 0.6rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta-nav:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(108, 92, 231, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(108, 92, 231, 0.15);
+            border: 1px solid rgba(108, 92, 231, 0.3);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--secondary);
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 .gradient {
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 650px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--gradient-1);
+            color: white;
+            box-shadow: 0 4px 20px rgba(108, 92, 231, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 40px rgba(108, 92, 231, 0.5);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text);
+            border: 1px solid var(--card-border);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        /* LED Cube Animation */
+        .cube-3d {
+            width: 200px;
+            height: 200px;
+            position: relative;
+            margin: 4rem auto 0;
+            perspective: 600px;
+        }
+
+        .cube-face {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            border: 2px solid rgba(108, 92, 231, 0.4);
+            background: rgba(108, 92, 231, 0.05);
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(4, 1fr);
+            gap: 3px;
+            padding: 8px;
+            animation: rotateCube 12s infinite linear;
+        }
+
+        .cube-face:nth-child(1) { transform: rotateY(0deg) translateZ(75px); }
+        .cube-face:nth-child(2) { transform: rotateY(90deg) translateZ(75px); }
+        .cube-face:nth-child(3) { transform: rotateY(180deg) translateZ(75px); }
+        .cube-face:nth-child(4) { transform: rotateY(270deg) translateZ(75px); }
+        .cube-face:nth-child(5) { transform: rotateX(90deg) translateZ(75px); }
+        .cube-face:nth-child(6) { transform: rotateX(-90deg) translateZ(75px); }
+
+        .led-dot {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: var(--primary);
+            animation: ledPulse 2s infinite ease-in-out;
+        }
+
+        .led-dot:nth-child(odd) { animation-delay: 0.5s; }
+        .led-dot:nth-child(3n) { background: var(--secondary); animation-delay: 1s; }
+        .led-dot:nth-child(5n) { background: var(--accent); animation-delay: 1.5s; }
+
+        @keyframes rotateCube {
+            0% { transform: rotateX(0deg) rotateY(0deg); }
+            100% { transform: rotateX(360deg) rotateY(360deg); }
+        }
+
+        @keyframes ledPulse {
+            0%, 100% { opacity: 0.3; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 4rem 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 2rem;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            min-width: 180px;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Section styles */
+        section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .section-tag {
+            display: inline-block;
+            background: rgba(108, 92, 231, 0.15);
+            color: var(--secondary);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-1);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .card:hover {
+            border-color: rgba(108, 92, 231, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-icon.purple { background: rgba(108, 92, 231, 0.15); }
+        .card-icon.teal { background: rgba(0, 206, 201, 0.15); }
+        .card-icon.pink { background: rgba(253, 121, 168, 0.15); }
+        .card-icon.green { background: rgba(85, 239, 196, 0.15); }
+
+        .card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* LED Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--card-border);
+        }
+
+        .comparison-table th {
+            background: rgba(108, 92, 231, 0.15);
+            padding: 1rem 1.5rem;
+            text-align: left;
+            font-weight: 600;
+            color: var(--secondary);
+            font-size: 0.9rem;
+        }
+
+        .comparison-table td {
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--card-border);
+            font-size: 0.9rem;
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparison-table tr:hover td {
+            background: rgba(108, 92, 231, 0.05);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .badge-green { background: rgba(85, 239, 196, 0.15); color: #55efc4; }
+        .badge-yellow { background: rgba(253, 203, 110, 0.15); color: #fdcb6e; }
+        .badge-red { background: rgba(255, 118, 117, 0.15); color: #ff7675; }
+
+        /* Suppliers */
+        .suppliers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .supplier-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .supplier-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--secondary);
+        }
+
+        .supplier-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .supplier-card .rating {
+            color: #fdcb6e;
+            margin-bottom: 0.5rem;
+        }
+
+        .supplier-card p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* Pricing */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .pricing-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .pricing-card.featured {
+            border-color: var(--primary);
+            background: rgba(108, 92, 231, 0.08);
+        }
+
+        .pricing-card.featured::before {
+            content: 'Popular';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gradient-1);
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .pricing-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-card .size {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .price .currency {
+            font-size: 1rem;
+            vertical-align: top;
+        }
+
+        .price-unit {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .pricing-features {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-features li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            font-size: 0.9rem;
+        }
+
+        .pricing-features li::before {
+            content: 'âœ“';
+            color: var(--secondary);
+            font-weight: 700;
+        }
+
+        /* Architecture Diagram */
+        .architecture {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 3rem;
+            overflow-x: auto;
+        }
+
+        .arch-diagram {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            min-width: 800px;
+            padding: 2rem 0;
+        }
+
+        .arch-box {
+            background: rgba(108, 92, 231, 0.1);
+            border: 1px solid rgba(108, 92, 231, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            min-width: 120px;
+        }
+
+        .arch-box.switch {
+            background: rgba(0, 206, 201, 0.1);
+            border-color: rgba(0, 206, 201, 0.3);
+        }
+
+        .arch-box.controller {
+            background: rgba(253, 121, 168, 0.1);
+            border-color: rgba(253, 121, 168, 0.3);
+        }
+
+        .arch-box.leds {
+            background: rgba(85, 239, 196, 0.1);
+            border-color: rgba(85, 239, 196, 0.3);
+        }
+
+        .arch-arrow {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+        }
+
+        .arch-box h4 {
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .arch-box p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* Protocols */
+        .protocols-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .protocol-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .protocol-card h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .protocol-card .speed {
+            color: var(--secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Software Section */
+        .software-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .software-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .software-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--secondary);
+        }
+
+        .software-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .software-card h4 {
+            margin-bottom: 0.5rem;
+        }
+
+        .software-card p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 8rem 2rem;
+            position: relative;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(108, 92, 231, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        .cta-section h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            color: var(--text-muted);
+            max-width: 500px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.3);
+            border-top: 1px solid var(--card-border);
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr repeat(3, 1fr);
+            gap: 3rem;
+        }
+
+        .footer-brand p {
+            color: var(--text-muted);
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .footer-column h4 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
+            color: var(--text);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-column a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .footer-column a:hover {
+            color: var(--secondary);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 3rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid var(--card-border);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* Scroll to top */
+        .scroll-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 999;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(108, 92, 231, 0.4);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .stats {
+                gap: 1rem;
+            }
+
+            .stat {
+                min-width: 140px;
+                padding: 1.5rem;
+            }
+
+            .protocols-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .architecture {
+                padding: 1.5rem;
+            }
+
+            section {
+                padding: 4rem 1rem;
+            }
+
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+    <div class="grid-overlay"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="logo">
+            <div class="logo-icon">â—†</div>
+            Volumetrico LED
+        </div>
+        <ul class="nav-links">
+            <li><a href="#features">CaracterÃ­sticas</a></li>
+            <li><a href="#specs">Especificaciones</a></li>
+            <li><a href="#suppliers">Proveedores</a></li>
+            <li><a href="#pricing">Precios</a></li>
+            <li><a href="#architecture">Arquitectura</a></li>
+        </ul>
+        <a href="#contact" class="cta-nav">Contactar</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span>â—†</span> Proyecto LED VolumÃ©trico 2026
+            </div>
+            <h1>
+                Matriz <span class="gradient">VolumÃ©trica</span> LED
+            </h1>
+            <p>
+                Sistema de iluminaciÃ³n 3D escalable desde 1.000 hasta 125.000 LEDs con control por Ethernet, protocolo DDP y arquitectura modular profesional.
+            </p>
+            <div class="hero-buttons">
+                <a href="#pricing" class="btn btn-primary">
+                    Ver Presupuestos
+                </a>
+                <a href="#architecture" class="btn btn-secondary">
+                    Ver Arquitectura
+                </a>
+            </div>
+
+            <!-- 3D LED Cube Animation -->
+            <div class="cube-3d">
+                <div class="cube-face">
+                    <div class="led-dot"></div><div class="led-dot"></div><div class="led-dot"></div><div class="led-dot"></div>
+                    <div class="led-dot"></div><div class="led-dot"></div><div class="led-dot"></div><div class="led-dot"></div>
+                    <div class="led-dot"></div><div class="led-dot"></div><div class="led-dot"></div><div class="led-dot"></div>
+                    <div class="led-dot"></div><div class="led-dot"></div><div class="led-dot"></div><div class="led-dot"></div>
+                </div>
+                <div class="cube-face">
+                    <div class="led-dot"></div><div class="led-dot"></div><div class="led-dot"></div><div class="led-dot"></div>
+                    <div class="led-dot"></div><div class="led-dot"></div><div class="led-dot"></div><div class="led-dot"></div>
+                    <div class="led-dot"></div><div class="led-dot"></div><div class="led-dot"></div><div class="led-dot"></div>
+                    <div class="led-dot"></div><div class="led-dot"></div><div class="led-dot"></div><div class="led-dot"></div>
+                </div>
+                <div class="cube-face">
+                    <div class="led-dot"></div><div class="led-dot"></div><div class="led-dot"></div><div class="led-dot"></div>
+                    <div class="led-dot"></div><div class="led-dot"></div><div class="led-dot"></div><div class="led-dot"></div>
+                    <div class="led-dot"></div><div class="led-dot"></div><div class="led-dot"></div><div class="led-dot"></div>
+                    <div class="led-dot"></div><div class="led-dot"></div><div class="led-dot"></div><div class="led-dot"></div>
+                </div>
+                <div class="cube-face">
+                    <div class="led-dot"></div><div class="led-dot"></div><div class="led-dot"></div><div class="led-dot"></div>
+                    <div class="led-dot"></div><div class="led-dot"></div><div class="led-dot"></div><div class="led-dot"></div>
+                    <div class="led-dot"></div><div class="led-dot"></div><div class="led-dot"></div><div class="led-dot"></div>
+                    <div class="led-dot"></div><div class="led-dot"></div><div class="led-dot"></div><div class="led-dot"></div>
+                </div>
+                <div class="cube-face">
+                    <div class="led-dot"></div><div class="led-dot"></div><div class="led-dot"></div><div class="led-dot"></div>
+                    <div class="led-dot"></div><div class="led-dot"></div><div class="led-dot"></div><div class="led-dot"></div>
+                    <div class="led-dot"></div><div class="led-dot"></div><div class="led-dot"></div><div class="led-dot"></div>
+                    <div class="led-dot"></div><div class="led-dot"></div><div class="led-dot"></div><div class="led-dot"></div>
+                </div>
+                <div class="cube-face">
+                    <div class="led-dot"></div><div class="led-dot"></div><div class="led-dot"></div><div class="led-dot"></div>
+                    <div class="led-dot"></div><div class="led-dot"></div><div class="led-dot"></div><div class="led-dot"></div>
+                    <div class="led-dot"></div><div class="led-dot"></div><div class="led-dot"></div><div class="led-dot"></div>
+                    <div class="led-dot"></div><div class="led-dot"></div><div class="led-dot"></div><div class="led-dot"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <div class="stats">
+        <div class="stat fade-in">
+            <div class="stat-number">125K</div>
+            <div class="stat-label">LEDs MÃ¡ximo</div>
+        </div>
+        <div class="stat fade-in">
+            <div class="stat-number">5</div>
+            <div class="stat-label">Escalas</div>
+        </div>
+        <div class="stat fade-in">
+            <div class="stat-number">20+</div>
+            <div class="stat-label">Controladores</div>
+        </div>
+        <div class="stat fade-in">
+            <div class="stat-number">DDP</div>
+            <div class="stat-label">Protocolo Principal</div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <section id="features">
+        <div class="section-header fade-in">
+            <span class="section-tag">CaracterÃ­sticas</span>
+            <h2>Todo lo que necesitas para tu proyecto</h2>
+            <p>Arquitectura profesional, control total y escalabilidad sin lÃ­mites</p>
+        </div>
+        <div class="cards-grid">
+            <div class="card fade-in">
+                <div class="card-icon purple">âš¡</div>
+                <h3>Control Ethernet</h3>
+                <p>Arquitectura 100% cableada UTP Cat6. Sin dependencia de WiFi para mÃ¡xima estabilidad y sincronizaciÃ³n perfecta entre controladores.</p>
+            </div>
+            <div class="card fade-in">
+                <div class="card-icon teal">ðŸ“</div>
+                <h3>DiseÃ±o Modular</h3>
+                <p>Desde cubos 7Ã—7Ã—7 hasta instalaciones de 50Ã—50Ã—50. Cada mÃ³dulo es independiente y reemplazable sin afectar el sistema.</p>
+            </div>
+            <div class="card fade-in">
+                <div class="card-icon pink">ðŸ”„</div>
+                <h3>Backup Data</h3>
+                <p>LEDs con 4 hilos incluyen lÃ­nea de datos backup (BI). Si falla el canal principal, el backup mantiene la operaciÃ³n.</p>
+            </div>
+            <div class="card fade-in">
+                <div class="card-icon green">ðŸ’¡</div>
+                <h3>WS2811 12V</h3>
+                <p>Chip LED recomendado: 12V, 4 hilos, 10cm separaciÃ³n. Menor caÃ­da de tensiÃ³n y mayor confiabilidad en tiradas largas.</p>
+            </div>
+            <div class="card fade-in">
+                <div class="card-icon purple">ðŸ“Š</div>
+                <h3>Protocolo DDP</h3>
+                <p>Distributed Display Protocol: latencia ultra-baja, sin overhead de frame, eficiente para miles de LEDs en red.</p>
+            </div>
+            <div class="card fade-in">
+                <div class="card-icon teal">ðŸ–¥ï¸</div>
+                <h3>Software Profesional</h3>
+                <p>Compatible con TouchDesigner, Madrix, xLights, Resolume y WLED para contenido generativo y efectos en tiempo real.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- LED Specs Section -->
+    <section id="specs">
+        <div class="section-header fade-in">
+            <span class="section-tag">Especificaciones</span>
+            <h2>Comparativa de Chips LED</h2>
+            <p>AnÃ¡lisis tÃ©cnico para elegir el chip adecuado para tu proyecto</p>
+        </div>
+        <div style="overflow-x: auto;">
+            <table class="comparison-table fade-in">
+                <thead>
+                    <tr>
+                        <th>Chip</th>
+                        <th>Hilos</th>
+                        <th>Voltaje</th>
+                        <th>Velocidad</th>
+                        <th>Robustez</th>
+                        <th>Precio</th>
+                        <th>Uso</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>WS2811</strong></td>
+                        <td>3/4</td>
+                        <td>12V</td>
+                        <td>800 kHz</td>
+                        <td><span class="badge badge-yellow">Media</span></td>
+                        <td>$</td>
+                        <td><span class="badge badge-green">BÃ¡sico</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>WS2818</strong></td>
+                        <td>4</td>
+                        <td>12V</td>
+                        <td>800 kHz</td>
+                        <td><span class="badge badge-green">Alta</span></td>
+                        <td>$$</td>
+                        <td><span class="badge badge-green">Recomendado</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>UCS2904</strong></td>
+                        <td>4</td>
+                        <td>12V</td>
+                        <td>1 MHz</td>
+                        <td><span class="badge badge-green">Muy Alta</span></td>
+                        <td>$$$</td>
+                        <td><span class="badge badge-green">Premium</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>TM1934</strong></td>
+                        <td>4</td>
+                        <td>12V</td>
+                        <td>800 kHz</td>
+                        <td><span class="badge badge-green">Alta</span></td>
+                        <td>$$</td>
+                        <td><span class="badge badge-green">Bueno</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>GS8208</strong></td>
+                        <td>4</td>
+                        <td>12V</td>
+                        <td>800 kHz</td>
+                        <td><span class="badge badge-green">Alta</span></td>
+                        <td>$$</td>
+                        <td><span class="badge badge-green">Industrial</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>SK6812</strong></td>
+                        <td>4</td>
+                        <td>5V</td>
+                        <td>800 kHz</td>
+                        <td><span class="badge badge-yellow">Media</span></td>
+                        <td>$$</td>
+                        <td><span class="badge badge-yellow">Solo 5V</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="cards-grid" style="margin-top: 3rem;">
+            <div class="card fade-in">
+                <h3>ðŸ”Œ EspecificaciÃ³n Recomendada</h3>
+                <ul style="list-style: none; margin-top: 1rem;">
+                    <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--card-border);">â€¢ IC: <strong>WS2811</strong></li>
+                    <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--card-border);">â€¢ Voltaje: <strong>12V DC</strong></li>
+                    <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--card-border);">â€¢ SeparaciÃ³n: <strong>10 cm</strong></li>
+                    <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--card-border);">â€¢ Cable: <strong>18 AWG</strong></li>
+                    <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--card-border);">â€¢ ProtecciÃ³n: <strong>IP65</strong></li>
+                    <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--card-border);">â€¢ LED: <strong>RGB 5050</strong></li>
+                    <li style="padding: 0.5rem 0;">â€¢ Rollo: <strong>1000 LEDs</strong></li>
+                </ul>
+            </div>
+            <div class="card fade-in">
+                <h3>ðŸ“¡ Protocolos de Red</h3>
+                <div class="protocols-grid" style="margin-top: 1rem;">
+                    <div class="protocol-card" style="padding: 1rem;">
+                        <h4 style="font-size: 1rem;">DDP</h4>
+                        <p class="speed" style="font-size: 0.8rem;">MÃ¡ximo</p>
+                        <span class="badge badge-green">Recomendado</span>
+                    </div>
+                    <div class="protocol-card" style="padding: 1rem;">
+                        <h4 style="font-size: 1rem;">Art-Net</h4>
+                        <p class="speed" style="font-size: 0.8rem;">Medio</p>
+                        <span class="badge badge-yellow">Compatible</span>
+                    </div>
+                    <div class="protocol-card" style="padding: 1rem;">
+                        <h4 style="font-size: 1rem;">sACN</h4>
+                        <p class="speed" style="font-size: 0.8rem;">Alto</p>
+                        <span class="badge badge-green">Profesional</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Controllers Section -->
+    <section id="controllers">
+        <div class="section-header fade-in">
+            <span class="section-tag">Controladores</span>
+            <h2>Comparativa de Controladores</h2>
+            <p>MÃ¡s de 20 opciones para cada escala de proyecto</p>
+        </div>
+        <div style="overflow-x: auto;">
+            <table class="comparison-table fade-in">
+                <thead>
+                    <tr>
+                        <th>Controlador</th>
+                        <th>Salidas</th>
+                        <th>Universos</th>
+                        <th>Ideal Para</th>
+                        <th>Precio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>LINETX LNX-370SP</strong></td>
+                        <td>16</td>
+                        <td>96</td>
+                        <td>100-400 tiras</td>
+                        <td>$$$</td>
+                    </tr>
+                    <tr>
+                        <td><strong>deskontroller Lite V3</strong></td>
+                        <td>32</td>
+                        <td>32+</td>
+                        <td>Starter</td>
+                        <td>$$</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Falcon F16V5</strong></td>
+                        <td>16</td>
+                        <td>64</td>
+                        <td>Medio</td>
+                        <td>$$$</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Advatek PixLite Mk3</strong></td>
+                        <td>16-32</td>
+                        <td>Variable</td>
+                        <td>Industrial</td>
+                        <td>$$$$</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Colorlight 5A-75B</strong></td>
+                        <td>16</td>
+                        <td>64</td>
+                        <td>OEM</td>
+                        <td>$$</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ESP32 + WLED</strong></td>
+                        <td>10-18</td>
+                        <td>Variable</td>
+                        <td>DIY/Testing</td>
+                        <td>$</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="cards-grid" style="margin-top: 3rem;">
+            <div class="card fade-in">
+                <h3>ðŸ“Š Controladores Necesarios</h3>
+                <table style="width: 100%; margin-top: 1rem; font-size: 0.9rem;">
+                    <tr style="border-bottom: 1px solid var(--card-border);">
+                        <td style="padding: 0.7rem 0;">1.000 LEDs</td>
+                        <td style="text-align: right;">4-7 controladores</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--card-border);">
+                        <td style="padding: 0.7rem 0;">8.000 LEDs</td>
+                        <td style="text-align: right;">13-25 controladores</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--card-border);">
+                        <td style="padding: 0.7rem 0;">27.000 LEDs</td>
+                        <td style="text-align: right;">29-57 controladores</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--card-border);">
+                        <td style="padding: 0.7rem 0;">64.000 LEDs</td>
+                        <td style="text-align: right;">50-100 controladores</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.7rem 0;">125.000 LEDs</td>
+                        <td style="text-align: right;">79-157 controladores</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="card fade-in">
+                <h3>ðŸŒ Universos por Protocolo</h3>
+                <table style="width: 100%; margin-top: 1rem; font-size: 0.9rem;">
+                    <tr style="border-bottom: 1px solid var(--card-border);">
+                        <td style="padding: 0.7rem 0;">1.000 LEDs</td>
+                        <td style="text-align: right;">6 universos</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--card-border);">
+                        <td style="padding: 0.7rem 0;">8.000 LEDs</td>
+                        <td style="text-align: right;">48 universos</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--card-border);">
+                        <td style="padding: 0.7rem 0;">27.000 LEDs</td>
+                        <td style="text-align: right;">159 universos</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--card-border);">
+                        <td style="padding: 0.7rem 0;">64.000 LEDs</td>
+                        <td style="text-align: right;">377 universos</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.7rem 0;">125.000 LEDs</td>
+                        <td style="text-align: right;">736 universos</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Suppliers Section -->
+    <section id="suppliers">
+        <div class="section-header fade-in">
+            <span class="section-tag">Proveedores</span>
+            <h2>DÃ³nde Comprar</h2>
+            <p>Los mejores fabricantes y distribuidores de LEDs para volumÃ©tricos</p>
+        </div>
+        <div class="suppliers-grid">
+            <div class="supplier-card fade-in">
+                <div class="rating">â­â­â­â­â­</div>
+                <h4>iPixel LED</h4>
+                <p>Fabricante profesional. WS2811, WS2818, UCS2904. Personalizaciones disponibles.</p>
+            </div>
+            <div class="supplier-card fade-in">
+                <div class="rating">â­â­â­â­â­</div>
+                <h4>Ray Wu (AliExpress)</h4>
+                <p>El mÃ¡s famoso para WLED/xLights. Calidad consistente, buena soldadura, gran variedad.</p>
+            </div>
+            <div class="supplier-card fade-in">
+                <div class="rating">â­â­â­â­â­</div>
+                <h4>ETOP LED</h4>
+                <p>Show, volumÃ©tricos, fachadas, Ã¡rboles LED. Excelente reputaciÃ³n profesional.</p>
+            </div>
+            <div class="supplier-card fade-in">
+                <div class="rating">â­â­â­â­</div>
+                <h4>BTF-Lighting</h4>
+                <p>Tiras LED y Seed/Pebble Pixels de muy buena calidad. Buenos precios.</p>
+            </div>
+            <div class="supplier-card fade-in">
+                <div class="rating">â­â­â­â­</div>
+                <h4>Made-in-China</h4>
+                <p>OEM para compras grandes (500m+). Desde $247 USD/1000 LEDs.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing">
+        <div class="section-header fade-in">
+            <span class="section-tag">Presupuestos</span>
+            <h2>EstimaciÃ³n de Costos</h2>
+            <p>Desde instalaciones pequeÃ±as hasta configuraciones industriales</p>
+        </div>
+        <div class="pricing-grid">
+            <div class="pricing-card fade-in">
+                <h3>PequeÃ±o</h3>
+                <p class="size">10Ã—10Ã—10 â€¢ 1.000 LEDs</p>
+                <div class="price"><span class="currency">$</span>2,050</div>
+                <p class="price-unit">USD estimado</p>
+                <ul class="pricing-features">
+                    <li>100 tiras de 10 LEDs</li>
+                    <li>4-7 controladores</li>
+                    <li>2 fuentes 350W</li>
+                    <li>Switch Gigabit 8 puertos</li>
+                    <li>Estructura aluminio 2020</li>
+                </ul>
+                <a href="#contact" class="btn btn-secondary" style="width: 100%; justify-content: center;">Solicitar</a>
+            </div>
+            <div class="pricing-card featured fade-in">
+                <h3>Mediano</h3>
+                <p class="size">20Ã—20Ã—20 â€¢ 8.000 LEDs</p>
+                <div class="price"><span class="currency">$</span>6,990</div>
+                <p class="price-unit">USD estimado</p>
+                <ul class="pricing-features">
+                    <li>400 tiras de 20 LEDs</li>
+                    <li>13 controladores</li>
+                    <li>8 fuentes 500W</li>
+                    <li>Switch Gigabit 16 puertos</li>
+                    <li>Estructura aluminio 3030</li>
+                </ul>
+                <a href="#contact" class="btn btn-primary" style="width: 100%; justify-content: center;">Solicitar</a>
+            </div>
+            <div class="pricing-card fade-in">
+                <h3>Grande</h3>
+                <p class="size">30Ã—30Ã—30 â€¢ 27.000 LEDs</p>
+                <div class="price"><span class="currency">$</span>21,045</div>
+                <p class="price-unit">USD estimado</p>
+                <ul class="pricing-features">
+                    <li>900 tiras de 30 LEDs</li>
+                    <li>29 controladores</li>
+                    <li>25 fuentes 500W</li>
+                    <li>Switch Stack 24 puertos</li>
+                    <li>Estructura aluminio 4040</li>
+                </ul>
+                <a href="#contact" class="btn btn-secondary" style="width: 100%; justify-content: center;">Solicitar</a>
+            </div>
+            <div class="pricing-card fade-in">
+                <h3>Industrial</h3>
+                <p class="size">40Ã—40Ã—40 â€¢ 64.000 LEDs</p>
+                <div class="price"><span class="currency">$</span>47,140</div>
+                <p class="price-unit">USD estimado</p>
+                <ul class="pricing-features">
+                    <li>1.600 tiras de 40 LEDs</li>
+                    <li>50 controladores</li>
+                    <li>60 fuentes 500W</li>
+                    <li>Switch Core 48 puertos</li>
+                    <li>Estructura aluminio 6060</li>
+                </ul>
+                <a href="#contact" class="btn btn-secondary" style="width: 100%; justify-content: center;">Solicitar</a>
+            </div>
+            <div class="pricing-card fade-in">
+                <h3>Masivo</h3>
+                <p class="size">50Ã—50Ã—50 â€¢ 125.000 LEDs</p>
+                <div class="price"><span class="currency">$</span>90,775</div>
+                <p class="price-unit">USD estimado</p>
+                <ul class="pricing-features">
+                    <li>2.500 tiras de 50 LEDs</li>
+                    <li>79 controladores OEM</li>
+                    <li>35 fuentes industriales</li>
+                    <li>Switch Core redundante</li>
+                    <li>Estructura steel industrial</li>
+                </ul>
+                <a href="#contact" class="btn btn-secondary" style="width: 100%; justify-content: center;">Solicitar</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Architecture Section -->
+    <section id="architecture">
+        <div class="section-header fade-in">
+            <span class="section-tag">Arquitectura</span>
+            <h2>Diagrama del Sistema</h2>
+            <p>Flujo de datos desde el PC hasta los LEDs</p>
+        </div>
+        <div class="architecture fade-in">
+            <div class="arch-diagram">
+                <div class="arch-box">
+                    <h4>ðŸ–¥ï¸ PC</h4>
+                    <p>TouchDesigner<br>Madrix<br>xLights</p>
+                </div>
+                <div class="arch-arrow">â†’</div>
+                <div class="arch-box switch">
+                    <h4>ðŸ”€ Switch</h4>
+                    <p>Gigabit<br>Administrable</p>
+                </div>
+                <div class="arch-arrow">â†’</div>
+                <div class="arch-box controller">
+                    <h4>ðŸŽ›ï¸ Control 1</h4>
+                    <p>16 salidas<br>DDP/Art-Net</p>
+                </div>
+                <div class="arch-box controller">
+                    <h4>ðŸŽ›ï¸ Control 2</h4>
+                    <p>32 salidas<br>DDP/Art-Net</p>
+                </div>
+                <div class="arch-arrow">â†’</div>
+                <div class="arch-box leds">
+                    <h4>ðŸ’¡ Tiras LED</h4>
+                    <p>WS2811 12V<br>1000 LEDs</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="cards-grid" style="margin-top: 3rem;">
+            <div class="card fade-in">
+                <h3>ðŸ“ Dimensiones</h3>
+                <table style="width: 100%; margin-top: 1rem; font-size: 0.9rem;">
+                    <tr style="border-bottom: 1px solid var(--card-border);">
+                        <td style="padding: 0.7rem 0;">7Ã—7Ã—7</td>
+                        <td style="text-align: right;">343 LEDs + 48 ocultos</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--card-border);">
+                        <td style="padding: 0.7rem 0;">10Ã—10Ã—10</td>
+                        <td style="text-align: right;">1.000 LEDs</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--card-border);">
+                        <td style="padding: 0.7rem 0;">20Ã—20Ã—20</td>
+                        <td style="text-align: right;">8.000 LEDs</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--card-border);">
+                        <td style="padding: 0.7rem 0;">30Ã—30Ã—30</td>
+                        <td style="text-align: right;">27.000 LEDs</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--card-border);">
+                        <td style="padding: 0.7rem 0;">40Ã—40Ã—40</td>
+                        <td style="text-align: right;">64.000 LEDs</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.7rem 0;">50Ã—50Ã—50</td>
+                        <td style="text-align: right;">125.000 LEDs</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="card fade-in">
+                <h3>âš¡ Consumo ElÃ©ctrico</h3>
+                <table style="width: 100%; margin-top: 1rem; font-size: 0.9rem;">
+                    <tr style="border-bottom: 1px solid var(--card-border);">
+                        <td style="padding: 0.7rem 0;">1.000 LEDs</td>
+                        <td style="text-align: right;">210W (30%) / 700W (100%)</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--card-border);">
+                        <td style="padding: 0.7rem 0;">8.000 LEDs</td>
+                        <td style="text-align: right;">1,680W / 5,600W</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--card-border);">
+                        <td style="padding: 0.7rem 0;">27.000 LEDs</td>
+                        <td style="text-align: right;">5,670W / 18,900W</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--card-border);">
+                        <td style="padding: 0.7rem 0;">64.000 LEDs</td>
+                        <td style="text-align: right;">13,440W / 44,800W</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.7rem 0;">125.000 LEDs</td>
+                        <td style="text-align: right;">26,250W / 87,500W</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="card fade-in">
+                <h3>ðŸ–¥ï¸ Software Compatible</h3>
+                <div class="software-grid" style="margin-top: 1rem;">
+                    <div class="software-card" style="padding: 1rem;">
+                        <div class="icon" style="font-size: 1.5rem;">ðŸŽ­</div>
+                        <h4 style="font-size: 0.9rem;">TouchDesigner</h4>
+                        <p style="font-size: 0.75rem;">Generativo</p>
+                    </div>
+                    <div class="software-card" style="padding: 1rem;">
+                        <div class="icon" style="font-size: 1.5rem;">âœ¨</div>
+                        <h4 style="font-size: 0.9rem;">Madrix</h4>
+                        <p style="font-size: 0.75rem;">Efectos</p>
+                    </div>
+                    <div class="software-card" style="padding: 1rem;">
+                        <div class="icon" style="font-size: 1.5rem;">ðŸŽµ</div>
+                        <h4 style="font-size: 0.9rem;">xLights</h4>
+                        <p style="font-size: 0.75rem;">Secuencias</p>
+                    </div>
+                    <div class="software-card" style="padding: 1rem;">
+                        <div class="icon" style="font-size: 1.5rem;">ðŸŽ¬</div>
+                        <h4 style="font-size: 0.9rem;">Resolume</h4>
+                        <p style="font-size: 0.75rem;">Audiovisual</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="contact">
+        <h2 class="fade-in">Â¿Listo para construir tu<br><span style="background: var(--gradient-1); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">matriz volumÃ©trica</span>?</h2>
+        <p class="fade-in">DocumentaciÃ³n completa disponible. Contactanos para presupuesto personalizado y asesorÃ­a tÃ©cnica.</p>
+        <div class="hero-buttons fade-in" style="justify-content: center;">
+            <a href="mailto:contacto@volumetrico-led.com" class="btn btn-primary">
+                ðŸ“§ Contactar
+            </a>
+            <a href="#features" class="btn btn-secondary">
+                ðŸ“„ Ver DocumentaciÃ³n
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="logo">
+                    <div class="logo-icon">â—†</div>
+                    Volumetrico LED
+                </div>
+                <p>Sistema de iluminaciÃ³n 3D profesional. DiseÃ±o, ingenierÃ­a y provisiÃ³n de matrices volumÃ©tricas LED escalables.</p>
+            </div>
+            <div class="footer-column">
+                <h4>Proyecto</h4>
+                <ul>
+                    <li><a href="#features">CaracterÃ­sticas</a></li>
+                    <li><a href="#specs">Especificaciones</a></li>
+                    <li><a href="#controllers">Controladores</a></li>
+                    <li><a href="#pricing">Presupuestos</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Recursos</h4>
+                <ul>
+                    <li><a href="#architecture">Arquitectura</a></li>
+                    <li><a href="#suppliers">Proveedores</a></li>
+                    <li><a href="#contact">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Soporte</h4>
+                <ul>
+                    <li><a href="#">DocumentaciÃ³n</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">GarantÃ­a</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Â© 2026 Volumetrico LED. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Scroll to top -->
+    <button class="scroll-top" id="scrollTop">â†‘</button>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll to top button
+        const scrollTopBtn = document.getElementById('scrollTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Add stagger delay to cards
+        document.querySelectorAll('.cards-grid .card, .pricing-card, .supplier-card').forEach((card, index) => {
+            card.style.transitionDelay = `${index * 0.1}s`;
+        });
+    </script>
+</body>
+</html>
