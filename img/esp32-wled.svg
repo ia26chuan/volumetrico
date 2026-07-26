@@ -1,18 +1,22 @@
-﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 180" fill="none">
-  <rect width="280" height="180" fill="#0a0a1a"/>
-  <rect x="60" y="30" width="160" height="120" rx="4" fill="#1a3a1a" stroke="#22c55e" stroke-width="1.5"/>
-  <rect x="75" y="50" width="50" height="35" rx="2" fill="#111" stroke="#333" stroke-width="0.5"/>
-  <text x="100" y="72" text-anchor="middle" fill="#22c55e" font-size="8" font-family="monospace">ESP32</text>
-  <rect x="140" y="55" width="60" height="8" rx="1" fill="#22c55e" opacity="0.3"/>
-  <rect x="140" y="70" width="40" height="8" rx="1" fill="#22c55e" opacity="0.3"/>
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <rect width="400" height="300" fill="#0d0d1a"/>
+  <rect x="100" y="40" width="200" height="220" rx="6" fill="#0a2a0a" stroke="#22c55e" stroke-width="2"/>
+  <rect x="120" y="60" width="80" height="55" rx="3" fill="#111" stroke="#333" stroke-width="1"/>
+  <text x="160" y="82" text-anchor="middle" fill="#22c55e" font-size="12" font-family="monospace">ESP32</text>
+  <text x="160" y="100" text-anchor="middle" fill="#22c55e" font-size="8" font-family="monospace" opacity="0.6">WROOM-32</text>
+  <rect x="210" y="65" width="70" height="12" rx="2" fill="#22c55e" opacity="0.2"/>
+  <rect x="210" y="82" width="50" height="12" rx="2" fill="#22c55e" opacity="0.2"/>
   <g fill="#333">
-    <rect x="70" y="95" width="4" height="10"/><rect x="80" y="95" width="4" height="10"/>
-    <rect x="90" y="95" width="4" height="10"/><rect x="100" y="95" width="4" height="10"/>
-    <rect x="110" y="95" width="4" height="10"/><rect x="120" y="95" width="4" height="10"/>
-    <rect x="150" y="95" width="4" height="10"/><rect x="160" y="95" width="4" height="10"/>
-    <rect x="170" y="95" width="4" height="10"/><rect x="180" y="95" width="4" height="10"/>
-    <rect x="190" y="95" width="4" height="10"/><rect x="200" y="95" width="4" height="10"/>
+    <rect x="115" y="130" width="5" height="14"/><rect x="125" y="130" width="5" height="14"/>
+    <rect x="135" y="130" width="5" height="14"/><rect x="145" y="130" width="5" height="14"/>
+    <rect x="155" y="130" width="5" height="14"/><rect x="165" y="130" width="5" height="14"/>
+    <rect x="175" y="130" width="5" height="14"/><rect x="185" y="130" width="5" height="14"/>
+    <rect x="215" y="130" width="5" height="14"/><rect x="225" y="130" width="5" height="14"/>
+    <rect x="235" y="130" width="5" height="14"/><rect x="245" y="130" width="5" height="14"/>
+    <rect x="255" y="130" width="5" height="14"/><rect x="265" y="130" width="5" height="14"/>
   </g>
-  <text x="140" y="155" text-anchor="middle" fill="#555" font-size="10" font-family="monospace">ESP32 + WLED</text>
-  <text x="140" y="22" text-anchor="middle" fill="#22c55e" font-size="10" font-family="monospace">DIY | WiFi | Open Source</text>
+  <rect x="130" y="160" width="140" height="30" rx="3" fill="#22c55e" opacity="0.08" stroke="#22c55e" stroke-width="0.5"/>
+  <text x="200" y="180" text-anchor="middle" fill="#22c55e" font-size="11" font-family="monospace" opacity="0.7">WLED firmware</text>
+  <text x="200" y="270" text-anchor="middle" fill="#4a4a6a" font-size="13" font-family="monospace">ESP32 + WLED</text>
+  <text x="200" y="25" text-anchor="middle" fill="#22c55e" font-size="11" font-family="monospace">DIY | WiFi | Open Source | $5-15 USD</text>
 </svg>
