@@ -41,8 +41,8 @@ ax.text(1300, 978, 'REV', fontsize=6, color='#3a5a7a', fontfamily='monospace', h
 ax.text(1300, 965, '1.0', fontsize=10, color='#7ab0d0', fontfamily='monospace', ha='center')
 
 # === ISOMETRIC PROJECTION FUNCTIONS ===
-cx, cy = 620, 500  # center of cube
-edge = 200  # half-edge in isometric
+cx, cy = 520, 460  # center of cube
+edge = 320  # half-edge in isometric
 iso_angle = np.radians(30)
 
 def iso_project(x, y, z):
@@ -153,30 +153,30 @@ dim_font = {'fontsize': 7, 'color': '#5a9aba', 'fontfamily': 'monospace', 'ha': 
 # Z axis (height) - left side
 zx1, zy1 = iso_project(0, 0, 0)
 zx2, zy2 = iso_project(0, 0, edge)
-offset_x = -40
+offset_x = -55
 ax.annotate('', xy=(zx1+offset_x, zy1), xytext=(zx1+offset_x, zy2),
             arrowprops=dict(arrowstyle='<->', color=dim_color, lw=0.8))
 ax.plot([zx1, zx1+offset_x], [zy1, zy1], color=dim_color, linewidth=0.4, linestyle=':')
 ax.plot([zx2, zx1+offset_x], [zy2, zy2], color=dim_color, linewidth=0.4, linestyle=':')
-ax.text(zx1+offset_x-15, (zy1+zy2)/2, '100 cm', **dim_font, rotation=90)
-ax.text(zx1+offset_x-15, (zy1+zy2)/2+18, '(10 x 10cm)', fontsize=5, color='#3a6a8a',
+ax.text(zx1+offset_x-18, (zy1+zy2)/2, '100 cm', **dim_font, rotation=90)
+ax.text(zx1+offset_x-18, (zy1+zy2)/2+25, '(10 x 10cm)', fontsize=5, color='#3a6a8a',
         fontfamily='monospace', ha='center', rotation=90)
 
 # Z mid marker
 zx_mid, zy_mid = iso_project(0, 0, edge/2)
 ax.plot([zx1-3, zx1+3], [zy_mid, zy_mid], color=dim_color, linewidth=0.6)
-ax.text(zx1+offset_x+5, zy_mid, '50', fontsize=6, color='#4a7a9a', fontfamily='monospace', ha='center')
+ax.text(zx1+offset_x+8, zy_mid, '50', fontsize=6, color='#4a7a9a', fontfamily='monospace', ha='center')
 
 # X axis (width) - bottom
 xx1, xy1 = iso_project(0, 0, 0)
 xx2, xy2 = iso_project(edge, 0, 0)
-offset_y = 35
+offset_y = 50
 ax.annotate('', xy=(xx1, xy1+offset_y), xytext=(xx2, xy2+offset_y),
             arrowprops=dict(arrowstyle='<->', color=dim_color, lw=0.8))
 ax.plot([xx1, xx1], [xy1, xy1+offset_y], color=dim_color, linewidth=0.4, linestyle=':')
 ax.plot([xx2, xx2], [xy2, xy2+offset_y], color=dim_color, linewidth=0.4, linestyle=':')
-ax.text((xx1+xx2)/2, xy1+offset_y+12, '100 cm', **dim_font)
-ax.text((xx1+xx2)/2, xy1+offset_y+26, '(10 x 10cm)', fontsize=5, color='#3a6a8a',
+ax.text((xx1+xx2)/2, xy1+offset_y+15, '100 cm', **dim_font)
+ax.text((xx1+xx2)/2, xy1+offset_y+30, '(10 x 10cm)', fontsize=5, color='#3a6a8a',
         fontfamily='monospace', ha='center')
 
 # X mid marker
@@ -191,8 +191,8 @@ ax.annotate('', xy=(yx1, yy1+offset_y), xytext=(yx2, yy2+offset_y),
             arrowprops=dict(arrowstyle='<->', color=dim_color, lw=0.8))
 ax.plot([yx1, yx1], [yy1, yy1+offset_y], color=dim_color, linewidth=0.4, linestyle=':')
 ax.plot([yx2, yx2], [yy2, yy2+offset_y], color=dim_color, linewidth=0.4, linestyle=':')
-ax.text((yx1+yx2)/2, (yy1+yy2)/2+offset_y+12, '100 cm', **dim_font)
-ax.text((yx1+yx2)/2, (yy1+yy2)/2+offset_y+26, '(10 x 10cm)', fontsize=5, color='#3a6a8a',
+ax.text((yx1+yx2)/2, (yy1+yy2)/2+offset_y+15, '100 cm', **dim_font)
+ax.text((yx1+yx2)/2, (yy1+yy2)/2+offset_y+30, '(10 x 10cm)', fontsize=5, color='#3a6a8a',
         fontfamily='monospace', ha='center')
 
 # Y mid marker
@@ -246,49 +246,6 @@ ax.text(sa_top[0], sa_top[1]+20, 'A', fontsize=8, color='#8a7a3a', fontfamily='m
         ha='center', fontweight='bold')
 ax.text(sa_bot[0], sa_bot[1]-20, 'A', fontsize=8, color='#8a7a3a', fontfamily='monospace',
         ha='center', fontweight='bold')
-
-# === SPEC BOX / BOM TABLE (right side) ===
-spec_x, spec_y = 1020, 680
-spec_w, spec_h = 340, 250
-
-# Outer box
-spec_box = patches.FancyBboxPatch((spec_x, spec_y), spec_w, spec_h, boxstyle="round,pad=3",
-                                   facecolor='#0c1020', edgecolor='#2a4060', linewidth=1.0, zorder=5)
-ax.add_patch(spec_box)
-
-# Header
-ax.plot([spec_x, spec_x+spec_w], [spec_y+spec_h-30, spec_y+spec_h-30], color='#2a4060', linewidth=0.6)
-ax.text(spec_x+spec_w/2, spec_y+spec_h-15, 'BILL OF MATERIALS', fontsize=9, color='#5a8ab0',
-        fontfamily='monospace', ha='center', va='center', fontweight='bold')
-
-# BOM rows
-bom_data = [
-    ['COMPONENT', 'SPECIFICATION', 'QTY'],
-    ['LED Pixel', 'WS2811 12V 4-Wire Pebble', '1,000'],
-    ['Controller', 'LINETX LNX-370SP ArtNet', '7'],
-    ['PSU', 'Mean Well LRS-350-12 350W', '3'],
-    ['Cable', 'UTP Cat6 Shielded', '200m'],
-    ['Frame', 'Aluminum 50mm Grid', '1'],
-    ['Protocol', 'DDP over Ethernet', '—'],
-    ['Voltage', '12V DC Total', '—'],
-    ['Spacing', '50mm node-to-node', '—'],
-    ['Rating', 'IP65 Weather Resistant', '—'],
-]
-
-row_h = 20
-for idx, row in enumerate(bom_data):
-    ry = spec_y + spec_h - 50 - idx * row_h
-    if idx == 0:
-        ax.plot([spec_x+10, spec_x+spec_w-10], [ry+5, ry+5], color='#1a3050', linewidth=0.4)
-        ax.text(spec_x+15, ry, row[0], fontsize=6.5, color='#4a7a9a', fontfamily='monospace', fontweight='bold')
-        ax.text(spec_x+140, ry, row[1], fontsize=6.5, color='#4a7a9a', fontfamily='monospace', fontweight='bold')
-        ax.text(spec_x+spec_w-15, ry, row[2], fontsize=6.5, color='#4a7a9a', fontfamily='monospace',
-                ha='right', fontweight='bold')
-    else:
-        c = '#3a5a7a' if idx % 2 == 0 else '#2a4a6a'
-        ax.text(spec_x+15, ry, row[0], fontsize=6, color=c, fontfamily='monospace')
-        ax.text(spec_x+140, ry, row[1], fontsize=6, color=c, fontfamily='monospace')
-        ax.text(spec_x+spec_w-15, ry, row[2], fontsize=6, color=c, fontfamily='monospace', ha='right')
 
 # === SIGNAL PATH ANNOTATION ===
 # Draw a data flow arrow from controller area to cube
