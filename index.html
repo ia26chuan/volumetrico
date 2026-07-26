@@ -241,248 +241,249 @@
         <div class="stat fade-in"><div class="stat-number">DDP</div><div class="stat-label">Protocolo Principal</div></div>
     </div>
 
-    <!-- Hero Image - Volumetric Cube -->
+    <!-- Hero Image - Volumetric Cube 3D -->
     <section id="hero-image">
         <div class="cube-preview fade-in">
             <h2 style="text-align: center; margin-bottom: 0.5rem;">Prototipo Volumetrico 10x10x10</h2>
-            <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem;">1,000 LEDs individuales - PatrÃ³n zigzag - Control DDP</p>
-            <svg class="cube-svg" viewBox="0 0 500 450" xmlns="http://www.w3.org/2000/svg">
+            <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem;">1,000 LEDs individuales - Patrón zigzag - Control DDP</p>
+            <svg class="cube-svg" viewBox="0 0 600 500" xmlns="http://www.w3.org/2000/svg">
                 <defs>
                     <radialGradient id="glow" cx="50%" cy="50%" r="50%">
-                        <stop offset="0%" style="stop-color:#6c5ce7;stop-opacity:0.2"/>
+                        <stop offset="0%" style="stop-color:#6c5ce7;stop-opacity:0.15"/>
                         <stop offset="100%" style="stop-color:#050510;stop-opacity:0"/>
                     </radialGradient>
-                    <linearGradient id="wireGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" style="stop-color:#333"/>
-                        <stop offset="100%" style="stop-color:#555"/>
+                    <linearGradient id="faceTop" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" style="stop-color:#6c5ce7;stop-opacity:0.15"/>
+                        <stop offset="100%" style="stop-color:#6c5ce7;stop-opacity:0.05"/>
+                    </linearGradient>
+                    <linearGradient id="faceLeft" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:#00cec9;stop-opacity:0.12"/>
+                        <stop offset="100%" style="stop-color:#00cec9;stop-opacity:0.03"/>
+                    </linearGradient>
+                    <linearGradient id="faceRight" x1="100%" y1="0%" x2="0%" y2="0%">
+                        <stop offset="0%" style="stop-color:#fd79a8;stop-opacity:0.12"/>
+                        <stop offset="100%" style="stop-color:#fd79a8;stop-opacity:0.03"/>
                     </linearGradient>
                     <filter id="glowFilter">
-                        <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                        <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
                         <feMerge>
                             <feMergeNode in="coloredBlur"/>
                             <feMergeNode in="SourceGraphic"/>
                         </feMerge>
                     </filter>
+                    <filter id="softGlow">
+                        <feGaussianBlur stdDeviation="1.5"/>
+                    </filter>
                 </defs>
                 
                 <!-- Background -->
-                <rect width="500" height="450" fill="#050510"/>
-                <circle cx="250" cy="225" r="200" fill="url(#glow)"/>
+                <rect width="600" height="500" fill="#050510"/>
+                <circle cx="300" cy="250" r="220" fill="url(#glow)"/>
                 
-                <!-- 3D Cube Structure -->
-                <!-- Back frame -->
-                <line x1="100" y1="80" x2="400" y2="80" stroke="#6c5ce7" stroke-width="0.5" opacity="0.3"/>
-                <line x1="100" y1="80" x2="100" y2="380" stroke="#6c5ce7" stroke-width="0.5" opacity="0.3"/>
-                <line x1="400" y1="80" x2="400" y2="380" stroke="#6c5ce7" stroke-width="0.5" opacity="0.3"/>
-                <line x1="100" y1="380" x2="400" y2="380" stroke="#6c5ce7" stroke-width="0.5" opacity="0.3"/>
+                <!-- Isometric 3D Cube -->
+                <!--
+                    Isometric projection:
+                    X axis: +30 degrees (right-down)
+                    Y axis: -30 degrees (left-down)  
+                    Z axis: vertical
+                    
+                    Cube size: 200px
+                    Center: 300, 250
+                -->
                 
-                <!-- Side frame -->
-                <line x1="150" y1="50" x2="450" y2="50" stroke="#00cec9" stroke-width="0.5" opacity="0.3"/>
-                <line x1="450" y1="50" x2="450" y2="350" stroke="#00cec9" stroke-width="0.5" opacity="0.3"/>
-                <line x1="150" y1="50" x2="150" y2="350" stroke="#00cec9" stroke-width="0.5" opacity="0.3"/>
-                <line x1="150" y1="350" x2="450" y2="350" stroke="#00cec9" stroke-width="0.5" opacity="0.3"/>
+                <!-- Back face (hidden) -->
+                <polygon points="300,50 500,165 300,280 100,165" fill="none" stroke="#333" stroke-width="0.5" opacity="0.3"/>
                 
-                <!-- Vertical lines (columns) -->
-                <g stroke="#444" stroke-width="0.3" opacity="0.4">
-                    <line x1="130" y1="60" x2="130" y2="370"/>
-                    <line x1="160" y1="60" x2="160" y2="370"/>
-                    <line x1="190" y1="60" x2="190" y2="370"/>
-                    <line x1="220" y1="60" x2="220" y2="370"/>
-                    <line x1="250" y1="60" x2="250" y2="370"/>
-                    <line x1="280" y1="60" x2="280" y2="370"/>
-                    <line x1="310" y1="60" x2="310" y2="370"/>
-                    <line x1="340" y1="60" x2="340" y2="370"/>
-                    <line x1="370" y1="60" x2="370" y2="370"/>
-                    <line x1="400" y1="60" x2="400" y2="370"/>
+                <!-- Left face -->
+                <polygon points="100,165 300,280 300,480 100,365" fill="url(#faceLeft)" stroke="#00cec9" stroke-width="1" opacity="0.8"/>
+                
+                <!-- Right face -->
+                <polygon points="500,165 300,280 300,480 500,365" fill="url(#faceRight)" stroke="#fd79a8" stroke-width="1" opacity="0.8"/>
+                
+                <!-- Top face -->
+                <polygon points="100,165 300,50 500,165 300,280" fill="url(#faceTop)" stroke="#6c5ce7" stroke-width="1" opacity="0.8"/>
+                
+                <!-- Grid lines on left face (vertical) -->
+                <g stroke="#00cec9" stroke-width="0.3" opacity="0.3">
+                    <line x1="140" y1="182" x2="140" y2="382"/>
+                    <line x1="180" y1="199" x2="180" y2="399"/>
+                    <line x1="220" y1="216" x2="220" y2="416"/>
+                    <line x1="260" y1="233" x2="260" y2="433"/>
+                    <line x1="300" y1="250" x2="300" y2="450"/>
                 </g>
                 
-                <!-- Horizontal lines (layers) -->
-                <g stroke="#444" stroke-width="0.3" opacity="0.4">
-                    <line x1="120" y1="90" x2="410" y2="90"/>
-                    <line x1="120" y1="120" x2="410" y2="120"/>
-                    <line x1="120" y1="150" x2="410" y2="150"/>
-                    <line x1="120" y1="180" x2="410" y2="180"/>
-                    <line x1="120" y1="210" x2="410" y2="210"/>
-                    <line x1="120" y1="240" x2="410" y2="240"/>
-                    <line x1="120" y1="270" x2="410" y2="270"/>
-                    <line x1="120" y1="300" x2="410" y2="300"/>
-                    <line x1="120" y1="330" x2="410" y2="330"/>
-                    <line x1="120" y1="360" x2="410" y2="360"/>
+                <!-- Grid lines on left face (horizontal) -->
+                <g stroke="#00cec9" stroke-width="0.3" opacity="0.3">
+                    <line x1="100" y1="205" x2="300" y2="320"/>
+                    <line x1="100" y1="245" x2="300" y2="360"/>
+                    <line x1="100" y1="285" x2="300" y2="400"/>
+                    <line x1="100" y1="325" x2="300" y2="440"/>
+                    <line x1="100" y1="365" x2="300" y2="480"/>
                 </g>
                 
-                <!-- LED Grid - Row 1 (bottom) -->
+                <!-- Grid lines on right face (vertical) -->
+                <g stroke="#fd79a8" stroke-width="0.3" opacity="0.3">
+                    <line x1="340" y1="216" x2="340" y2="416"/>
+                    <line x1="380" y1="199" x2="380" y2="399"/>
+                    <line x1="420" y1="182" x2="420" y2="382"/>
+                    <line x1="460" y1="165" x2="460" y2="365"/>
+                </g>
+                
+                <!-- Grid lines on right face (horizontal) -->
+                <g stroke="#fd79a8" stroke-width="0.3" opacity="0.3">
+                    <line x1="300" y1="320" x2="500" y2="205"/>
+                    <line x1="300" y1="360" x2="500" y2="245"/>
+                    <line x1="300" y1="400" x2="500" y2="285"/>
+                    <line x1="300" y1="440" x2="500" y2="325"/>
+                    <line x1="300" y1="480" x2="500" y2="365"/>
+                </g>
+                
+                <!-- Grid lines on top face -->
+                <g stroke="#6c5ce7" stroke-width="0.3" opacity="0.3">
+                    <line x1="140" y1="148" x2="340" y2="68"/>
+                    <line x1="180" y1="131" x2="380" y2="51"/>
+                    <line x1="220" y1="114" x2="420" y2="34"/>
+                    <line x1="260" y1="97" x2="460" y2="17"/>
+                    <line x1="140" y1="182" x2="340" y2="102"/>
+                    <line x1="180" y1="199" x2="380" y2="119"/>
+                    <line x1="220" y1="216" x2="420" y2="136"/>
+                    <line x1="260" y1="233" x2="460" y2="153"/>
+                </g>
+                
+                <!-- LEDs on LEFT FACE (front-visible layer) -->
                 <g filter="url(#glowFilter)">
-                    <circle cx="130" cy="360" r="4" fill="#00cec9" opacity="0.9"><animate attributeName="opacity" values="0.5;1;0.5" dur="3s" repeatCount="indefinite"/></circle>
-                    <circle cx="160" cy="360" r="4" fill="#6c5ce7" opacity="0.9"><animate attributeName="opacity" values="0.5;1;0.5" dur="3s" begin="0.3s" repeatCount="indefinite"/></circle>
-                    <circle cx="190" cy="360" r="4" fill="#fd79a8" opacity="0.9"><animate attributeName="opacity" values="0.5;1;0.5" dur="3s" begin="0.6s" repeatCount="indefinite"/></circle>
-                    <circle cx="220" cy="360" r="4" fill="#00cec9" opacity="0.9"><animate attributeName="opacity" values="0.5;1;0.5" dur="3s" begin="0.9s" repeatCount="indefinite"/></circle>
-                    <circle cx="250" cy="360" r="4" fill="#6c5ce7" opacity="0.9"><animate attributeName="opacity" values="0.5;1;0.5" dur="3s" begin="1.2s" repeatCount="indefinite"/></circle>
-                    <circle cx="280" cy="360" r="4" fill="#fd79a8" opacity="0.9"><animate attributeName="opacity" values="0.5;1;0.5" dur="3s" begin="1.5s" repeatCount="indefinite"/></circle>
-                    <circle cx="310" cy="360" r="4" fill="#00cec9" opacity="0.9"><animate attributeName="opacity" values="0.5;1;0.5" dur="3s" begin="1.8s" repeatCount="indefinite"/></circle>
-                    <circle cx="340" cy="360" r="4" fill="#6c5ce7" opacity="0.9"><animate attributeName="opacity" values="0.5;1;0.5" dur="3s" begin="2.1s" repeatCount="indefinite"/></circle>
-                    <circle cx="370" cy="360" r="4" fill="#fd79a8" opacity="0.9"><animate attributeName="opacity" values="0.5;1;0.5" dur="3s" begin="2.4s" repeatCount="indefinite"/></circle>
-                    <circle cx="400" cy="360" r="4" fill="#00cec9" opacity="0.9"><animate attributeName="opacity" values="0.5;1;0.5" dur="3s" begin="2.7s" repeatCount="indefinite"/></circle>
+                    <!-- Row 1 (bottom) -->
+                    <circle cx="110" cy="370" r="4" fill="#00cec9"><animate attributeName="opacity" values="0.6;1;0.6" dur="2.5s" repeatCount="indefinite"/></circle>
+                    <circle cx="150" cy="387" r="4" fill="#6c5ce7"><animate attributeName="opacity" values="0.6;1;0.6" dur="2.5s" begin="0.25s" repeatCount="indefinite"/></circle>
+                    <circle cx="190" cy="404" r="4" fill="#fd79a8"><animate attributeName="opacity" values="0.6;1;0.6" dur="2.5s" begin="0.5s" repeatCount="indefinite"/></circle>
+                    <circle cx="230" cy="421" r="4" fill="#00cec9"><animate attributeName="opacity" values="0.6;1;0.6" dur="2.5s" begin="0.75s" repeatCount="indefinite"/></circle>
+                    <circle cx="270" cy="438" r="4" fill="#6c5ce7"><animate attributeName="opacity" values="0.6;1;0.6" dur="2.5s" begin="1s" repeatCount="indefinite"/></circle>
+                    
+                    <!-- Row 2 -->
+                    <circle cx="110" cy="330" r="3.5" fill="#fd79a8"><animate attributeName="opacity" values="0.5;1;0.5" dur="2.8s" repeatCount="indefinite"/></circle>
+                    <circle cx="150" cy="347" r="3.5" fill="#00cec9"><animate attributeName="opacity" values="0.5;1;0.5" dur="2.8s" begin="0.3s" repeatCount="indefinite"/></circle>
+                    <circle cx="190" cy="364" r="3.5" fill="#6c5ce7"><animate attributeName="opacity" values="0.5;1;0.5" dur="2.8s" begin="0.6s" repeatCount="indefinite"/></circle>
+                    <circle cx="230" cy="381" r="3.5" fill="#fd79a8"><animate attributeName="opacity" values="0.5;1;0.5" dur="2.8s" begin="0.9s" repeatCount="indefinite"/></circle>
+                    <circle cx="270" cy="398" r="3.5" fill="#00cec9"><animate attributeName="opacity" values="0.5;1;0.5" dur="2.8s" begin="1.2s" repeatCount="indefinite"/></circle>
+                    
+                    <!-- Row 3 -->
+                    <circle cx="110" cy="290" r="3" fill="#6c5ce7"><animate attributeName="opacity" values="0.4;1;0.4" dur="3s" repeatCount="indefinite"/></circle>
+                    <circle cx="150" cy="307" r="3" fill="#fd79a8"><animate attributeName="opacity" values="0.4;1;0.4" dur="3s" begin="0.4s" repeatCount="indefinite"/></circle>
+                    <circle cx="190" cy="324" r="3" fill="#00cec9"><animate attributeName="opacity" values="0.4;1;0.4" dur="3s" begin="0.8s" repeatCount="indefinite"/></circle>
+                    <circle cx="230" cy="341" r="3" fill="#6c5ce7"><animate attributeName="opacity" values="0.4;1;0.4" dur="3s" begin="1.2s" repeatCount="indefinite"/></circle>
+                    <circle cx="270" cy="358" r="3" fill="#fd79a8"><animate attributeName="opacity" values="0.4;1;0.4" dur="3s" begin="1.6s" repeatCount="indefinite"/></circle>
+                    
+                    <!-- Row 4 -->
+                    <circle cx="110" cy="250" r="2.5" fill="#00cec9"><animate attributeName="opacity" values="0.3;1;0.3" dur="3.2s" repeatCount="indefinite"/></circle>
+                    <circle cx="150" cy="267" r="2.5" fill="#6c5ce7"><animate attributeName="opacity" values="0.3;1;0.3" dur="3.2s" begin="0.5s" repeatCount="indefinite"/></circle>
+                    <circle cx="190" cy="284" r="2.5" fill="#fd79a8"><animate attributeName="opacity" values="0.3;1;0.3" dur="3.2s" begin="1s" repeatCount="indefinite"/></circle>
+                    <circle cx="230" cy="301" r="2.5" fill="#00cec9"><animate attributeName="opacity" values="0.3;1;0.3" dur="3.2s" begin="1.5s" repeatCount="indefinite"/></circle>
+                    <circle cx="270" cy="318" r="2.5" fill="#6c5ce7"><animate attributeName="opacity" values="0.3;1;0.3" dur="3.2s" begin="2s" repeatCount="indefinite"/></circle>
+                    
+                    <!-- Row 5 (top of left face) -->
+                    <circle cx="110" cy="210" r="2" fill="#fd79a8"><animate attributeName="opacity" values="0.2;1;0.2" dur="3.5s" repeatCount="indefinite"/></circle>
+                    <circle cx="150" cy="227" r="2" fill="#00cec9"><animate attributeName="opacity" values="0.2;1;0.2" dur="3.5s" begin="0.6s" repeatCount="indefinite"/></circle>
+                    <circle cx="190" cy="244" r="2" fill="#6c5ce7"><animate attributeName="opacity" values="0.2;1;0.2" dur="3.5s" begin="1.2s" repeatCount="indefinite"/></circle>
+                    <circle cx="230" cy="261" r="2" fill="#fd79a8"><animate attributeName="opacity" values="0.2;1;0.2" dur="3.5s" begin="1.8s" repeatCount="indefinite"/></circle>
+                    <circle cx="270" cy="278" r="2" fill="#00cec9"><animate attributeName="opacity" values="0.2;1;0.2" dur="3.5s" begin="2.4s" repeatCount="indefinite"/></circle>
                 </g>
                 
-                <!-- LED Grid - Row 2 -->
+                <!-- LEDs on RIGHT FACE -->
                 <g filter="url(#glowFilter)">
-                    <circle cx="130" cy="330" r="3.5" fill="#fd79a8" opacity="0.85"><animate attributeName="opacity" values="0.4;1;0.4" dur="3.2s" repeatCount="indefinite"/></circle>
-                    <circle cx="160" cy="330" r="3.5" fill="#00cec9" opacity="0.85"><animate attributeName="opacity" values="0.4;1;0.4" dur="3.2s" begin="0.2s" repeatCount="indefinite"/></circle>
-                    <circle cx="190" cy="330" r="3.5" fill="#6c5ce7" opacity="0.85"><animate attributeName="opacity" values="0.4;1;0.4" dur="3.2s" begin="0.4s" repeatCount="indefinite"/></circle>
-                    <circle cx="220" cy="330" r="3.5" fill="#fd79a8" opacity="0.85"><animate attributeName="opacity" values="0.4;1;0.4" dur="3.2s" begin="0.6s" repeatCount="indefinite"/></circle>
-                    <circle cx="250" cy="330" r="3.5" fill="#00cec9" opacity="0.85"><animate attributeName="opacity" values="0.4;1;0.4" dur="3.2s" begin="0.8s" repeatCount="indefinite"/></circle>
-                    <circle cx="280" cy="330" r="3.5" fill="#6c5ce7" opacity="0.85"><animate attributeName="opacity" values="0.4;1;0.4" dur="3.2s" begin="1s" repeatCount="indefinite"/></circle>
-                    <circle cx="310" cy="330" r="3.5" fill="#fd79a8" opacity="0.85"><animate attributeName="opacity" values="0.4;1;0.4" dur="3.2s" begin="1.2s" repeatCount="indefinite"/></circle>
-                    <circle cx="340" cy="330" r="3.5" fill="#00cec9" opacity="0.85"><animate attributeName="opacity" values="0.4;1;0.4" dur="3.2s" begin="1.4s" repeatCount="indefinite"/></circle>
-                    <circle cx="370" cy="330" r="3.5" fill="#6c5ce7" opacity="0.85"><animate attributeName="opacity" values="0.4;1;0.4" dur="3.2s" begin="1.6s" repeatCount="indefinite"/></circle>
-                    <circle cx="400" cy="330" r="3.5" fill="#fd79a8" opacity="0.85"><animate attributeName="opacity" values="0.4;1;0.4" dur="3.2s" begin="1.8s" repeatCount="indefinite"/></circle>
+                    <!-- Row 1 (bottom) -->
+                    <circle cx="330" cy="438" r="4" fill="#fd79a8"><animate attributeName="opacity" values="0.6;1;0.6" dur="2.5s" begin="0.1s" repeatCount="indefinite"/></circle>
+                    <circle cx="370" cy="421" r="4" fill="#00cec9"><animate attributeName="opacity" values="0.6;1;0.6" dur="2.5s" begin="0.35s" repeatCount="indefinite"/></circle>
+                    <circle cx="410" cy="404" r="4" fill="#6c5ce7"><animate attributeName="opacity" values="0.6;1;0.6" dur="2.5s" begin="0.6s" repeatCount="indefinite"/></circle>
+                    <circle cx="450" cy="387" r="4" fill="#fd79a8"><animate attributeName="opacity" values="0.6;1;0.6" dur="2.5s" begin="0.85s" repeatCount="indefinite"/></circle>
+                    <circle cx="490" cy="370" r="4" fill="#00cec9"><animate attributeName="opacity" values="0.6;1;0.6" dur="2.5s" begin="1.1s" repeatCount="indefinite"/></circle>
+                    
+                    <!-- Row 2 -->
+                    <circle cx="330" cy="398" r="3.5" fill="#00cec9"><animate attributeName="opacity" values="0.5;1;0.5" dur="2.8s" begin="0.2s" repeatCount="indefinite"/></circle>
+                    <circle cx="370" cy="381" r="3.5" fill="#6c5ce7"><animate attributeName="opacity" values="0.5;1;0.5" dur="2.8s" begin="0.5s" repeatCount="indefinite"/></circle>
+                    <circle cx="410" cy="364" r="3.5" fill="#fd79a8"><animate attributeName="opacity" values="0.5;1;0.5" dur="2.8s" begin="0.8s" repeatCount="indefinite"/></circle>
+                    <circle cx="450" cy="347" r="3.5" fill="#00cec9"><animate attributeName="opacity" values="0.5;1;0.5" dur="2.8s" begin="1.1s" repeatCount="indefinite"/></circle>
+                    <circle cx="490" cy="330" r="3.5" fill="#6c5ce7"><animate attributeName="opacity" values="0.5;1;0.5" dur="2.8s" begin="1.4s" repeatCount="indefinite"/></circle>
+                    
+                    <!-- Row 3 -->
+                    <circle cx="330" cy="358" r="3" fill="#6c5ce7"><animate attributeName="opacity" values="0.4;1;0.4" dur="3s" begin="0.3s" repeatCount="indefinite"/></circle>
+                    <circle cx="370" cy="341" r="3" fill="#fd79a8"><animate attributeName="opacity" values="0.4;1;0.4" dur="3s" begin="0.7s" repeatCount="indefinite"/></circle>
+                    <circle cx="410" cy="324" r="3" fill="#00cec9"><animate attributeName="opacity" values="0.4;1;0.4" dur="3s" begin="1.1s" repeatCount="indefinite"/></circle>
+                    <circle cx="450" cy="307" r="3" fill="#6c5ce7"><animate attributeName="opacity" values="0.4;1;0.4" dur="3s" begin="1.5s" repeatCount="indefinite"/></circle>
+                    <circle cx="490" cy="290" r="3" fill="#fd79a8"><animate attributeName="opacity" values="0.4;1;0.4" dur="3s" begin="1.9s" repeatCount="indefinite"/></circle>
+                    
+                    <!-- Row 4 -->
+                    <circle cx="330" cy="318" r="2.5" fill="#fd79a8"><animate attributeName="opacity" values="0.3;1;0.3" dur="3.2s" begin="0.4s" repeatCount="indefinite"/></circle>
+                    <circle cx="370" cy="301" r="2.5" fill="#00cec9"><animate attributeName="opacity" values="0.3;1;0.3" dur="3.2s" begin="0.9s" repeatCount="indefinite"/></circle>
+                    <circle cx="410" cy="284" r="2.5" fill="#6c5ce7"><animate attributeName="opacity" values="0.3;1;0.3" dur="3.2s" begin="1.4s" repeatCount="indefinite"/></circle>
+                    <circle cx="450" cy="267" r="2.5" fill="#fd79a8"><animate attributeName="opacity" values="0.3;1;0.3" dur="3.2s" begin="1.9s" repeatCount="indefinite"/></circle>
+                    <circle cx="490" cy="250" r="2.5" fill="#00cec9"><animate attributeName="opacity" values="0.3;1;0.3" dur="3.2s" begin="2.4s" repeatCount="indefinite"/></circle>
+                    
+                    <!-- Row 5 (top of right face) -->
+                    <circle cx="330" cy="278" r="2" fill="#00cec9"><animate attributeName="opacity" values="0.2;1;0.2" dur="3.5s" begin="0.5s" repeatCount="indefinite"/></circle>
+                    <circle cx="370" cy="261" r="2" fill="#6c5ce7"><animate attributeName="opacity" values="0.2;1;0.2" dur="3.5s" begin="1.1s" repeatCount="indefinite"/></circle>
+                    <circle cx="410" cy="244" r="2" fill="#fd79a8"><animate attributeName="opacity" values="0.2;1;0.2" dur="3.5s" begin="1.7s" repeatCount="indefinite"/></circle>
+                    <circle cx="450" cy="227" r="2" fill="#00cec9"><animate attributeName="opacity" values="0.2;1;0.2" dur="3.5s" begin="2.3s" repeatCount="indefinite"/></circle>
+                    <circle cx="490" cy="210" r="2" fill="#6c5ce7"><animate attributeName="opacity" values="0.2;1;0.2" dur="3.5s" begin="2.9s" repeatCount="indefinite"/></circle>
                 </g>
                 
-                <!-- LED Grid - Row 3 -->
+                <!-- LEDs on TOP FACE -->
                 <g filter="url(#glowFilter)">
-                    <circle cx="130" cy="300" r="3" fill="#6c5ce7" opacity="0.8"><animate attributeName="opacity" values="0.3;1;0.3" dur="3.5s" repeatCount="indefinite"/></circle>
-                    <circle cx="160" cy="300" r="3" fill="#fd79a8" opacity="0.8"><animate attributeName="opacity" values="0.3;1;0.3" dur="3.5s" begin="0.3s" repeatCount="indefinite"/></circle>
-                    <circle cx="190" cy="300" r="3" fill="#00cec9" opacity="0.8"><animate attributeName="opacity" values="0.3;1;0.3" dur="3.5s" begin="0.6s" repeatCount="indefinite"/></circle>
-                    <circle cx="220" cy="300" r="3" fill="#6c5ce7" opacity="0.8"><animate attributeName="opacity" values="0.3;1;0.3" dur="3.5s" begin="0.9s" repeatCount="indefinite"/></circle>
-                    <circle cx="250" cy="300" r="3" fill="#fd79a8" opacity="0.8"><animate attributeName="opacity" values="0.3;1;0.3" dur="3.5s" begin="1.2s" repeatCount="indefinite"/></circle>
-                    <circle cx="280" cy="300" r="3" fill="#00cec9" opacity="0.8"><animate attributeName="opacity" values="0.3;1;0.3" dur="3.5s" begin="1.5s" repeatCount="indefinite"/></circle>
-                    <circle cx="310" cy="300" r="3" fill="#6c5ce7" opacity="0.8"><animate attributeName="opacity" values="0.3;1;0.3" dur="3.5s" begin="1.8s" repeatCount="indefinite"/></circle>
-                    <circle cx="340" cy="300" r="3" fill="#fd79a8" opacity="0.8"><animate attributeName="opacity" values="0.3;1;0.3" dur="3.5s" begin="2.1s" repeatCount="indefinite"/></circle>
-                    <circle cx="370" cy="300" r="3" fill="#00cec9" opacity="0.8"><animate attributeName="opacity" values="0.3;1;0.3" dur="3.5s" begin="2.4s" repeatCount="indefinite"/></circle>
-                    <circle cx="400" cy="300" r="3" fill="#6c5ce7" opacity="0.8"><animate attributeName="opacity" values="0.3;1;0.3" dur="3.5s" begin="2.7s" repeatCount="indefinite"/></circle>
+                    <!-- Back row -->
+                    <circle cx="200" cy="120" r="2" fill="#fd79a8"><animate attributeName="opacity" values="0.2;1;0.2" dur="4s" begin="0.2s" repeatCount="indefinite"/></circle>
+                    <circle cx="240" cy="103" r="2" fill="#00cec9"><animate attributeName="opacity" values="0.2;1;0.2" dur="4s" begin="0.8s" repeatCount="indefinite"/></circle>
+                    <circle cx="280" cy="86" r="2" fill="#6c5ce7"><animate attributeName="opacity" values="0.2;1;0.2" dur="4s" begin="1.4s" repeatCount="indefinite"/></circle>
+                    <circle cx="320" cy="69" r="2" fill="#fd79a8"><animate attributeName="opacity" values="0.2;1;0.2" dur="4s" begin="2s" repeatCount="indefinite"/></circle>
+                    <circle cx="360" cy="52" r="2" fill="#00cec9"><animate attributeName="opacity" values="0.2;1;0.2" dur="4s" begin="2.6s" repeatCount="indefinite"/></circle>
+                    
+                    <!-- Middle row -->
+                    <circle cx="160" cy="155" r="2.5" fill="#00cec9"><animate attributeName="opacity" values="0.3;1;0.3" dur="3.5s" begin="0.3s" repeatCount="indefinite"/></circle>
+                    <circle cx="200" cy="138" r="2.5" fill="#6c5ce7"><animate attributeName="opacity" values="0.3;1;0.3" dur="3.5s" begin="0.9s" repeatCount="indefinite"/></circle>
+                    <circle cx="240" cy="121" r="2.5" fill="#fd79a8"><animate attributeName="opacity" values="0.3;1;0.3" dur="3.5s" begin="1.5s" repeatCount="indefinite"/></circle>
+                    <circle cx="280" cy="104" r="2.5" fill="#00cec9"><animate attributeName="opacity" values="0.3;1;0.3" dur="3.5s" begin="2.1s" repeatCount="indefinite"/></circle>
+                    <circle cx="320" cy="87" r="2.5" fill="#6c5ce7"><animate attributeName="opacity" values="0.3;1;0.3" dur="3.5s" begin="2.7s" repeatCount="indefinite"/></circle>
+                    <circle cx="360" cy="70" r="2.5" fill="#fd79a8"><animate attributeName="opacity" values="0.3;1;0.3" dur="3.5s" begin="3.3s" repeatCount="indefinite"/></circle>
+                    
+                    <!-- Front row -->
+                    <circle cx="120" cy="190" r="3" fill="#6c5ce7"><animate attributeName="opacity" values="0.4;1;0.4" dur="3s" begin="0.4s" repeatCount="indefinite"/></circle>
+                    <circle cx="160" cy="173" r="3" fill="#fd79a8"><animate attributeName="opacity" values="0.4;1;0.4" dur="3s" begin="1s" repeatCount="indefinite"/></circle>
+                    <circle cx="200" cy="156" r="3" fill="#00cec9"><animate attributeName="opacity" values="0.4;1;0.4" dur="3s" begin="1.6s" repeatCount="indefinite"/></circle>
+                    <circle cx="240" cy="139" r="3" fill="#6c5ce7"><animate attributeName="opacity" values="0.4;1;0.4" dur="3s" begin="2.2s" repeatCount="indefinite"/></circle>
+                    <circle cx="280" cy="122" r="3" fill="#fd79a8"><animate attributeName="opacity" values="0.4;1;0.4" dur="3s" begin="2.8s" repeatCount="indefinite"/></circle>
+                    <circle cx="320" cy="105" r="3" fill="#00cec9"><animate attributeName="opacity" values="0.4;1;0.4" dur="3s" begin="3.4s" repeatCount="indefinite"/></circle>
+                    <circle cx="360" cy="88" r="3" fill="#6c5ce7"><animate attributeName="opacity" values="0.4;1;0.4" dur="3s" begin="4s" repeatCount="indefinite"/></circle>
+                    
+                    <!-- Front-most row -->
+                    <circle cx="120" cy="165" r="3.5" fill="#fd79a8"><animate attributeName="opacity" values="0.5;1;0.5" dur="2.8s" begin="0.5s" repeatCount="indefinite"/></circle>
+                    <circle cx="160" cy="148" r="3.5" fill="#00cec9"><animate attributeName="opacity" values="0.5;1;0.5" dur="2.8s" begin="1.2s" repeatCount="indefinite"/></circle>
+                    <circle cx="200" cy="131" r="3.5" fill="#6c5ce7"><animate attributeName="opacity" values="0.5;1;0.5" dur="2.8s" begin="1.9s" repeatCount="indefinite"/></circle>
+                    <circle cx="240" cy="114" r="3.5" fill="#fd79a8"><animate attributeName="opacity" values="0.5;1;0.5" dur="2.8s" begin="2.6s" repeatCount="indefinite"/></circle>
+                    <circle cx="280" cy="97" r="3.5" fill="#00cec9"><animate attributeName="opacity" values="0.5;1;0.5" dur="2.8s" begin="3.3s" repeatCount="indefinite"/></circle>
+                    <circle cx="320" cy="80" r="3.5" fill="#6c5ce7"><animate attributeName="opacity" values="0.5;1;0.5" dur="2.8s" begin="4s" repeatCount="indefinite"/></circle>
                 </g>
                 
-                <!-- LED Grid - Row 4 -->
-                <g filter="url(#glowFilter)">
-                    <circle cx="130" cy="270" r="3" fill="#00cec9" opacity="0.75"><animate attributeName="opacity" values="0.3;1;0.3" dur="3.8s" repeatCount="indefinite"/></circle>
-                    <circle cx="160" cy="270" r="3" fill="#6c5ce7" opacity="0.75"><animate attributeName="opacity" values="0.3;1;0.3" dur="3.8s" begin="0.4s" repeatCount="indefinite"/></circle>
-                    <circle cx="190" cy="270" r="3" fill="#fd79a8" opacity="0.75"><animate attributeName="opacity" values="0.3;1;0.3" dur="3.8s" begin="0.8s" repeatCount="indefinite"/></circle>
-                    <circle cx="220" cy="270" r="3" fill="#00cec9" opacity="0.75"><animate attributeName="opacity" values="0.3;1;0.3" dur="3.8s" begin="1.2s" repeatCount="indefinite"/></circle>
-                    <circle cx="250" cy="270" r="3" fill="#6c5ce7" opacity="0.75"><animate attributeName="opacity" values="0.3;1;0.3" dur="3.8s" begin="1.6s" repeatCount="indefinite"/></circle>
-                    <circle cx="280" cy="270" r="3" fill="#fd79a8" opacity="0.75"><animate attributeName="opacity" values="0.3;1;0.3" dur="3.8s" begin="2s" repeatCount="indefinite"/></circle>
-                    <circle cx="310" cy="270" r="3" fill="#00cec9" opacity="0.75"><animate attributeName="opacity" values="0.3;1;0.3" dur="3.8s" begin="2.4s" repeatCount="indefinite"/></circle>
-                    <circle cx="340" cy="270" r="3" fill="#6c5ce7" opacity="0.75"><animate attributeName="opacity" values="0.3;1;0.3" dur="3.8s" begin="2.8s" repeatCount="indefinite"/></circle>
-                    <circle cx="370" cy="270" r="3" fill="#fd79a8" opacity="0.75"><animate attributeName="opacity" values="0.3;1;0.3" dur="3.8s" begin="3.2s" repeatCount="indefinite"/></circle>
-                    <circle cx="400" cy="270" r="3" fill="#00cec9" opacity="0.75"><animate attributeName="opacity" values="0.3;1;0.3" dur="3.8s" begin="3.6s" repeatCount="indefinite"/></circle>
-                </g>
-                
-                <!-- LED Grid - Row 5 -->
-                <g filter="url(#glowFilter)">
-                    <circle cx="130" cy="240" r="2.5" fill="#fd79a8" opacity="0.7"><animate attributeName="opacity" values="0.2;1;0.2" dur="4s" repeatCount="indefinite"/></circle>
-                    <circle cx="160" cy="240" r="2.5" fill="#00cec9" opacity="0.7"><animate attributeName="opacity" values="0.2;1;0.2" dur="4s" begin="0.5s" repeatCount="indefinite"/></circle>
-                    <circle cx="190" cy="240" r="2.5" fill="#6c5ce7" opacity="0.7"><animate attributeName="opacity" values="0.2;1;0.2" dur="4s" begin="1s" repeatCount="indefinite"/></circle>
-                    <circle cx="220" cy="240" r="2.5" fill="#fd79a8" opacity="0.7"><animate attributeName="opacity" values="0.2;1;0.2" dur="4s" begin="1.5s" repeatCount="indefinite"/></circle>
-                    <circle cx="250" cy="240" r="2.5" fill="#00cec9" opacity="0.7"><animate attributeName="opacity" values="0.2;1;0.2" dur="4s" begin="2s" repeatCount="indefinite"/></circle>
-                    <circle cx="280" cy="240" r="2.5" fill="#6c5ce7" opacity="0.7"><animate attributeName="opacity" values="0.2;1;0.2" dur="4s" begin="2.5s" repeatCount="indefinite"/></circle>
-                    <circle cx="310" cy="240" r="2.5" fill="#fd79a8" opacity="0.7"><animate attributeName="opacity" values="0.2;1;0.2" dur="4s" begin="3s" repeatCount="indefinite"/></circle>
-                    <circle cx="340" cy="240" r="2.5" fill="#00cec9" opacity="0.7"><animate attributeName="opacity" values="0.2;1;0.2" dur="4s" begin="3.5s" repeatCount="indefinite"/></circle>
-                    <circle cx="370" cy="240" r="2.5" fill="#6c5ce7" opacity="0.7"><animate attributeName="opacity" values="0.2;1;0.2" dur="4s" begin="4s" repeatCount="indefinite"/></circle>
-                    <circle cx="400" cy="240" r="2.5" fill="#fd79a8" opacity="0.7"><animate attributeName="opacity" values="0.2;1;0.2" dur="4s" begin="4.5s" repeatCount="indefinite"/></circle>
-                </g>
-                
-                <!-- LED Grid - Row 6 -->
-                <g filter="url(#glowFilter)">
-                    <circle cx="130" cy="210" r="2.5" fill="#6c5ce7" opacity="0.65"><animate attributeName="opacity" values="0.2;1;0.2" dur="4.2s" repeatCount="indefinite"/></circle>
-                    <circle cx="160" cy="210" r="2.5" fill="#fd79a8" opacity="0.65"><animate attributeName="opacity" values="0.2;1;0.2" dur="4.2s" begin="0.6s" repeatCount="indefinite"/></circle>
-                    <circle cx="190" cy="210" r="2.5" fill="#00cec9" opacity="0.65"><animate attributeName="opacity" values="0.2;1;0.2" dur="4.2s" begin="1.2s" repeatCount="indefinite"/></circle>
-                    <circle cx="220" cy="210" r="2.5" fill="#6c5ce7" opacity="0.65"><animate attributeName="opacity" values="0.2;1;0.2" dur="4.2s" begin="1.8s" repeatCount="indefinite"/></circle>
-                    <circle cx="250" cy="210" r="2.5" fill="#fd79a8" opacity="0.65"><animate attributeName="opacity" values="0.2;1;0.2" dur="4.2s" begin="2.4s" repeatCount="indefinite"/></circle>
-                    <circle cx="280" cy="210" r="2.5" fill="#00cec9" opacity="0.65"><animate attributeName="opacity" values="0.2;1;0.2" dur="4.2s" begin="3s" repeatCount="indefinite"/></circle>
-                    <circle cx="310" cy="210" r="2.5" fill="#6c5ce7" opacity="0.65"><animate attributeName="opacity" values="0.2;1;0.2" dur="4.2s" begin="3.6s" repeatCount="indefinite"/></circle>
-                    <circle cx="340" cy="210" r="2.5" fill="#fd79a8" opacity="0.65"><animate attributeName="opacity" values="0.2;1;0.2" dur="4.2s" begin="4.2s" repeatCount="indefinite"/></circle>
-                    <circle cx="370" cy="210" r="2.5" fill="#00cec9" opacity="0.65"><animate attributeName="opacity" values="0.2;1;0.2" dur="4.2s" begin="4.8s" repeatCount="indefinite"/></circle>
-                    <circle cx="400" cy="210" r="2.5" fill="#6c5ce7" opacity="0.65"><animate attributeName="opacity" values="0.2;1;0.2" dur="4.2s" begin="5.4s" repeatCount="indefinite"/></circle>
-                </g>
-                
-                <!-- LED Grid - Row 7 -->
-                <g filter="url(#glowFilter)">
-                    <circle cx="130" cy="180" r="2" fill="#00cec9" opacity="0.6"><animate attributeName="opacity" values="0.2;1;0.2" dur="4.5s" repeatCount="indefinite"/></circle>
-                    <circle cx="160" cy="180" r="2" fill="#6c5ce7" opacity="0.6"><animate attributeName="opacity" values="0.2;1;0.2" dur="4.5s" begin="0.7s" repeatCount="indefinite"/></circle>
-                    <circle cx="190" cy="180" r="2" fill="#fd79a8" opacity="0.6"><animate attributeName="opacity" values="0.2;1;0.2" dur="4.5s" begin="1.4s" repeatCount="indefinite"/></circle>
-                    <circle cx="220" cy="180" r="2" fill="#00cec9" opacity="0.6"><animate attributeName="opacity" values="0.2;1;0.2" dur="4.5s" begin="2.1s" repeatCount="indefinite"/></circle>
-                    <circle cx="250" cy="180" r="2" fill="#6c5ce7" opacity="0.6"><animate attributeName="opacity" values="0.2;1;0.2" dur="4.5s" begin="2.8s" repeatCount="indefinite"/></circle>
-                    <circle cx="280" cy="180" r="2" fill="#fd79a8" opacity="0.6"><animate attributeName="opacity" values="0.2;1;0.2" dur="4.5s" begin="3.5s" repeatCount="indefinite"/></circle>
-                    <circle cx="310" cy="180" r="2" fill="#00cec9" opacity="0.6"><animate attributeName="opacity" values="0.2;1;0.2" dur="4.5s" begin="4.2s" repeatCount="indefinite"/></circle>
-                    <circle cx="340" cy="180" r="2" fill="#6c5ce7" opacity="0.6"><animate attributeName="opacity" values="0.2;1;0.2" dur="4.5s" begin="4.9s" repeatCount="indefinite"/></circle>
-                    <circle cx="370" cy="180" r="2" fill="#fd79a8" opacity="0.6"><animate attributeName="opacity" values="0.2;1;0.2" dur="4.5s" begin="5.6s" repeatCount="indefinite"/></circle>
-                    <circle cx="400" cy="180" r="2" fill="#00cec9" opacity="0.6"><animate attributeName="opacity" values="0.2;1;0.2" dur="4.5s" begin="6.3s" repeatCount="indefinite"/></circle>
-                </g>
-                
-                <!-- LED Grid - Row 8 -->
-                <g filter="url(#glowFilter)">
-                    <circle cx="130" cy="150" r="2" fill="#fd79a8" opacity="0.55"><animate attributeName="opacity" values="0.2;1;0.2" dur="4.8s" repeatCount="indefinite"/></circle>
-                    <circle cx="160" cy="150" r="2" fill="#00cec9" opacity="0.55"><animate attributeName="opacity" values="0.2;1;0.2" dur="4.8s" begin="0.8s" repeatCount="indefinite"/></circle>
-                    <circle cx="190" cy="150" r="2" fill="#6c5ce7" opacity="0.55"><animate attributeName="opacity" values="0.2;1;0.2" dur="4.8s" begin="1.6s" repeatCount="indefinite"/></circle>
-                    <circle cx="220" cy="150" r="2" fill="#fd79a8" opacity="0.55"><animate attributeName="opacity" values="0.2;1;0.2" dur="4.8s" begin="2.4s" repeatCount="indefinite"/></circle>
-                    <circle cx="250" cy="150" r="2" fill="#00cec9" opacity="0.55"><animate attributeName="opacity" values="0.2;1;0.2" dur="4.8s" begin="3.2s" repeatCount="indefinite"/></circle>
-                    <circle cx="280" cy="150" r="2" fill="#6c5ce7" opacity="0.55"><animate attributeName="opacity" values="0.2;1;0.2" dur="4.8s" begin="4s" repeatCount="indefinite"/></circle>
-                    <circle cx="310" cy="150" r="2" fill="#fd79a8" opacity="0.55"><animate attributeName="opacity" values="0.2;1;0.2" dur="4.8s" begin="4.8s" repeatCount="indefinite"/></circle>
-                    <circle cx="340" cy="150" r="2" fill="#00cec9" opacity="0.55"><animate attributeName="opacity" values="0.2;1;0.2" dur="4.8s" begin="5.6s" repeatCount="indefinite"/></circle>
-                    <circle cx="370" cy="150" r="2" fill="#6c5ce7" opacity="0.55"><animate attributeName="opacity" values="0.2;1;0.2" dur="4.8s" begin="6.4s" repeatCount="indefinite"/></circle>
-                    <circle cx="400" cy="150" r="2" fill="#fd79a8" opacity="0.55"><animate attributeName="opacity" values="0.2;1;0.2" dur="4.8s" begin="7.2s" repeatCount="indefinite"/></circle>
-                </g>
-                
-                <!-- LED Grid - Row 9 -->
-                <g filter="url(#glowFilter)">
-                    <circle cx="130" cy="120" r="1.5" fill="#00cec9" opacity="0.5"><animate attributeName="opacity" values="0.2;1;0.2" dur="5s" repeatCount="indefinite"/></circle>
-                    <circle cx="160" cy="120" r="1.5" fill="#6c5ce7" opacity="0.5"><animate attributeName="opacity" values="0.2;1;0.2" dur="5s" begin="1s" repeatCount="indefinite"/></circle>
-                    <circle cx="190" cy="120" r="1.5" fill="#fd79a8" opacity="0.5"><animate attributeName="opacity" values="0.2;1;0.2" dur="5s" begin="2s" repeatCount="indefinite"/></circle>
-                    <circle cx="220" cy="120" r="1.5" fill="#00cec9" opacity="0.5"><animate attributeName="opacity" values="0.2;1;0.2" dur="5s" begin="3s" repeatCount="indefinite"/></circle>
-                    <circle cx="250" cy="120" r="1.5" fill="#6c5ce7" opacity="0.5"><animate attributeName="opacity" values="0.2;1;0.2" dur="5s" begin="4s" repeatCount="indefinite"/></circle>
-                    <circle cx="280" cy="120" r="1.5" fill="#fd79a8" opacity="0.5"><animate attributeName="opacity" values="0.2;1;0.2" dur="5s" begin="5s" repeatCount="indefinite"/></circle>
-                    <circle cx="310" cy="120" r="1.5" fill="#00cec9" opacity="0.5"><animate attributeName="opacity" values="0.2;1;0.2" dur="5s" begin="6s" repeatCount="indefinite"/></circle>
-                    <circle cx="340" cy="120" r="1.5" fill="#6c5ce7" opacity="0.5"><animate attributeName="opacity" values="0.2;1;0.2" dur="5s" begin="7s" repeatCount="indefinite"/></circle>
-                    <circle cx="370" cy="120" r="1.5" fill="#fd79a8" opacity="0.5"><animate attributeName="opacity" values="0.2;1;0.2" dur="5s" begin="8s" repeatCount="indefinite"/></circle>
-                    <circle cx="400" cy="120" r="1.5" fill="#00cec9" opacity="0.5"><animate attributeName="opacity" values="0.2;1;0.2" dur="5s" begin="9s" repeatCount="indefinite"/></circle>
-                </g>
-                
-                <!-- LED Grid - Row 10 (top) -->
-                <g filter="url(#glowFilter)">
-                    <circle cx="130" cy="90" r="1.5" fill="#6c5ce7" opacity="0.45"><animate attributeName="opacity" values="0.2;1;0.2" dur="5.5s" repeatCount="indefinite"/></circle>
-                    <circle cx="160" cy="90" r="1.5" fill="#fd79a8" opacity="0.45"><animate attributeName="opacity" values="0.2;1;0.2" dur="5.5s" begin="1.2s" repeatCount="indefinite"/></circle>
-                    <circle cx="190" cy="90" r="1.5" fill="#00cec9" opacity="0.45"><animate attributeName="opacity" values="0.2;1;0.2" dur="5.5s" begin="2.4s" repeatCount="indefinite"/></circle>
-                    <circle cx="220" cy="90" r="1.5" fill="#6c5ce7" opacity="0.45"><animate attributeName="opacity" values="0.2;1;0.2" dur="5.5s" begin="3.6s" repeatCount="indefinite"/></circle>
-                    <circle cx="250" cy="90" r="1.5" fill="#fd79a8" opacity="0.45"><animate attributeName="opacity" values="0.2;1;0.2" dur="5.5s" begin="4.8s" repeatCount="indefinite"/></circle>
-                    <circle cx="280" cy="90" r="1.5" fill="#00cec9" opacity="0.45"><animate attributeName="opacity" values="0.2;1;0.2" dur="5.5s" begin="6s" repeatCount="indefinite"/></circle>
-                    <circle cx="310" cy="90" r="1.5" fill="#6c5ce7" opacity="0.45"><animate attributeName="opacity" values="0.2;1;0.2" dur="5.5s" begin="7.2s" repeatCount="indefinite"/></circle>
-                    <circle cx="340" cy="90" r="1.5" fill="#fd79a8" opacity="0.45"><animate attributeName="opacity" values="0.2;1;0.2" dur="5.5s" begin="8.4s" repeatCount="indefinite"/></circle>
-                    <circle cx="370" cy="90" r="1.5" fill="#00cec9" opacity="0.45"><animate attributeName="opacity" values="0.2;1;0.2" dur="5.5s" begin="9.6s" repeatCount="indefinite"/></circle>
-                    <circle cx="400" cy="90" r="1.5" fill="#6c5ce7" opacity="0.45"><animate attributeName="opacity" values="0.2;1;0.2" dur="5.5s" begin="10.8s" repeatCount="indefinite"/></circle>
-                </g>
-                
-                <!-- Zigzag wire paths -->
-                <g stroke="url(#wireGrad)" stroke-width="0.8" fill="none" opacity="0.6">
-                    <!-- Row 1 left to right -->
-                    <path d="M130,360 L160,360 L190,360 L220,360 L250,360 L280,360 L310,360 L340,360 L370,360 L400,360"/>
-                    <!-- Connection to row 2 -->
-                    <path d="M400,360 L400,330"/>
-                    <!-- Row 2 right to left -->
-                    <path d="M400,330 L370,330 L340,330 L310,330 L280,330 L250,330 L220,330 L190,330 L160,330 L130,330"/>
-                    <!-- Connection to row 3 -->
-                    <path d="M130,330 L130,300"/>
-                    <!-- Row 3 left to right -->
-                    <path d="M130,300 L160,300 L190,300 L220,300 L250,300 L280,300 L310,300 L340,300 L370,300 L400,300"/>
-                    <!-- Connection to row 4 -->
-                    <path d="M400,300 L400,270"/>
-                    <!-- Row 4 right to left -->
-                    <path d="M400,270 L370,270 L340,270 L310,270 L280,270 L250,270 L220,270 L190,270 L160,270 L130,270"/>
-                    <!-- Connection to row 5 -->
-                    <path d="M130,270 L130,240"/>
-                    <!-- Row 5 left to right -->
-                    <path d="M130,240 L160,240 L190,240 L220,240 L250,240 L280,240 L310,240 L340,240 L370,240 L400,240"/>
-                </g>
+                <!-- Corner vertex glow -->
+                <circle cx="300" cy="280" r="8" fill="#fff" opacity="0.1" filter="url(#softGlow)"/>
                 
                 <!-- Labels -->
-                <text x="250" y="420" text-anchor="middle" fill="#888" font-size="14" font-family="sans-serif">10 x 10 x 10 = 1,000 LEDs</text>
-                <text x="250" y="440" text-anchor="middle" fill="#6c5ce7" font-size="11" font-family="sans-serif">WS2811 12V | 10cm spacing | IP65 | DDP Protocol</text>
+                <text x="300" y="495" text-anchor="middle" fill="#888" font-size="14" font-family="sans-serif">10 x 10 x 10 = 1,000 LEDs</text>
                 
-                <!-- Dimension arrows -->
-                <g stroke="#555" stroke-width="1" fill="none" marker-end="url(#arrow)">
-                    <line x1="130" y1="400" x2="400" y2="400"/>
-                    <line x1="420" y1="90" x2="420" y2="360"/>
+                <!-- Dimension labels -->
+                <g fill="#555" font-size="10" font-family="sans-serif">
+                    <!-- Width -->
+                    <line x1="100" y1="400" x2="300" y2="400" stroke="#555" stroke-width="0.5" stroke-dasharray="3,3"/>
+                    <text x="200" y="415" text-anchor="middle">50cm</text>
+                    
+                    <!-- Depth -->
+                    <line x1="300" y1="400" x2="500" y2="400" stroke="#555" stroke-width="0.5" stroke-dasharray="3,3"/>
+                    <text x="400" y="415" text-anchor="middle">50cm</text>
+                    
+                    <!-- Height -->
+                    <line x1="80" y1="165" x2="80" y2="365" stroke="#555" stroke-width="0.5" stroke-dasharray="3,3"/>
+                    <text x="70" y="265" text-anchor="middle" transform="rotate(-90, 70, 265)">50cm</text>
                 </g>
-                <text x="265" y="415" text-anchor="middle" fill="#666" font-size="10" font-family="sans-serif">50cm (10 x 5cm)</text>
-                <text x="440" y="225" text-anchor="middle" fill="#666" font-size="10" font-family="sans-serif" transform="rotate(90, 440, 225)">50cm (10 x 5cm)</text>
+                
+                <!-- Specs -->
+                <text x="300" y="30" text-anchor="middle" fill="#6c5ce7" font-size="11" font-family="sans-serif">WS2811 12V | 10cm spacing | IP65 | DDP Protocol</text>
             </svg>
         </div>
     </section>
