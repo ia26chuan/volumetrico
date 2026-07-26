@@ -41,7 +41,7 @@ ax.text(1300, 978, 'REV', fontsize=6, color='#3a5a7a', fontfamily='monospace', h
 ax.text(1300, 965, '1.0', fontsize=10, color='#7ab0d0', fontfamily='monospace', ha='center')
 
 # === ISOMETRIC PROJECTION FUNCTIONS ===
-cx, cy = 520, 460  # center of cube
+cx, cy = 700, 820  # center of cube
 edge = 320  # half-edge in isometric
 iso_angle = np.radians(30)
 
