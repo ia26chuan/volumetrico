@@ -562,79 +562,432 @@
     <section id="pricing">
         <div class="section-header fade-in">
             <span class="section-tag">Presupuestos</span>
-            <h2>EstimaciÃ³n de Costos</h2>
-            <p>Desde instalaciones pequeÃ±as hasta configuraciones industriales</p>
+            <h2>Estimacion de Costos por Item</h2>
+            <p>Desglose detallado de componentes y precios</p>
         </div>
-        <div class="pricing-grid">
-            <div class="pricing-card fade-in">
-                <h3>PequeÃ±o</h3>
-                <p class="size">10x10x10 - 1.000 LEDs</p>
-                <div class="price">$2,050</div>
-                <p class="price-unit">USD estimado</p>
-                <ul class="pricing-features">
-                    <li>100 tiras de 10 LEDs</li>
-                    <li>4-7 controladores</li>
-                    <li>2 fuentes 350W</li>
-                    <li>Switch Gigabit 8 puertos</li>
-                    <li>Estructura aluminio 2020</li>
-                </ul>
-                <a href="#contact" class="btn btn-secondary" style="width: 100%; justify-content: center;">Solicitar</a>
+
+        <!-- Presupuesto Pequeno 1.000 LEDs -->
+        <div class="card fade-in" style="margin-bottom: 2rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+                <div>
+                    <h3 style="font-size: 1.4rem;">Presupuesto Pequeno - 1.000 LEDs</h3>
+                    <p style="color: var(--text-muted);">Matriz 10x10x10 | 100 tiras de 10 LEDs</p>
+                </div>
+                <div style="text-align: right;">
+                    <div style="font-size: 2rem; font-weight: 800; background: var(--gradient-1); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">$2,050 USD</div>
+                </div>
             </div>
-            <div class="pricing-card featured fade-in">
-                <h3>Mediano</h3>
-                <p class="size">20x20x20 - 8.000 LEDs</p>
-                <div class="price">$6,990</div>
-                <p class="price-unit">USD estimado</p>
-                <ul class="pricing-features">
-                    <li>400 tiras de 20 LEDs</li>
-                    <li>13 controladores</li>
-                    <li>8 fuentes 500W</li>
-                    <li>Switch Gigabit 16 puertos</li>
-                    <li>Estructura aluminio 3030</li>
-                </ul>
-                <a href="#contact" class="btn btn-primary" style="width: 100%; justify-content: center;">Solicitar</a>
+            <div style="overflow-x: auto;">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Cantidad</th>
+                            <th>Precio Unitario</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>LEDs WS2811 12V 10cm</strong></td>
+                            <td>10 rollos (1.000 LEDs)</td>
+                            <td>$50 USD</td>
+                            <td><strong>$500</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Controlador LINETX LNX-370SP</strong></td>
+                            <td>7 unidades</td>
+                            <td>$175 USD</td>
+                            <td><strong>$1,225</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Fuente Mean Well 350W 12V</strong></td>
+                            <td>2 unidades</td>
+                            <td>$45 USD</td>
+                            <td><strong>$90</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Switch Gigabit 8 puertos</strong></td>
+                            <td>1 unidad</td>
+                            <td>$30 USD</td>
+                            <td><strong>$30</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cable UTP Cat6 (100m)</strong></td>
+                            <td>1 rollo</td>
+                            <td>$25 USD</td>
+                            <td><strong>$25</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cable 18 AWG (50m)</strong></td>
+                            <td>2 rollos</td>
+                            <td>$20 USD</td>
+                            <td><strong>$40</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Fusibles y portafusibles</strong></td>
+                            <td>1 kit</td>
+                            <td>$15 USD</td>
+                            <td><strong>$15</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Conectores JST SM</strong></td>
+                            <td>50 unidades</td>
+                            <td>$0.50 USD</td>
+                            <td><strong>$25</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Estructura aluminio 2020</strong></td>
+                            <td>1 set</td>
+                            <td>$100 USD</td>
+                            <td><strong>$100</strong></td>
+                        </tr>
+                        <tr style="background: rgba(108,92,231,0.1);">
+                            <td colspan="3"><strong>TOTAL</strong></td>
+                            <td><strong style="color: var(--secondary); font-size: 1.2rem;">$2,050 USD</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-            <div class="pricing-card fade-in">
-                <h3>Grande</h3>
-                <p class="size">30x30x30 - 27.000 LEDs</p>
-                <div class="price">$21,045</div>
-                <p class="price-unit">USD estimado</p>
-                <ul class="pricing-features">
-                    <li>900 tiras de 30 LEDs</li>
-                    <li>29 controladores</li>
-                    <li>25 fuentes 500W</li>
-                    <li>Switch Stack 24 puertos</li>
-                    <li>Estructura aluminio 4040</li>
-                </ul>
-                <a href="#contact" class="btn btn-secondary" style="width: 100%; justify-content: center;">Solicitar</a>
+        </div>
+
+        <!-- Presupuesto Mediano 8.000 LEDs -->
+        <div class="card fade-in" style="margin-bottom: 2rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+                <div>
+                    <h3 style="font-size: 1.4rem;">Presupuesto Mediano - 8.000 LEDs</h3>
+                    <p style="color: var(--text-muted);">Matriz 20x20x20 | 400 tiras de 20 LEDs</p>
+                </div>
+                <div style="text-align: right;">
+                    <div style="font-size: 2rem; font-weight: 800; background: var(--gradient-1); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">$6,990 USD</div>
+                </div>
             </div>
-            <div class="pricing-card fade-in">
-                <h3>Industrial</h3>
-                <p class="size">40x40x40 - 64.000 LEDs</p>
-                <div class="price">$47,140</div>
-                <p class="price-unit">USD estimado</p>
-                <ul class="pricing-features">
-                    <li>1.600 tiras de 40 LEDs</li>
-                    <li>50 controladores</li>
-                    <li>60 fuentes 500W</li>
-                    <li>Switch Core 48 puertos</li>
-                    <li>Estructura aluminio 6060</li>
-                </ul>
-                <a href="#contact" class="btn btn-secondary" style="width: 100%; justify-content: center;">Solicitar</a>
+            <div style="overflow-x: auto;">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Cantidad</th>
+                            <th>Precio Unitario</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>LEDs WS2811 12V 10cm</strong></td>
+                            <td>80 rollos (8.000 LEDs)</td>
+                            <td>$50 USD</td>
+                            <td><strong>$4,000</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Controlador deskontroller Lite V3</strong></td>
+                            <td>13 unidades</td>
+                            <td>$125 USD</td>
+                            <td><strong>$1,625</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Fuente Mean Well 500W 12V</strong></td>
+                            <td>8 unidades</td>
+                            <td>$65 USD</td>
+                            <td><strong>$520</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Switch Gigabit 16 puertos</strong></td>
+                            <td>1 unidad</td>
+                            <td>$60 USD</td>
+                            <td><strong>$60</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cable UTP Cat6 (300m)</strong></td>
+                            <td>3 rollos</td>
+                            <td>$25 USD</td>
+                            <td><strong>$75</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cable 18 AWG (200m)</strong></td>
+                            <td>4 rollos</td>
+                            <td>$20 USD</td>
+                            <td><strong>$80</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Fusibles y portafusibles</strong></td>
+                            <td>2 kits</td>
+                            <td>$15 USD</td>
+                            <td><strong>$30</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Conectores JST SM</strong></td>
+                            <td>400 unidades</td>
+                            <td>$0.50 USD</td>
+                            <td><strong>$200</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Estructura aluminio 3030</strong></td>
+                            <td>1 set</td>
+                            <td>$400 USD</td>
+                            <td><strong>$400</strong></td>
+                        </tr>
+                        <tr style="background: rgba(108,92,231,0.1);">
+                            <td colspan="3"><strong>TOTAL</strong></td>
+                            <td><strong style="color: var(--secondary); font-size: 1.2rem;">$6,990 USD</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-            <div class="pricing-card fade-in">
-                <h3>Masivo</h3>
-                <p class="size">50x50x50 - 125.000 LEDs</p>
-                <div class="price">$90,775</div>
-                <p class="price-unit">USD estimado</p>
-                <ul class="pricing-features">
-                    <li>2.500 tiras de 50 LEDs</li>
-                    <li>79 controladores OEM</li>
-                    <li>35 fuentes industriales</li>
-                    <li>Switch Core redundante</li>
-                    <li>Estructura steel industrial</li>
-                </ul>
-                <a href="#contact" class="btn btn-secondary" style="width: 100%; justify-content: center;">Solicitar</a>
+        </div>
+
+        <!-- Presupuesto Grande 27.000 LEDs -->
+        <div class="card fade-in" style="margin-bottom: 2rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+                <div>
+                    <h3 style="font-size: 1.4rem;">Presupuesto Grande - 27.000 LEDs</h3>
+                    <p style="color: var(--text-muted);">Matriz 30x30x30 | 900 tiras de 30 LEDs</p>
+                </div>
+                <div style="text-align: right;">
+                    <div style="font-size: 2rem; font-weight: 800; background: var(--gradient-1); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">$21,045 USD</div>
+                </div>
+            </div>
+            <div style="overflow-x: auto;">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Cantidad</th>
+                            <th>Precio Unitario</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>LEDs WS2811 12V 10cm</strong></td>
+                            <td>270 rollos (27.000 LEDs)</td>
+                            <td>$50 USD</td>
+                            <td><strong>$13,500</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Controlador deskontroller Lite V3</strong></td>
+                            <td>29 unidades</td>
+                            <td>$125 USD</td>
+                            <td><strong>$3,625</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Fuente Mean Well 500W 12V</strong></td>
+                            <td>25 unidades</td>
+                            <td>$65 USD</td>
+                            <td><strong>$1,625</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Switch Stack 24 puertos</strong></td>
+                            <td>2 unidades</td>
+                            <td>$150 USD</td>
+                            <td><strong>$300</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cable UTP Cat6 (500m)</strong></td>
+                            <td>5 rollos</td>
+                            <td>$25 USD</td>
+                            <td><strong>$125</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cable 18 AWG (400m)</strong></td>
+                            <td>8 rollos</td>
+                            <td>$20 USD</td>
+                            <td><strong>$160</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Fusibles y portafusibles</strong></td>
+                            <td>4 kits</td>
+                            <td>$15 USD</td>
+                            <td><strong>$60</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Conectores JST SM</strong></td>
+                            <td>900 unidades</td>
+                            <td>$0.50 USD</td>
+                            <td><strong>$450</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Estructura aluminio 4040</strong></td>
+                            <td>1 set</td>
+                            <td>$1,200 USD</td>
+                            <td><strong>$1,200</strong></td>
+                        </tr>
+                        <tr style="background: rgba(108,92,231,0.1);">
+                            <td colspan="3"><strong>TOTAL</strong></td>
+                            <td><strong style="color: var(--secondary); font-size: 1.2rem;">$21,045 USD</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Presupuesto Industrial 64.000 LEDs -->
+        <div class="card fade-in" style="margin-bottom: 2rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+                <div>
+                    <h3 style="font-size: 1.4rem;">Presupuesto Industrial - 64.000 LEDs</h3>
+                    <p style="color: var(--text-muted);">Matriz 40x40x40 | 1.600 tiras de 40 LEDs</p>
+                </div>
+                <div style="text-align: right;">
+                    <div style="font-size: 2rem; font-weight: 800; background: var(--gradient-1); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">$47,140 USD</div>
+                </div>
+            </div>
+            <div style="overflow-x: auto;">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Cantidad</th>
+                            <th>Precio Unitario</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>LEDs WS2811 12V 10cm</strong></td>
+                            <td>640 rollos (64.000 LEDs)</td>
+                            <td>$50 USD</td>
+                            <td><strong>$32,000</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Controlador deskontroller Lite V3</strong></td>
+                            <td>50 unidades</td>
+                            <td>$125 USD</td>
+                            <td><strong>$6,250</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Fuente Mean Well 500W 12V</strong></td>
+                            <td>60 unidades</td>
+                            <td>$65 USD</td>
+                            <td><strong>$3,900</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Switch Core 48 puertos</strong></td>
+                            <td>1 unidad</td>
+                            <td>$500 USD</td>
+                            <td><strong>$500</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cable UTP Cat6 (1km)</strong></td>
+                            <td>10 rollos</td>
+                            <td>$25 USD</td>
+                            <td><strong>$250</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cable 18 AWG (800m)</strong></td>
+                            <td>16 rollos</td>
+                            <td>$20 USD</td>
+                            <td><strong>$320</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Fusibles y portafusibles</strong></td>
+                            <td>8 kits</td>
+                            <td>$15 USD</td>
+                            <td><strong>$120</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Conectores JST SM</strong></td>
+                            <td>1.600 unidades</td>
+                            <td>$0.50 USD</td>
+                            <td><strong>$800</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Estructura aluminio 6060</strong></td>
+                            <td>1 set</td>
+                            <td>$3,000 USD</td>
+                            <td><strong>$3,000</strong></td>
+                        </tr>
+                        <tr style="background: rgba(108,92,231,0.1);">
+                            <td colspan="3"><strong>TOTAL</strong></td>
+                            <td><strong style="color: var(--secondary); font-size: 1.2rem;">$47,140 USD</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Presupuesto Masivo 125.000 LEDs -->
+        <div class="card fade-in" style="margin-bottom: 2rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+                <div>
+                    <h3 style="font-size: 1.4rem;">Presupuesto Masivo - 125.000 LEDs</h3>
+                    <p style="color: var(--text-muted);">Matriz 50x50x50 | 2.500 tiras de 50 LEDs</p>
+                </div>
+                <div style="text-align: right;">
+                    <div style="font-size: 2rem; font-weight: 800; background: var(--gradient-1); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">$90,775 USD</div>
+                </div>
+            </div>
+            <div style="overflow-x: auto;">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Cantidad</th>
+                            <th>Precio Unitario</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>LEDs WS2811 12V 10cm</strong></td>
+                            <td>1.250 rollos (125.000 LEDs)</td>
+                            <td>$50 USD</td>
+                            <td><strong>$62,500</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Controlador industrial OEM</strong></td>
+                            <td>79 unidades</td>
+                            <td>$150 USD</td>
+                            <td><strong>$11,850</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Fuente industrial 1000W</strong></td>
+                            <td>35 unidades</td>
+                            <td>$120 USD</td>
+                            <td><strong>$4,200</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Switch Core 48 puertos</strong></td>
+                            <td>2 unidades</td>
+                            <td>$500 USD</td>
+                            <td><strong>$1,000</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cable UTP Cat6 (2km)</strong></td>
+                            <td>20 rollos</td>
+                            <td>$25 USD</td>
+                            <td><strong>$500</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cable 14 AWG (1.5km)</strong></td>
+                            <td>15 rollos</td>
+                            <td>$30 USD</td>
+                            <td><strong>$450</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Fusibles industriales</strong></td>
+                            <td>16 kits</td>
+                            <td>$25 USD</td>
+                            <td><strong>$400</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Conectores industriales</strong></td>
+                            <td>2.500 unidades</td>
+                            <td>$0.75 USD</td>
+                            <td><strong>$1,875</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Estructura steel industrial</strong></td>
+                            <td>1 set</td>
+                            <td>$8,000 USD</td>
+                            <td><strong>$8,000</strong></td>
+                        </tr>
+                        <tr style="background: rgba(108,92,231,0.1);">
+                            <td colspan="3"><strong>TOTAL</strong></td>
+                            <td><strong style="color: var(--secondary); font-size: 1.2rem;">$90,775 USD</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </section>
