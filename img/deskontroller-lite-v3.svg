@@ -1,0 +1,19 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 180" fill="none">
+  <rect width="280" height="180" fill="#0a0a1a"/>
+  <rect x="40" y="40" width="200" height="100" rx="6" fill="#1a1a2e" stroke="#00cec9" stroke-width="1.5"/>
+  <rect x="50" y="50" width="40" height="20" rx="2" fill="#00cec9" opacity="0.3"/>
+  <rect x="100" y="50" width="40" height="20" rx="2" fill="#00cec9" opacity="0.3"/>
+  <rect x="150" y="50" width="40" height="20" rx="2" fill="#00cec9" opacity="0.3"/>
+  <rect x="200" y="50" width="30" height="20" rx="2" fill="#00cec9" opacity="0.3"/>
+  <g fill="#333">
+    <rect x="55" y="80" width="6" height="12" rx="1"/><rect x="65" y="80" width="6" height="12" rx="1"/>
+    <rect x="75" y="80" width="6" height="12" rx="1"/><rect x="85" y="80" width="6" height="12" rx="1"/>
+    <rect x="105" y="80" width="6" height="12" rx="1"/><rect x="115" y="80" width="6" height="12" rx="1"/>
+    <rect x="125" y="80" width="6" height="12" rx="1"/><rect x="135" y="80" width="6" height="12" rx="1"/>
+    <rect x="155" y="80" width="6" height="12" rx="1"/><rect x="165" y="80" width="6" height="12" rx="1"/>
+    <rect x="175" y="80" width="6" height="12" rx="1"/><rect x="185" y="80" width="6" height="12" rx="1"/>
+    <rect x="205" y="80" width="6" height="12" rx="1"/><rect x="215" y="80" width="6" height="12" rx="1"/>
+  </g>
+  <text x="140" y="155" text-anchor="middle" fill="#555" font-size="10" font-family="monospace">deskontroller LITE V3</text>
+  <text x="140" y="30" text-anchor="middle" fill="#00cec9" font-size="10" font-family="monospace">32 Outputs | Art-Net | EU Made</text>
+</svg>
