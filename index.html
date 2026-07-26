@@ -193,6 +193,43 @@
         .fade-in.visible { opacity: 1; transform: translateY(0); }
         .cube-preview { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; padding: 3rem; margin-bottom: 2rem; }
         .cube-svg { max-width: 400px; margin: 0 auto; display: block; }
+        /* Product Cards */
+        .product-cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.2rem; }
+        .product-card {
+            background: var(--card-bg); border: 1px solid var(--card-border);
+            border-radius: 16px; overflow: hidden; transition: all 0.3s;
+            display: flex; flex-direction: column;
+        }
+        .product-card:hover { border-color: rgba(108,92,231,0.4); transform: translateY(-4px); box-shadow: 0 15px 40px rgba(0,0,0,0.3); }
+        .product-img-wrap {
+            width: 100%; height: 180px; background: #0a0a1a;
+            display: flex; align-items: center; justify-content: center;
+            overflow: hidden; border-bottom: 1px solid var(--card-border);
+        }
+        .product-img-wrap img {
+            max-width: 90%; max-height: 160px; object-fit: contain;
+            transition: transform 0.3s;
+        }
+        .product-card:hover .product-img-wrap img { transform: scale(1.05); }
+        .product-info { padding: 1.2rem; flex: 1; display: flex; flex-direction: column; }
+        .product-badge { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 8px; font-size: 0.7rem; font-weight: 600; margin-bottom: 0.5rem; width: fit-content; }
+        .product-info h4 { font-size: 1.05rem; margin-bottom: 0.4rem; font-weight: 700; }
+        .product-specs { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.6rem; }
+        .product-specs span {
+            background: rgba(255,255,255,0.05); border: 1px solid var(--card-border);
+            padding: 0.15rem 0.5rem; border-radius: 6px; font-size: 0.7rem; color: var(--text-muted);
+        }
+        .product-price {
+            font-size: 1.1rem; font-weight: 800; margin-bottom: 0.4rem;
+            background: var(--gradient-1); -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .product-note { font-size: 0.78rem; color: var(--text-muted); line-height: 1.4; flex: 1; }
+        .product-link {
+            display: inline-block; margin-top: 0.6rem; color: var(--secondary);
+            font-size: 0.8rem; text-decoration: none; font-weight: 600;
+        }
+        .product-link:hover { text-decoration: underline; }
         @media (max-width: 768px) {
             .nav-links { display: none; }
             .hero h1 { font-size: 2rem; }
@@ -568,76 +605,97 @@
             <h2>Comparativa de Chips LED</h2>
             <p>Analisis tecnico para elegir el chip adecuado para tu proyecto</p>
         </div>
-        <div style="overflow-x: auto;">
-            <table class="comparison-table fade-in">
-                <thead>
-                    <tr>
-                        <th>Chip</th>
-                        <th>Hilos</th>
-                        <th>Voltaje</th>
-                        <th>Velocidad</th>
-                        <th>Robustez</th>
-                        <th>Precio (USD)</th>
-                        <th>Uso</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>WS2811</strong></td>
-                        <td>3/4</td>
-                        <td>12V</td>
-                        <td>800 kHz</td>
-                        <td><span class="badge badge-yellow">Media</span></td>
-                        <td><strong>$45-55</strong>/rollo</td>
-                        <td><span class="badge badge-green">Basico</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>WS2818</strong></td>
-                        <td>4</td>
-                        <td>12V</td>
-                        <td>800 kHz</td>
-                        <td><span class="badge badge-green">Alta</span></td>
-                        <td><strong>$55-70</strong>/rollo</td>
-                        <td><span class="badge badge-green">Recomendado</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>UCS2904</strong></td>
-                        <td>4</td>
-                        <td>12V</td>
-                        <td>1 MHz</td>
-                        <td><span class="badge badge-green">Muy Alta</span></td>
-                        <td><strong>$80-100</strong>/rollo</td>
-                        <td><span class="badge badge-green">Premium</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>TM1934</strong></td>
-                        <td>4</td>
-                        <td>12V</td>
-                        <td>800 kHz</td>
-                        <td><span class="badge badge-green">Alta</span></td>
-                        <td><strong>$60-75</strong>/rollo</td>
-                        <td><span class="badge badge-green">Bueno</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>GS8208</strong></td>
-                        <td>4</td>
-                        <td>12V</td>
-                        <td>800 kHz</td>
-                        <td><span class="badge badge-green">Alta</span></td>
-                        <td><strong>$65-80</strong>/rollo</td>
-                        <td><span class="badge badge-green">Industrial</span></td>
-                    </tr>
-                    <tr>
-                        <td><strong>SK6812</strong></td>
-                        <td>4</td>
-                        <td>5V</td>
-                        <td>800 kHz</td>
-                        <td><span class="badge badge-yellow">Media</span></td>
-                        <td><strong>$50-65</strong>/rollo</td>
-                        <td><span class="badge badge-yellow">Solo 5V</span></td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="product-cards-grid fade-in">
+            <!-- WS2811 -->
+            <div class="product-card">
+                <div class="product-img-wrap">
+                    <img src="https://yourpixelstore.com/wp-content/uploads/2022/12/315520718_673075087528348_6383433469727848847_n.jpg" alt="WS2811 LED Pixel" loading="lazy"/>
+                </div>
+                <div class="product-info">
+                    <div class="product-badge badge-green">Basico</div>
+                    <h4>WS2811</h4>
+                    <div class="product-specs">
+                        <span>3/4 hilos</span><span>12V</span><span>800 kHz</span>
+                    </div>
+                    <div class="product-price">$45-55 USD/rollo</div>
+                    <p class="product-note">Chip mas comun. 3 LEDs por pixel. Ideal para presupuestos ajustados.</p>
+                </div>
+            </div>
+            <!-- WS2818 -->
+            <div class="product-card">
+                <div class="product-img-wrap">
+                    <img src="https://www.btf-lighting.com/cdn/shop/products/WS2811_LED_Strip_12V_5050_1200x.jpg" alt="WS2818 LED Strip" loading="lazy"/>
+                </div>
+                <div class="product-info">
+                    <div class="product-badge badge-green">Recomendado</div>
+                    <h4>WS2818</h4>
+                    <div class="product-specs">
+                        <span>4 hilos</span><span>12V</span><span>800 kHz</span>
+                    </div>
+                    <div class="product-price">$55-70 USD/rollo</div>
+                    <p class="product-note">Backup data integrado. Si falla un LED, el resto sigue funcionando.</p>
+                </div>
+            </div>
+            <!-- UCS2904 -->
+            <div class="product-card">
+                <div class="product-img-wrap">
+                    <img src="https://www.alitove.com/cdn/shop/files/WS2811-12V-500pcs-LED-Pixels-String-Light_1200x.jpg" alt="UCS2904 LED" loading="lazy"/>
+                </div>
+                <div class="product-info">
+                    <div class="product-badge badge-green">Premium</div>
+                    <h4>UCS2904</h4>
+                    <div class="product-specs">
+                        <span>4 hilos</span><span>12V</span><span>1 MHz</span>
+                    </div>
+                    <div class="product-price">$80-100 USD/rollo</div>
+                    <p class="product-note">Velocidad superior. 4 canales RGBW. Para instalaciones de alto rendimiento.</p>
+                </div>
+            </div>
+            <!-- TM1934 -->
+            <div class="product-card">
+                <div class="product-img-wrap">
+                    <img src="https://www.holidaycoro.com/media/catalog/product/s/m/smart_pixel_rgb_led_strip_60_leds_m_20_pixels_m_pre-attached_xconnect_input_and_output_cable_waterproof_tube_16ft_6in_5_meter_roll_12v_2811_or_1903_rgb_color_output_order_5_meters_16_4_feet_7.jpg" alt="TM1934 LED" loading="lazy"/>
+                </div>
+                <div class="product-info">
+                    <div class="product-badge badge-green">Bueno</div>
+                    <h4>TM1934</h4>
+                    <div class="product-specs">
+                        <span>4 hilos</span><span>12V</span><span>800 kHz</span>
+                    </div>
+                    <div class="product-price">$60-75 USD/rollo</div>
+                    <p class="product-note">Alternativa confiable al WS2818. Buena compatibilidad con controladores.</p>
+                </div>
+            </div>
+            <!-- GS8208 -->
+            <div class="product-card">
+                <div class="product-img-wrap">
+                    <img src="https://gilbertengineeringusa.com/cdn/shop/files/GESI-12V-WS2811-BULLET-50-STRAND-1_1200x.jpg" alt="GS8208 LED" loading="lazy"/>
+                </div>
+                <div class="product-info">
+                    <div class="product-badge badge-green">Industrial</div>
+                    <h4>GS8208</h4>
+                    <div class="product-specs">
+                        <span>4 hilos</span><span>12V</span><span>800 kHz</span>
+                    </div>
+                    <div class="product-price">$65-80 USD/rollo</div>
+                    <p class="product-note">Diseado para uso industrial. Alta tolerancia a temperatura y ruido.</p>
+                </div>
+            </div>
+            <!-- SK6812 -->
+            <div class="product-card">
+                <div class="product-img-wrap">
+                    <img src="https://www.superlightingled.com/cdn/shop/files/12v-ws2811-led-pixel-strip-5050-420leds_1200x.jpg" alt="SK6812 LED" loading="lazy"/>
+                </div>
+                <div class="product-info">
+                    <div class="product-badge badge-yellow">Solo 5V</div>
+                    <h4>SK6812</h4>
+                    <div class="product-specs">
+                        <span>4 hilos</span><span>5V</span><span>800 kHz</span>
+                    </div>
+                    <div class="product-price">$50-65 USD/rollo</div>
+                    <p class="product-note">RGBW con canal blanco. Requiere fuente 5V. No recomendado para volumetrico.</p>
+                </div>
+            </div>
         </div>
         <p style="text-align: center; color: var(--text-muted); font-size: 0.85rem; margin-top: 1rem;">* Precios estimados por rollo de 1,000 LEDs. Varian segun proveedor y cantidad.</p>
     </section>
@@ -648,76 +706,135 @@
             <h2>Comparativa de Controladores</h2>
             <p>Mas de 20 opciones para cada escala de proyecto</p>
         </div>
-        <div style="overflow-x: auto;">
-            <table class="comparison-table fade-in">
-                <thead>
-                    <tr>
-                        <th>Controlador</th>
-                        <th>Salidas</th>
-                        <th>Universos</th>
-                        <th>Ideal Para</th>
-                        <th>Precio (USD)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>LINETX LNX-370SP</strong></td>
-                        <td>16</td>
-                        <td>96</td>
-                        <td>100-400 tiras</td>
-                        <td><strong>$150-200</strong></td>
-                    </tr>
-                    <tr>
-                        <td><strong>deskontroller Lite V3</strong></td>
-                        <td>32</td>
-                        <td>32+</td>
-                        <td>Starter</td>
-                        <td><strong>$100-150</strong></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Falcon F16V5</strong></td>
-                        <td>16</td>
-                        <td>64</td>
-                        <td>Medio</td>
-                        <td><strong>$200-250</strong></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Falcon F48V4</strong></td>
-                        <td>48</td>
-                        <td>192</td>
-                        <td>Grande</td>
-                        <td><strong>$500-600</strong></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Advatek PixLite Mk3</strong></td>
-                        <td>16-32</td>
-                        <td>Variable</td>
-                        <td>Industrial</td>
-                        <td><strong>$300-500</strong></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Colorlight 5A-75B</strong></td>
-                        <td>16</td>
-                        <td>64</td>
-                        <td>OEM</td>
-                        <td><strong>$80-120</strong></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Huidu HD-WF2</strong></td>
-                        <td>16</td>
-                        <td>64</td>
-                        <td>Economico</td>
-                        <td><strong>$50-100</strong></td>
-                    </tr>
-                    <tr>
-                        <td><strong>ESP32 + WLED</strong></td>
-                        <td>10-18</td>
-                        <td>Variable</td>
-                        <td>DIY/Testing</td>
-                        <td><strong>$5-15</strong></td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="product-cards-grid fade-in">
+            <!-- LINETX LNX-370SP -->
+            <div class="product-card">
+                <div class="product-img-wrap">
+                    <img src="https://shop.linetx.com/image/cache/catalog/LINETX/Product/LNX-370SP/LNX-368SP-800x800.jpg" alt="LINETX LNX-370SP" loading="lazy"/>
+                </div>
+                <div class="product-info">
+                    <div class="product-badge badge-green">Pro</div>
+                    <h4>LINETX LNX-370SP</h4>
+                    <div class="product-specs">
+                        <span>16 salidas</span><span>96 universos</span><span>Art-Net 4</span>
+                    </div>
+                    <div class="product-price">$135-199 USD</div>
+                    <p class="product-note">16,320 pixeles. Dual Ethernet. Web config. Fabricado en China.</p>
+                    <a href="https://shop.linetx.com/16-Ports-ArtNet-Pixel-Controller.html" target="_blank" class="product-link">Ver producto -&gt;</a>
+                </div>
+            </div>
+            <!-- deskontroller Lite V3 -->
+            <div class="product-card">
+                <div class="product-img-wrap">
+                    <img src="https://www.deskontrol.net/img/deskontroller-lite-v3-96u-1.jpg" alt="deskontroller Lite V3" loading="lazy"/>
+                </div>
+                <div class="product-info">
+                    <div class="product-badge badge-green">EU Made</div>
+                    <h4>deskontroller Lite V3</h4>
+                    <div class="product-specs">
+                        <span>32 salidas</span><span>32-192 universos</span><span>Art-Net</span>
+                    </div>
+                    <div class="product-price">$490-1,240 USD</div>
+                    <p class="product-note">32 salidas fisicas. Garantia 5 anos. Fabricado en Europa (Espana).</p>
+                    <a href="https://www.deskontrol.net/en/26-art-net-led-controllers" target="_blank" class="product-link">Ver producto -&gt;</a>
+                </div>
+            </div>
+            <!-- Falcon F16V5 -->
+            <div class="product-card">
+                <div class="product-img-wrap">
+                    <img src="https://pixelcontroller.com/store/media/catalog/product/f/1/f16v5_1.jpg" alt="Falcon F16V5" loading="lazy"/>
+                </div>
+                <div class="product-info">
+                    <div class="product-badge badge-green">Popular</div>
+                    <h4>Falcon F16V5</h4>
+                    <div class="product-specs">
+                        <span>16 salidas</span><span>192 universos</span><span>E1.31/Art-Net/DDP</span>
+                    </div>
+                    <div class="product-price">$280 USD</div>
+                    <p class="product-note">1,024 pixeles/salida. OLED display. SmartReceiver. DDP nativo.</p>
+                    <a href="https://pixelcontroller.com/store/featured/88-f16v5.html" target="_blank" class="product-link">Ver producto -&gt;</a>
+                </div>
+            </div>
+            <!-- Falcon F48V4 -->
+            <div class="product-card">
+                <div class="product-img-wrap">
+                    <img src="https://pixelcontroller.com/store/media/catalog/product/f/4/f48v4_1.jpg" alt="Falcon F48V4" loading="lazy"/>
+                </div>
+                <div class="product-info">
+                    <div class="product-badge badge-green">Grande</div>
+                    <h4>Falcon F48V4</h4>
+                    <div class="product-specs">
+                        <span>48 salidas</span><span>192 universos</span><span>E1.31/Art-Net</span>
+                    </div>
+                    <div class="product-price">$500-600 USD</div>
+                    <p class="product-note">Para proyectos grandes. 48 salidas + expansiones. SmartReceivers.</p>
+                    <a href="https://pixelcontroller.com/store/" target="_blank" class="product-link">Ver producto -&gt;</a>
+                </div>
+            </div>
+            <!-- Advatek PixLite Mk3 -->
+            <div class="product-card">
+                <div class="product-img-wrap">
+                    <img src="https://www.advateklights.com/media/catalog/product/p/i/pixlite-mk3-16-main.png" alt="Advatek PixLite Mk3" loading="lazy"/>
+                </div>
+                <div class="product-info">
+                    <div class="product-badge badge-green">Industrial</div>
+                    <h4>Advatek PixLite Mk3</h4>
+                    <div class="product-specs">
+                        <span>16-32 salidas</span><span>Variable</span><span>Art-Net/sACN</span>
+                    </div>
+                    <div class="product-price">$300-500 USD</div>
+                    <p class="product-note">Nivel industrial. Certificaciones. Soporte profesional avanzado.</p>
+                    <a href="https://www.advateklights.com/pixlite-mk3.html" target="_blank" class="product-link">Ver producto -&gt;</a>
+                </div>
+            </div>
+            <!-- Colorlight 5A-75B -->
+            <div class="product-card">
+                <div class="product-img-wrap">
+                    <img src="https://www.colorlight- led.com/upload/image/201905/5A-75B.jpg" alt="Colorlight 5A-75B" loading="lazy"/>
+                </div>
+                <div class="product-info">
+                    <div class="product-badge badge-green">OEM</div>
+                    <h4>Colorlight 5A-75B</h4>
+                    <div class="product-specs">
+                        <span>16 salidas</span><span>64 universos</span><span>Art-Net</span>
+                    </div>
+                    <div class="product-price">$80-120 USD</div>
+                    <p class="product-note">OEM chino. Buena relacion precio/calidad. Compatible MADRIX.</p>
+                    <a href="https://www.colorlight-led.com/" target="_blank" class="product-link">Ver producto -&gt;</a>
+                </div>
+            </div>
+            <!-- Huidu HD-WF2 -->
+            <div class="product-card">
+                <div class="product-img-wrap">
+                    <img src="https://www.huidu.com/wp-content/uploads/2023/HD-WF2.jpg" alt="Huidu HD-WF2" loading="lazy"/>
+                </div>
+                <div class="product-info">
+                    <div class="product-badge badge-yellow">Economico</div>
+                    <h4>Huidu HD-WF2</h4>
+                    <div class="product-specs">
+                        <span>16 salidas</span><span>64 universos</span><span>WiFi</span>
+                    </div>
+                    <div class="product-price">$50-100 USD</div>
+                    <p class="product-note">Opcion economica. WiFi integrado. Para proyectos hobby/semi-pro.</p>
+                    <a href="https://www.huidu.com/" target="_blank" class="product-link">Ver producto -&gt;</a>
+                </div>
+            </div>
+            <!-- ESP32 + WLED -->
+            <div class="product-card">
+                <div class="product-img-wrap">
+                    <img src="https://www.wled.me/assets/img/esp32_dev.png" alt="ESP32 WLED" loading="lazy"/>
+                </div>
+                <div class="product-info">
+                    <div class="product-badge badge-yellow">DIY</div>
+                    <h4>ESP32 + WLED</h4>
+                    <div class="product-specs">
+                        <span>10-18 salidas</span><span>Variable</span><span>WiFi</span>
+                    </div>
+                    <div class="product-price">$5-15 USD</div>
+                    <p class="product-note">Para testing y prototipos. Open source. Ideal para validar antes de escalar.</p>
+                    <a href="https://kno.wled.me/" target="_blank" class="product-link">Ver proyecto -&gt;</a>
+                </div>
+            </div>
         </div>
     </section>
 
