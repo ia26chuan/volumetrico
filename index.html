@@ -239,10 +239,36 @@
             section { padding: 4rem 1rem; }
             .section-header h2 { font-size: 1.8rem; }
         }
+        .lightbox-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.92); z-index: 9999; justify-content: center;
+            align-items: center; cursor: pointer; padding: 2rem;
+        }
+        .lightbox-overlay.active { display: flex; }
+        .lightbox-overlay img {
+            max-width: 90%; max-height: 90vh; object-fit: contain;
+            border-radius: 8px; box-shadow: 0 0 40px rgba(0,212,170,0.3);
+        }
+        .lightbox-close {
+            position: absolute; top: 1.5rem; right: 2rem; color: #fff;
+            font-size: 2rem; cursor: pointer; z-index: 10000;
+            background: none; border: none; font-weight: bold;
+        }
+        .lightbox-caption {
+            position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+            color: #ccc; font-size: 0.9rem; text-align: center;
+            background: rgba(0,0,0,0.7); padding: 0.5rem 1.5rem; border-radius: 20px;
+        }
+        .product-img-wrap { cursor: pointer; }
     </style>
 </head>
 <body>
     <div class="bg-animation"></div>
+    <div class="lightbox-overlay" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose">&times;</button>
+        <img src="" alt="" id="lightboxImg"/>
+        <div class="lightbox-caption" id="lightboxCaption"></div>
+    </div>
 
     <nav id="navbar">
         <div class="logo">
@@ -645,20 +671,20 @@
             </div>
             <div class="product-card">
                 <div class="product-img-wrap">
-                    <img src="tester.jpeg" alt="Controlador DIY sin caja" loading="lazy"/>
+                    <img src="tester.jpeg" alt="Multimetro JA-830D" loading="lazy"/>
                 </div>
                 <div class="product-info">
-                    <h4>Controlador DIY - Sin Caja</h4>
-                    <p class="product-note">Placa controladora abierta con fuente de poder visible. Estilo ESP32 + Mean Well. Todo a la vista.</p>
+                    <h4>Multimetro JA-830D</h4>
+                    <p class="product-note">Multimetro para medir voltaje, corriente y continuidad en el cubo LED.</p>
                 </div>
             </div>
             <div class="product-card">
                 <div class="product-img-wrap">
-                    <img src="usb.jpeg" alt="USB LED Tester" loading="lazy"/>
+                    <img src="usb.jpeg" alt="Nodo LED Pebble Pixel" loading="lazy"/>
                 </div>
                 <div class="product-info">
-                    <h4>USB LED Tester</h4>
-                    <p class="product-note">Tester USB para probar secciones de LEDs. Util para diagnosticar conexiones.</p>
+                    <h4>Nodo LED Pebble - Detalle</h4>
+                    <p class="product-note">Close-up del nodo LED pebble. Car transparente con placa de circuito visible.</p>
                 </div>
             </div>
         </div>
@@ -674,7 +700,7 @@
             <!-- WS2811 -->
             <div class="product-card">
                 <div class="product-img-wrap">
-                    <img src="img/ws2811-pebble.jpg" alt="WS2811 LED Pixel" loading="lazy"/>
+                    <img src="img/ws2811-pebble.svg" alt="WS2811 LED Pixel" loading="lazy"/>
                 </div>
                 <div class="product-info">
                     <div class="product-badge badge-green">Basico</div>
@@ -689,7 +715,7 @@
             <!-- WS2818 -->
             <div class="product-card">
                 <div class="product-img-wrap">
-                    <img src="img/ws2818-pebble.jpg" alt="WS2818 LED Strip" loading="lazy"/>
+                    <img src="img/ws2818-pebble.svg" alt="WS2818 LED Strip" loading="lazy"/>
                 </div>
                 <div class="product-info">
                     <div class="product-badge badge-green">Recomendado</div>
@@ -704,7 +730,7 @@
             <!-- UCS2904 -->
             <div class="product-card">
                 <div class="product-img-wrap">
-                    <img src="img/ucs2904-pebble.jpg" alt="UCS2904 LED" loading="lazy"/>
+                    <img src="img/ucs2904-pebble.svg" alt="UCS2904 LED" loading="lazy"/>
                 </div>
                 <div class="product-info">
                     <div class="product-badge badge-green">Premium</div>
@@ -719,7 +745,7 @@
             <!-- TM1934 -->
             <div class="product-card">
                 <div class="product-img-wrap">
-                    <img src="img/tm1934-pebble.jpg" alt="TM1934 LED" loading="lazy"/>
+                    <img src="img/tm1934-pebble.svg" alt="TM1934 LED" loading="lazy"/>
                 </div>
                 <div class="product-info">
                     <div class="product-badge badge-green">Bueno</div>
@@ -734,7 +760,7 @@
             <!-- GS8208 -->
             <div class="product-card">
                 <div class="product-img-wrap">
-                    <img src="img/gs8208-pebble.jpg" alt="GS8208 LED" loading="lazy"/>
+                    <img src="img/gs8208-pebble.svg" alt="GS8208 LED" loading="lazy"/>
                 </div>
                 <div class="product-info">
                     <div class="product-badge badge-green">Industrial</div>
@@ -1342,6 +1368,36 @@
             });
         }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Lightbox
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxCaption = document.getElementById('lightboxCaption');
+        const lightboxClose = document.getElementById('lightboxClose');
+
+        document.querySelectorAll('.product-img-wrap img').forEach(img => {
+            img.addEventListener('click', function(e) {
+                e.stopPropagation();
+                lightboxImg.src = this.src;
+                lightboxImg.alt = this.alt;
+                lightboxCaption.textContent = this.alt || '';
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === lightbox) closeLightbox();
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeLightbox();
+        });
     </script>
 </body>
 </html>
