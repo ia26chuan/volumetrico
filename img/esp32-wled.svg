@@ -1,0 +1,18 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 180" fill="none">
+  <rect width="280" height="180" fill="#0a0a1a"/>
+  <rect x="60" y="30" width="160" height="120" rx="4" fill="#1a3a1a" stroke="#22c55e" stroke-width="1.5"/>
+  <rect x="75" y="50" width="50" height="35" rx="2" fill="#111" stroke="#333" stroke-width="0.5"/>
+  <text x="100" y="72" text-anchor="middle" fill="#22c55e" font-size="8" font-family="monospace">ESP32</text>
+  <rect x="140" y="55" width="60" height="8" rx="1" fill="#22c55e" opacity="0.3"/>
+  <rect x="140" y="70" width="40" height="8" rx="1" fill="#22c55e" opacity="0.3"/>
+  <g fill="#333">
+    <rect x="70" y="95" width="4" height="10"/><rect x="80" y="95" width="4" height="10"/>
+    <rect x="90" y="95" width="4" height="10"/><rect x="100" y="95" width="4" height="10"/>
+    <rect x="110" y="95" width="4" height="10"/><rect x="120" y="95" width="4" height="10"/>
+    <rect x="150" y="95" width="4" height="10"/><rect x="160" y="95" width="4" height="10"/>
+    <rect x="170" y="95" width="4" height="10"/><rect x="180" y="95" width="4" height="10"/>
+    <rect x="190" y="95" width="4" height="10"/><rect x="200" y="95" width="4" height="10"/>
+  </g>
+  <text x="140" y="155" text-anchor="middle" fill="#555" font-size="10" font-family="monospace">ESP32 + WLED</text>
+  <text x="140" y="22" text-anchor="middle" fill="#22c55e" font-size="10" font-family="monospace">DIY | WiFi | Open Source</text>
+</svg>
