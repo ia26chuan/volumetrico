@@ -56,15 +56,11 @@
             justify-content: center; font-size: 1.2rem; color: white;
         }
         .nav-links { display: flex; gap: 2rem; list-style: none; }
-        .nav-links a {
-            color: var(--text-muted); text-decoration: none; font-size: 0.9rem;
-            transition: color 0.3s;
-        }
+        .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; }
         .nav-links a:hover { color: var(--secondary); }
         .cta-nav {
             background: var(--gradient-1); color: white; padding: 0.6rem 1.5rem;
-            border-radius: 25px; text-decoration: none; font-weight: 600;
-            font-size: 0.9rem;
+            border-radius: 25px; text-decoration: none; font-weight: 600; font-size: 0.9rem;
         }
         .hero {
             min-height: 100vh; display: flex; align-items: center;
@@ -85,157 +81,95 @@
             background: var(--gradient-1); -webkit-background-clip: text;
             -webkit-text-fill-color: transparent; background-clip: text;
         }
-        .hero p {
-            font-size: 1.2rem; color: var(--text-muted); max-width: 650px;
-            margin: 0 auto 2.5rem;
-        }
+        .hero p { font-size: 1.2rem; color: var(--text-muted); max-width: 650px; margin: 0 auto 2.5rem; }
         .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
         .btn {
             padding: 1rem 2rem; border-radius: 12px; font-size: 1rem;
             font-weight: 600; text-decoration: none; transition: all 0.3s;
             cursor: pointer; border: none; display: inline-flex; align-items: center; gap: 0.5rem;
         }
-        .btn-primary {
-            background: var(--gradient-1); color: white;
-            box-shadow: 0 4px 20px rgba(108,92,231,0.4);
-        }
+        .btn-primary { background: var(--gradient-1); color: white; box-shadow: 0 4px 20px rgba(108,92,231,0.4); }
         .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 40px rgba(108,92,231,0.5); }
-        .btn-secondary {
-            background: rgba(255,255,255,0.05); color: var(--text);
-            border: 1px solid var(--card-border);
-        }
+        .btn-secondary { background: rgba(255,255,255,0.05); color: var(--text); border: 1px solid var(--card-border); }
         .btn-secondary:hover { background: rgba(255,255,255,0.1); border-color: var(--secondary); }
-        .stats {
-            padding: 4rem 2rem; display: flex; justify-content: center;
-            gap: 3rem; flex-wrap: wrap;
-        }
-        .stat {
-            text-align: center; padding: 2rem; background: var(--card-bg);
-            border: 1px solid var(--card-border); border-radius: 16px; min-width: 180px;
-        }
-        .stat-number {
-            font-size: 2.5rem; font-weight: 800;
-            background: var(--gradient-1); -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent; background-clip: text;
-        }
+        .stats { padding: 4rem 2rem; display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; }
+        .stat { text-align: center; padding: 2rem; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; min-width: 180px; }
+        .stat-number { font-size: 2.5rem; font-weight: 800; background: var(--gradient-1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
         .stat-label { color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem; }
         section { padding: 6rem 2rem; max-width: 1200px; margin: 0 auto; }
         .section-header { text-align: center; margin-bottom: 4rem; }
         .section-header h2 { font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; }
         .section-header p { color: var(--text-muted); max-width: 600px; margin: 0 auto; }
-        .section-tag {
-            display: inline-block; background: rgba(108,92,231,0.15);
-            color: var(--secondary); padding: 0.3rem 1rem; border-radius: 20px;
-            font-size: 0.8rem; font-weight: 600; margin-bottom: 1rem;
-        }
-        .cards-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;
-        }
+        .section-tag { display: inline-block; background: rgba(108,92,231,0.15); color: var(--secondary); padding: 0.3rem 1rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; margin-bottom: 1rem; }
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
         .card {
             background: var(--card-bg); border: 1px solid var(--card-border);
-            border-radius: 20px; padding: 2rem; transition: all 0.3s;
-            position: relative; overflow: hidden;
+            border-radius: 20px; padding: 2rem; transition: all 0.3s; position: relative; overflow: hidden;
         }
-        .card::before {
-            content: ''; position: absolute; top: 0; left: 0; right: 0;
-            height: 3px; background: var(--gradient-1); opacity: 0; transition: opacity 0.3s;
-        }
-        .card:hover {
-            border-color: rgba(108,92,231,0.3); transform: translateY(-5px);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-        }
-        .card:hover::before { opacity: 1; }
-        .card-icon {
-            width: 60px; height: 60px; border-radius: 15px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.8rem; margin-bottom: 1.5rem; color: white;
-        }
+        .card:hover { border-color: rgba(108,92,231,0.3); transform: translateY(-5px); box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+        .card-icon { width: 60px; height: 60px; border-radius: 15px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; margin-bottom: 1.5rem; color: white; }
         .card-icon.purple { background: rgba(108,92,231,0.3); }
         .card-icon.teal { background: rgba(0,206,201,0.3); }
         .card-icon.pink { background: rgba(253,121,168,0.3); }
         .card-icon.green { background: rgba(85,239,196,0.3); }
         .card h3 { font-size: 1.3rem; margin-bottom: 0.8rem; }
         .card p { color: var(--text-muted); font-size: 0.95rem; }
-        .comparison-table {
-            width: 100%; border-collapse: collapse; background: var(--card-bg);
-            border-radius: 16px; overflow: hidden; border: 1px solid var(--card-border);
-        }
-        .comparison-table th {
-            background: rgba(108,92,231,0.15); padding: 1rem 1.5rem; text-align: left;
-            font-weight: 600; color: var(--secondary); font-size: 0.9rem;
-        }
-        .comparison-table td {
-            padding: 1rem 1.5rem; border-bottom: 1px solid var(--card-border); font-size: 0.9rem;
-        }
+        .comparison-table { width: 100%; border-collapse: collapse; background: var(--card-bg); border-radius: 16px; overflow: hidden; border: 1px solid var(--card-border); }
+        .comparison-table th { background: rgba(108,92,231,0.15); padding: 1rem 1.5rem; text-align: left; font-weight: 600; color: var(--secondary); font-size: 0.9rem; }
+        .comparison-table td { padding: 1rem 1.5rem; border-bottom: 1px solid var(--card-border); font-size: 0.9rem; }
         .comparison-table tr:last-child td { border-bottom: none; }
-        .badge {
-            display: inline-block; padding: 0.2rem 0.6rem; border-radius: 10px;
-            font-size: 0.75rem; font-weight: 600;
-        }
+        .badge { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 10px; font-size: 0.75rem; font-weight: 600; }
         .badge-green { background: rgba(85,239,196,0.15); color: #55efc4; }
         .badge-yellow { background: rgba(253,203,110,0.15); color: #fdcb6e; }
-        .suppliers-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;
-        }
+        .suppliers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
         .supplier-card {
             background: var(--card-bg); border: 1px solid var(--card-border);
             border-radius: 16px; padding: 1.5rem; text-align: center; transition: all 0.3s;
+            text-decoration: none; color: var(--text); display: block;
         }
         .supplier-card:hover { transform: translateY(-5px); border-color: var(--secondary); }
         .supplier-card h4 { font-size: 1.1rem; margin-bottom: 0.5rem; }
         .supplier-card .rating { color: #fdcb6e; margin-bottom: 0.5rem; }
         .supplier-card p { color: var(--text-muted); font-size: 0.85rem; }
-        .pricing-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;
+        .accordion { margin-bottom: 1.5rem; }
+        .accordion-header {
+            width: 100%; background: var(--card-bg); border: 1px solid var(--card-border);
+            border-radius: 16px; padding: 1.5rem 2rem; cursor: pointer;
+            display: flex; justify-content: space-between; align-items: center;
+            transition: all 0.3s; color: var(--text); font-size: 1rem;
         }
-        .pricing-card {
-            background: var(--card-bg); border: 1px solid var(--card-border);
-            border-radius: 20px; padding: 2.5rem 2rem; text-align: center;
-            transition: all 0.3s; position: relative;
+        .accordion-header:hover { border-color: rgba(108,92,231,0.3); background: rgba(108,92,231,0.05); }
+        .accordion-header.active { border-radius: 16px 16px 0 0; border-color: var(--primary); background: rgba(108,92,231,0.1); }
+        .accordion-header .title { display: flex; align-items: center; gap: 1rem; }
+        .accordion-header h3 { font-size: 1.2rem; margin: 0; }
+        .accordion-header .price-total {
+            font-size: 1.5rem; font-weight: 800;
+            background: var(--gradient-1); -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent; background-clip: text;
         }
-        .pricing-card.featured {
-            border-color: var(--primary); background: rgba(108,92,231,0.08);
+        .accordion-header .arrow { transition: transform 0.3s; font-size: 1.2rem; color: var(--text-muted); }
+        .accordion-header.active .arrow { transform: rotate(180deg); }
+        .accordion-content {
+            display: none; background: var(--card-bg); border: 1px solid var(--card-border);
+            border-top: none; border-radius: 0 0 16px 16px; padding: 0 2rem 2rem;
         }
-        .pricing-card.featured::before {
-            content: 'Popular'; position: absolute; top: -12px; left: 50%;
-            transform: translateX(-50%); background: var(--gradient-1); color: white;
-            padding: 0.3rem 1rem; border-radius: 20px; font-size: 0.75rem; font-weight: 600;
-        }
-        .pricing-card:hover { transform: translateY(-5px); }
-        .pricing-card h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
-        .pricing-card .size { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem; }
+        .accordion-content.active { display: block; }
         .price {
             font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem;
             background: var(--gradient-1); -webkit-background-clip: text;
             -webkit-text-fill-color: transparent; background-clip: text;
         }
         .price-unit { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1.5rem; }
-        .pricing-features { list-style: none; text-align: left; margin-bottom: 2rem; }
-        .pricing-features li {
-            padding: 0.5rem 0; display: flex; align-items: center; gap: 0.7rem; font-size: 0.9rem;
-        }
-        .pricing-features li::before { content: '+'; color: var(--secondary); font-weight: 700; font-size: 1.2rem; }
-        .architecture {
-            background: var(--card-bg); border: 1px solid var(--card-border);
-            border-radius: 20px; padding: 3rem; overflow-x: auto;
-        }
-        .arch-diagram {
-            display: flex; align-items: center; justify-content: center;
-            gap: 1rem; min-width: 800px; padding: 2rem 0;
-        }
-        .arch-box {
-            background: rgba(108,92,231,0.1); border: 1px solid rgba(108,92,231,0.3);
-            border-radius: 12px; padding: 1.5rem; text-align: center; min-width: 120px;
-        }
+        .architecture { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; padding: 3rem; overflow-x: auto; }
+        .arch-diagram { display: flex; align-items: center; justify-content: center; gap: 1rem; min-width: 800px; padding: 2rem 0; }
+        .arch-box { background: rgba(108,92,231,0.1); border: 1px solid rgba(108,92,231,0.3); border-radius: 12px; padding: 1.5rem; text-align: center; min-width: 120px; }
         .arch-box.switch { background: rgba(0,206,201,0.1); border-color: rgba(0,206,201,0.3); }
         .arch-box.controller { background: rgba(253,121,168,0.1); border-color: rgba(253,121,168,0.3); }
         .arch-box.leds { background: rgba(85,239,196,0.1); border-color: rgba(85,239,196,0.3); }
         .arch-arrow { font-size: 1.5rem; color: var(--text-muted); }
         .arch-box h4 { font-size: 0.9rem; margin-bottom: 0.3rem; }
         .arch-box p { font-size: 0.75rem; color: var(--text-muted); }
-        .cta-section {
-            text-align: center; padding: 8rem 2rem; position: relative;
-        }
+        .cta-section { text-align: center; padding: 8rem 2rem; position: relative; }
         .cta-section::before {
             content: ''; position: absolute; top: 50%; left: 50%;
             transform: translate(-50%, -50%); width: 600px; height: 600px;
@@ -244,38 +178,21 @@
         }
         .cta-section h2 { font-size: 3rem; font-weight: 700; margin-bottom: 1.5rem; }
         .cta-section p { color: var(--text-muted); max-width: 500px; margin: 0 auto 2rem; font-size: 1.1rem; }
-        footer {
-            background: rgba(0,0,0,0.3); border-top: 1px solid var(--card-border);
-            padding: 4rem 2rem 2rem;
-        }
-        .footer-content {
-            max-width: 1200px; margin: 0 auto; display: grid;
-            grid-template-columns: 2fr repeat(3, 1fr); gap: 3rem;
-        }
+        footer { background: rgba(0,0,0,0.3); border-top: 1px solid var(--card-border); padding: 4rem 2rem 2rem; }
+        .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr repeat(3, 1fr); gap: 3rem; }
         .footer-brand p { color: var(--text-muted); margin-top: 1rem; font-size: 0.9rem; }
-        .footer-column h4 {
-            font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;
-            margin-bottom: 1.5rem; color: var(--text);
-        }
+        .footer-column h4 { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1.5rem; color: var(--text); }
         .footer-column ul { list-style: none; }
         .footer-column li { margin-bottom: 0.8rem; }
         .footer-column a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; }
         .footer-column a:hover { color: var(--secondary); }
-        .footer-bottom {
-            max-width: 1200px; margin: 3rem auto 0; padding-top: 2rem;
-            border-top: 1px solid var(--card-border); text-align: center;
-            color: var(--text-muted); font-size: 0.85rem;
-        }
-        .scroll-top {
-            position: fixed; bottom: 2rem; right: 2rem; width: 50px; height: 50px;
-            background: var(--gradient-1); border-radius: 50%; display: flex;
-            align-items: center; justify-content: center; cursor: pointer;
-            opacity: 0; visibility: hidden; transition: all 0.3s; z-index: 999;
-            border: none; color: white; font-size: 1.2rem;
-        }
+        .footer-bottom { max-width: 1200px; margin: 3rem auto 0; padding-top: 2rem; border-top: 1px solid var(--card-border); text-align: center; color: var(--text-muted); font-size: 0.85rem; }
+        .scroll-top { position: fixed; bottom: 2rem; right: 2rem; width: 50px; height: 50px; background: var(--gradient-1); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; opacity: 0; visibility: hidden; transition: all 0.3s; z-index: 999; border: none; color: white; font-size: 1.2rem; }
         .scroll-top.visible { opacity: 1; visibility: visible; }
         .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.6s ease; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
+        .cube-preview { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; padding: 3rem; margin-bottom: 2rem; }
+        .cube-svg { max-width: 400px; margin: 0 auto; display: block; }
         @media (max-width: 768px) {
             .nav-links { display: none; }
             .hero h1 { font-size: 2rem; }
@@ -308,12 +225,8 @@
     <section class="hero">
         <div class="hero-content">
             <div class="hero-badge">Proyecto LED Volumetrico 2026</div>
-            <h1>
-                Matriz <span class="gradient">Volumetrica</span> LED
-            </h1>
-            <p>
-                Sistema de iluminacion 3D escalable desde 1.000 hasta 125.000 LEDs con control por Ethernet, protocolo DDP y arquitectura modular profesional.
-            </p>
+            <h1>Matriz <span class="gradient">Volumetrica</span> LED</h1>
+            <p>Sistema de iluminacion 3D escalable desde 1.000 hasta 125.000 LEDs con control por Ethernet, protocolo DDP y arquitectura modular profesional.</p>
             <div class="hero-buttons">
                 <a href="#pricing" class="btn btn-primary">Ver Presupuestos</a>
                 <a href="#architecture" class="btn btn-secondary">Ver Arquitectura</a>
@@ -322,23 +235,101 @@
     </section>
 
     <div class="stats">
-        <div class="stat fade-in">
-            <div class="stat-number">125K</div>
-            <div class="stat-label">LEDs Maximo</div>
-        </div>
-        <div class="stat fade-in">
-            <div class="stat-number">5</div>
-            <div class="stat-label">Escalas</div>
-        </div>
-        <div class="stat fade-in">
-            <div class="stat-number">20+</div>
-            <div class="stat-label">Controladores</div>
-        </div>
-        <div class="stat fade-in">
-            <div class="stat-number">DDP</div>
-            <div class="stat-label">Protocolo Principal</div>
-        </div>
+        <div class="stat fade-in"><div class="stat-number">125K</div><div class="stat-label">LEDs Maximo</div></div>
+        <div class="stat fade-in"><div class="stat-number">5</div><div class="stat-label">Escalas</div></div>
+        <div class="stat fade-in"><div class="stat-number">20+</div><div class="stat-label">Controladores</div></div>
+        <div class="stat fade-in"><div class="stat-number">DDP</div><div class="stat-label">Protocolo Principal</div></div>
     </div>
+
+    <!-- Hero Image - Volumetric Cube -->
+    <section id="hero-image">
+        <div class="cube-preview fade-in">
+            <h2 style="text-align: center; margin-bottom: 0.5rem;">Prototipo Volumetrico 10x10x10</h2>
+            <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem;">Representacion visual del cubo LED con patrÃ³n zigzag</p>
+            <svg class="cube-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                <!-- Background glow -->
+                <defs>
+                    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+                        <stop offset="0%" style="stop-color:#6c5ce7;stop-opacity:0.3"/>
+                        <stop offset="100%" style="stop-color:#050510;stop-opacity:0"/>
+                    </radialGradient>
+                    <linearGradient id="ledGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#00cec9"/>
+                        <stop offset="50%" style="stop-color:#6c5ce7"/>
+                        <stop offset="100%" style="stop-color:#fd79a8"/>
+                    </linearGradient>
+                </defs>
+                <circle cx="200" cy="200" r="180" fill="url(#glow)"/>
+                
+                <!-- 3D Cube wireframe -->
+                <!-- Back face -->
+                <polygon points="120,80 280,80 320,140 160,140" fill="none" stroke="rgba(108,92,231,0.3)" stroke-width="1"/>
+                <!-- Left face -->
+                <polygon points="120,80 160,140 160,280 120,220" fill="none" stroke="rgba(108,92,231,0.3)" stroke-width="1"/>
+                <!-- Right face -->
+                <polygon points="280,80 320,140 320,280 280,220" fill="none" stroke="rgba(108,92,231,0.3)" stroke-width="1"/>
+                <!-- Top face -->
+                <polygon points="120,80 280,80 320,140 160,140" fill="rgba(108,92,231,0.05)" stroke="rgba(108,92,231,0.4)" stroke-width="1"/>
+                <!-- Front face -->
+                <polygon points="120,220 280,220 320,280 160,280" fill="none" stroke="rgba(108,92,231,0.3)" stroke-width="1"/>
+                
+                <!-- LED Grid - Layer 1 (bottom) -->
+                <g opacity="0.8">
+                    <!-- Row 1 -->
+                    <circle cx="140" cy="210" r="4" fill="#00cec9"><animate attributeName="opacity" values="0.4;1;0.4" dur="2s" repeatCount="indefinite"/></circle>
+                    <circle cx="160" cy="210" r="4" fill="#6c5ce7"><animate attributeName="opacity" values="0.4;1;0.4" dur="2s" begin="0.2s" repeatCount="indefinite"/></circle>
+                    <circle cx="180" cy="210" r="4" fill="#fd79a8"><animate attributeName="opacity" values="0.4;1;0.4" dur="2s" begin="0.4s" repeatCount="indefinite"/></circle>
+                    <circle cx="200" cy="210" r="4" fill="#00cec9"><animate attributeName="opacity" values="0.4;1;0.4" dur="2s" begin="0.6s" repeatCount="indefinite"/></circle>
+                    <circle cx="220" cy="210" r="4" fill="#6c5ce7"><animate attributeName="opacity" values="0.4;1;0.4" dur="2s" begin="0.8s" repeatCount="indefinite"/></circle>
+                    <circle cx="240" cy="210" r="4" fill="#fd79a8"><animate attributeName="opacity" values="0.4;1;0.4" dur="2s" begin="1s" repeatCount="indefinite"/></circle>
+                    <circle cx="260" cy="210" r="4" fill="#00cec9"><animate attributeName="opacity" values="0.4;1;0.4" dur="2s" begin="1.2s" repeatCount="indefinite"/></circle>
+                </g>
+                
+                <!-- LED Grid - Layer 2 -->
+                <g opacity="0.7">
+                    <circle cx="145" cy="190" r="3.5" fill="#fd79a8"><animate attributeName="opacity" values="0.3;1;0.3" dur="2.5s" repeatCount="indefinite"/></circle>
+                    <circle cx="165" cy="190" r="3.5" fill="#00cec9"><animate attributeName="opacity" values="0.3;1;0.3" dur="2.5s" begin="0.3s" repeatCount="indefinite"/></circle>
+                    <circle cx="185" cy="190" r="3.5" fill="#6c5ce7"><animate attributeName="opacity" values="0.3;1;0.3" dur="2.5s" begin="0.6s" repeatCount="indefinite"/></circle>
+                    <circle cx="205" cy="190" r="3.5" fill="#fd79a8"><animate attributeName="opacity" values="0.3;1;0.3" dur="2.5s" begin="0.9s" repeatCount="indefinite"/></circle>
+                    <circle cx="225" cy="190" r="3.5" fill="#00cec9"><animate attributeName="opacity" values="0.3;1;0.3" dur="2.5s" begin="1.2s" repeatCount="indefinite"/></circle>
+                    <circle cx="245" cy="190" r="3.5" fill="#6c5ce7"><animate attributeName="opacity" values="0.3;1;0.3" dur="2.5s" begin="1.5s" repeatCount="indefinite"/></circle>
+                </g>
+                
+                <!-- LED Grid - Layer 3 -->
+                <g opacity="0.6">
+                    <circle cx="150" cy="170" r="3" fill="#6c5ce7"><animate attributeName="opacity" values="0.2;1;0.2" dur="3s" repeatCount="indefinite"/></circle>
+                    <circle cx="170" cy="170" r="3" fill="#fd79a8"><animate attributeName="opacity" values="0.2;1;0.2" dur="3s" begin="0.4s" repeatCount="indefinite"/></circle>
+                    <circle cx="190" cy="170" r="3" fill="#00cec9"><animate attributeName="opacity" values="0.2;1;0.2" dur="3s" begin="0.8s" repeatCount="indefinite"/></circle>
+                    <circle cx="210" cy="170" r="3" fill="#6c5ce7"><animate attributeName="opacity" values="0.2;1;0.2" dur="3s" begin="1.2s" repeatCount="indefinite"/></circle>
+                    <circle cx="230" cy="170" r="3" fill="#fd79a8"><animate attributeName="opacity" values="0.2;1;0.2" dur="3s" begin="1.6s" repeatCount="indefinite"/></circle>
+                </g>
+                
+                <!-- LED Grid - Layer 4 -->
+                <g opacity="0.5">
+                    <circle cx="155" cy="150" r="2.5" fill="#00cec9"><animate attributeName="opacity" values="0.2;1;0.2" dur="3.5s" repeatCount="indefinite"/></circle>
+                    <circle cx="175" cy="150" r="2.5" fill="#6c5ce7"><animate attributeName="opacity" values="0.2;1;0.2" dur="3.5s" begin="0.5s" repeatCount="indefinite"/></circle>
+                    <circle cx="195" cy="150" r="2.5" fill="#fd79a8"><animate attributeName="opacity" values="0.2;1;0.2" dur="3.5s" begin="1s" repeatCount="indefinite"/></circle>
+                    <circle cx="215" cy="150" r="2.5" fill="#00cec9"><animate attributeName="opacity" values="0.2;1;0.2" dur="3.5s" begin="1.5s" repeatCount="indefinite"/></circle>
+                </g>
+                
+                <!-- LED Grid - Layer 5 (top) -->
+                <g opacity="0.4">
+                    <circle cx="160" cy="130" r="2" fill="#fd79a8"><animate attributeName="opacity" values="0.2;1;0.2" dur="4s" repeatCount="indefinite"/></circle>
+                    <circle cx="180" cy="130" r="2" fill="#00cec9"><animate attributeName="opacity" values="0.2;1;0.2" dur="4s" begin="0.7s" repeatCount="indefinite"/></circle>
+                    <circle cx="200" cy="130" r="2" fill="#6c5ce7"><animate attributeName="opacity" values="0.2;1;0.2" dur="4s" begin="1.4s" repeatCount="indefinite"/></circle>
+                </g>
+                
+                <!-- Connection lines (zigzag pattern) -->
+                <path d="M140,210 L160,210 L180,210 L200,210 L220,210 L240,210 L260,210" fill="none" stroke="url(#ledGrad)" stroke-width="0.5" opacity="0.5"/>
+                <path d="M260,210 L245,190 L225,190 L205,190 L185,190 L165,190 L145,190" fill="none" stroke="url(#ledGrad)" stroke-width="0.5" opacity="0.4"/>
+                <path d="M145,190 L150,170 L170,170 L190,170 L210,170 L230,170" fill="none" stroke="url(#ledGrad)" stroke-width="0.5" opacity="0.3"/>
+                
+                <!-- Labels -->
+                <text x="200" y="320" text-anchor="middle" fill="#888" font-size="12">10x10x10 = 1,000 LEDs</text>
+                <text x="200" y="340" text-anchor="middle" fill="#6c5ce7" font-size="10">WS2811 12V | 10cm separation | IP65</text>
+            </svg>
+        </div>
+    </section>
 
     <section id="features">
         <div class="section-header fade-in">
@@ -395,7 +386,7 @@
                         <th>Voltaje</th>
                         <th>Velocidad</th>
                         <th>Robustez</th>
-                        <th>Precio</th>
+                        <th>Precio (USD)</th>
                         <th>Uso</th>
                     </tr>
                 </thead>
@@ -406,7 +397,7 @@
                         <td>12V</td>
                         <td>800 kHz</td>
                         <td><span class="badge badge-yellow">Media</span></td>
-                        <td>$</td>
+                        <td><strong>$45-55</strong>/rollo</td>
                         <td><span class="badge badge-green">Basico</span></td>
                     </tr>
                     <tr>
@@ -415,7 +406,7 @@
                         <td>12V</td>
                         <td>800 kHz</td>
                         <td><span class="badge badge-green">Alta</span></td>
-                        <td>$$</td>
+                        <td><strong>$55-70</strong>/rollo</td>
                         <td><span class="badge badge-green">Recomendado</span></td>
                     </tr>
                     <tr>
@@ -424,7 +415,7 @@
                         <td>12V</td>
                         <td>1 MHz</td>
                         <td><span class="badge badge-green">Muy Alta</span></td>
-                        <td>$$$</td>
+                        <td><strong>$80-100</strong>/rollo</td>
                         <td><span class="badge badge-green">Premium</span></td>
                     </tr>
                     <tr>
@@ -433,7 +424,7 @@
                         <td>12V</td>
                         <td>800 kHz</td>
                         <td><span class="badge badge-green">Alta</span></td>
-                        <td>$$</td>
+                        <td><strong>$60-75</strong>/rollo</td>
                         <td><span class="badge badge-green">Bueno</span></td>
                     </tr>
                     <tr>
@@ -442,7 +433,7 @@
                         <td>12V</td>
                         <td>800 kHz</td>
                         <td><span class="badge badge-green">Alta</span></td>
-                        <td>$$</td>
+                        <td><strong>$65-80</strong>/rollo</td>
                         <td><span class="badge badge-green">Industrial</span></td>
                     </tr>
                     <tr>
@@ -451,12 +442,13 @@
                         <td>5V</td>
                         <td>800 kHz</td>
                         <td><span class="badge badge-yellow">Media</span></td>
-                        <td>$$</td>
+                        <td><strong>$50-65</strong>/rollo</td>
                         <td><span class="badge badge-yellow">Solo 5V</span></td>
                     </tr>
                 </tbody>
             </table>
         </div>
+        <p style="text-align: center; color: var(--text-muted); font-size: 0.85rem; margin-top: 1rem;">* Precios estimados por rollo de 1,000 LEDs. Varian segun proveedor y cantidad.</p>
     </section>
 
     <section id="controllers">
@@ -473,7 +465,7 @@
                         <th>Salidas</th>
                         <th>Universos</th>
                         <th>Ideal Para</th>
-                        <th>Precio</th>
+                        <th>Precio (USD)</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -482,42 +474,56 @@
                         <td>16</td>
                         <td>96</td>
                         <td>100-400 tiras</td>
-                        <td>$$$</td>
+                        <td><strong>$150-200</strong></td>
                     </tr>
                     <tr>
                         <td><strong>deskontroller Lite V3</strong></td>
                         <td>32</td>
                         <td>32+</td>
                         <td>Starter</td>
-                        <td>$$</td>
+                        <td><strong>$100-150</strong></td>
                     </tr>
                     <tr>
                         <td><strong>Falcon F16V5</strong></td>
                         <td>16</td>
                         <td>64</td>
                         <td>Medio</td>
-                        <td>$$$</td>
+                        <td><strong>$200-250</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Falcon F48V4</strong></td>
+                        <td>48</td>
+                        <td>192</td>
+                        <td>Grande</td>
+                        <td><strong>$500-600</strong></td>
                     </tr>
                     <tr>
                         <td><strong>Advatek PixLite Mk3</strong></td>
                         <td>16-32</td>
                         <td>Variable</td>
                         <td>Industrial</td>
-                        <td>$$$$</td>
+                        <td><strong>$300-500</strong></td>
                     </tr>
                     <tr>
                         <td><strong>Colorlight 5A-75B</strong></td>
                         <td>16</td>
                         <td>64</td>
                         <td>OEM</td>
-                        <td>$$</td>
+                        <td><strong>$80-120</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Huidu HD-WF2</strong></td>
+                        <td>16</td>
+                        <td>64</td>
+                        <td>Economico</td>
+                        <td><strong>$50-100</strong></td>
                     </tr>
                     <tr>
                         <td><strong>ESP32 + WLED</strong></td>
                         <td>10-18</td>
                         <td>Variable</td>
                         <td>DIY/Testing</td>
-                        <td>$</td>
+                        <td><strong>$5-15</strong></td>
                     </tr>
                 </tbody>
             </table>
@@ -531,31 +537,31 @@
             <p>Los mejores fabricantes y distribuidores de LEDs para volumetricos</p>
         </div>
         <div class="suppliers-grid">
-            <div class="supplier-card fade-in">
+            <a href="https://www.ipixelled.com" target="_blank" class="supplier-card fade-in">
                 <div class="rating">*****</div>
                 <h4>iPixel LED</h4>
                 <p>Fabricante profesional. WS2811, WS2818, UCS2904. Personalizaciones disponibles.</p>
-            </div>
-            <div class="supplier-card fade-in">
+            </a>
+            <a href="https://www.aliexpress.com/store/ray-wu" target="_blank" class="supplier-card fade-in">
                 <div class="rating">*****</div>
                 <h4>Ray Wu (AliExpress)</h4>
                 <p>El mas famoso para WLED/xLights. Calidad consistente, buena soldadura, gran variedad.</p>
-            </div>
-            <div class="supplier-card fade-in">
+            </a>
+            <a href="https://www.etopled.com" target="_blank" class="supplier-card fade-in">
                 <div class="rating">*****</div>
                 <h4>ETOP LED</h4>
                 <p>Show, volumetricos, fachadas, arboles LED. Excelente reputacion profesional.</p>
-            </div>
-            <div class="supplier-card fade-in">
+            </a>
+            <a href="https://www.btf-lighting.com" target="_blank" class="supplier-card fade-in">
                 <div class="rating">****</div>
                 <h4>BTF-Lighting</h4>
                 <p>Tiras LED y Seed/Pebble Pixels de muy buena calidad. Buenos precios.</p>
-            </div>
-            <div class="supplier-card fade-in">
+            </a>
+            <a href="https://www.made-in-china.com" target="_blank" class="supplier-card fade-in">
                 <div class="rating">****</div>
                 <h4>Made-in-China</h4>
                 <p>OEM para compras grandes (500m+). Desde $247 USD/1000 LEDs.</p>
-            </div>
+            </a>
         </div>
     </section>
 
@@ -567,427 +573,177 @@
         </div>
 
         <!-- Presupuesto Pequeno 1.000 LEDs -->
-        <div class="card fade-in" style="margin-bottom: 2rem;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
-                <div>
-                    <h3 style="font-size: 1.4rem;">Presupuesto Pequeno - 1.000 LEDs</h3>
-                    <p style="color: var(--text-muted);">Matriz 10x10x10 | 100 tiras de 10 LEDs</p>
+        <div class="accordion fade-in">
+            <button class="accordion-header" onclick="toggleAccordion(this)">
+                <div class="title">
+                    <h3>Presupuesto Pequeno - 1,000 LEDs</h3>
+                    <span style="color: var(--text-muted); font-size: 0.85rem;">Matriz 10x10x10 | 100 tiras</span>
                 </div>
-                <div style="text-align: right;">
-                    <div style="font-size: 2rem; font-weight: 800; background: var(--gradient-1); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">$2,050 USD</div>
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <span class="price-total">$2,050 USD</span>
+                    <span class="arrow">v</span>
                 </div>
-            </div>
-            <div style="overflow-x: auto;">
-                <table class="comparison-table">
-                    <thead>
-                        <tr>
-                            <th>Item</th>
-                            <th>Cantidad</th>
-                            <th>Precio Unitario</th>
-                            <th>Total</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>LEDs WS2811 12V 10cm</strong></td>
-                            <td>10 rollos (1.000 LEDs)</td>
-                            <td>$50 USD</td>
-                            <td><strong>$500</strong></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Controlador LINETX LNX-370SP</strong></td>
-                            <td>7 unidades</td>
-                            <td>$175 USD</td>
-                            <td><strong>$1,225</strong></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Fuente Mean Well 350W 12V</strong></td>
-                            <td>2 unidades</td>
-                            <td>$45 USD</td>
-                            <td><strong>$90</strong></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Switch Gigabit 8 puertos</strong></td>
-                            <td>1 unidad</td>
-                            <td>$30 USD</td>
-                            <td><strong>$30</strong></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Cable UTP Cat6 (100m)</strong></td>
-                            <td>1 rollo</td>
-                            <td>$25 USD</td>
-                            <td><strong>$25</strong></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Cable 18 AWG (50m)</strong></td>
-                            <td>2 rollos</td>
-                            <td>$20 USD</td>
-                            <td><strong>$40</strong></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Fusibles y portafusibles</strong></td>
-                            <td>1 kit</td>
-                            <td>$15 USD</td>
-                            <td><strong>$15</strong></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Conectores JST SM</strong></td>
-                            <td>50 unidades</td>
-                            <td>$0.50 USD</td>
-                            <td><strong>$25</strong></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Estructura aluminio 2020</strong></td>
-                            <td>1 set</td>
-                            <td>$100 USD</td>
-                            <td><strong>$100</strong></td>
-                        </tr>
-                        <tr style="background: rgba(108,92,231,0.1);">
-                            <td colspan="3"><strong>TOTAL</strong></td>
-                            <td><strong style="color: var(--secondary); font-size: 1.2rem;">$2,050 USD</strong></td>
-                        </tr>
-                    </tbody>
-                </table>
+            </button>
+            <div class="accordion-content">
+                <div style="overflow-x: auto;">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr><th>Item</th><th>Cantidad</th><th>Precio Unitario</th><th>Total</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>LEDs WS2811 12V 10cm</strong></td><td>10 rollos (1,000 LEDs)</td><td>$50 USD</td><td><strong>$500</strong></td></tr>
+                            <tr><td><strong>Controlador LINETX LNX-370SP</strong></td><td>7 unidades</td><td>$175 USD</td><td><strong>$1,225</strong></td></tr>
+                            <tr><td><strong>Fuente Mean Well 350W 12V</strong></td><td>2 unidades</td><td>$45 USD</td><td><strong>$90</strong></td></tr>
+                            <tr><td><strong>Switch Gigabit 8 puertos</strong></td><td>1 unidad</td><td>$30 USD</td><td><strong>$30</strong></td></tr>
+                            <tr><td><strong>Cable UTP Cat6 (100m)</strong></td><td>1 rollo</td><td>$25 USD</td><td><strong>$25</strong></td></tr>
+                            <tr><td><strong>Cable 18 AWG (50m)</strong></td><td>2 rollos</td><td>$20 USD</td><td><strong>$40</strong></td></tr>
+                            <tr><td><strong>Fusibles y portafusibles</strong></td><td>1 kit</td><td>$15 USD</td><td><strong>$15</strong></td></tr>
+                            <tr><td><strong>Conectores JST SM</strong></td><td>50 unidades</td><td>$0.50 USD</td><td><strong>$25</strong></td></tr>
+                            <tr><td><strong>Estructura aluminio 2020</strong></td><td>1 set</td><td>$100 USD</td><td><strong>$100</strong></td></tr>
+                            <tr style="background: rgba(108,92,231,0.1);"><td colspan="3"><strong>TOTAL</strong></td><td><strong style="color: var(--secondary); font-size: 1.2rem;">$2,050 USD</strong></td></tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
         <!-- Presupuesto Mediano 8.000 LEDs -->
-        <div class="card fade-in" style="margin-bottom: 2rem;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
-                <div>
-                    <h3 style="font-size: 1.4rem;">Presupuesto Mediano - 8.000 LEDs</h3>
-                    <p style="color: var(--text-muted);">Matriz 20x20x20 | 400 tiras de 20 LEDs</p>
+        <div class="accordion fade-in">
+            <button class="accordion-header" onclick="toggleAccordion(this)">
+                <div class="title">
+                    <h3>Presupuesto Mediano - 8,000 LEDs</h3>
+                    <span style="color: var(--text-muted); font-size: 0.85rem;">Matriz 20x20x20 | 400 tiras</span>
                 </div>
-                <div style="text-align: right;">
-                    <div style="font-size: 2rem; font-weight: 800; background: var(--gradient-1); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">$6,990 USD</div>
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <span class="price-total">$6,990 USD</span>
+                    <span class="arrow">v</span>
                 </div>
-            </div>
-            <div style="overflow-x: auto;">
-                <table class="comparison-table">
-                    <thead>
-                        <tr>
-                            <th>Item</th>
-                            <th>Cantidad</th>
-                            <th>Precio Unitario</th>
-                            <th>Total</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>LEDs WS2811 12V 10cm</strong></td>
-                            <td>80 rollos (8.000 LEDs)</td>
-                            <td>$50 USD</td>
-                            <td><strong>$4,000</strong></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Controlador deskontroller Lite V3</strong></td>
-                            <td>13 unidades</td>
-                            <td>$125 USD</td>
-                            <td><strong>$1,625</strong></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Fuente Mean Well 500W 12V</strong></td>
-                            <td>8 unidades</td>
-                            <td>$65 USD</td>
-                            <td><strong>$520</strong></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Switch Gigabit 16 puertos</strong></td>
-                            <td>1 unidad</td>
-                            <td>$60 USD</td>
-                            <td><strong>$60</strong></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Cable UTP Cat6 (300m)</strong></td>
-                            <td>3 rollos</td>
-                            <td>$25 USD</td>
-                            <td><strong>$75</strong></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Cable 18 AWG (200m)</strong></td>
-                            <td>4 rollos</td>
-                            <td>$20 USD</td>
-                            <td><strong>$80</strong></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Fusibles y portafusibles</strong></td>
-                            <td>2 kits</td>
-                            <td>$15 USD</td>
-                            <td><strong>$30</strong></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Conectores JST SM</strong></td>
-                            <td>400 unidades</td>
-                            <td>$0.50 USD</td>
-                            <td><strong>$200</strong></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Estructura aluminio 3030</strong></td>
-                            <td>1 set</td>
-                            <td>$400 USD</td>
-                            <td><strong>$400</strong></td>
-                        </tr>
-                        <tr style="background: rgba(108,92,231,0.1);">
-                            <td colspan="3"><strong>TOTAL</strong></td>
-                            <td><strong style="color: var(--secondary); font-size: 1.2rem;">$6,990 USD</strong></td>
-                        </tr>
-                    </tbody>
-                </table>
+            </button>
+            <div class="accordion-content">
+                <div style="overflow-x: auto;">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr><th>Item</th><th>Cantidad</th><th>Precio Unitario</th><th>Total</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>LEDs WS2811 12V 10cm</strong></td><td>80 rollos (8,000 LEDs)</td><td>$50 USD</td><td><strong>$4,000</strong></td></tr>
+                            <tr><td><strong>Controlador deskontroller Lite V3</strong></td><td>13 unidades</td><td>$125 USD</td><td><strong>$1,625</strong></td></tr>
+                            <tr><td><strong>Fuente Mean Well 500W 12V</strong></td><td>8 unidades</td><td>$65 USD</td><td><strong>$520</strong></td></tr>
+                            <tr><td><strong>Switch Gigabit 16 puertos</strong></td><td>1 unidad</td><td>$60 USD</td><td><strong>$60</strong></td></tr>
+                            <tr><td><strong>Cable UTP Cat6 (300m)</strong></td><td>3 rollos</td><td>$25 USD</td><td><strong>$75</strong></td></tr>
+                            <tr><td><strong>Cable 18 AWG (200m)</strong></td><td>4 rollos</td><td>$20 USD</td><td><strong>$80</strong></td></tr>
+                            <tr><td><strong>Fusibles y portafusibles</strong></td><td>2 kits</td><td>$15 USD</td><td><strong>$30</strong></td></tr>
+                            <tr><td><strong>Conectores JST SM</strong></td><td>400 unidades</td><td>$0.50 USD</td><td><strong>$200</strong></td></tr>
+                            <tr><td><strong>Estructura aluminio 3030</strong></td><td>1 set</td><td>$400 USD</td><td><strong>$400</strong></td></tr>
+                            <tr style="background: rgba(108,92,231,0.1);"><td colspan="3"><strong>TOTAL</strong></td><td><strong style="color: var(--secondary); font-size: 1.2rem;">$6,990 USD</strong></td></tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
         <!-- Presupuesto Grande 27.000 LEDs -->
-        <div class="card fade-in" style="margin-bottom: 2rem;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
-                <div>
-                    <h3 style="font-size: 1.4rem;">Presupuesto Grande - 27.000 LEDs</h3>
-                    <p style="color: var(--text-muted);">Matriz 30x30x30 | 900 tiras de 30 LEDs</p>
+        <div class="accordion fade-in">
+            <button class="accordion-header" onclick="toggleAccordion(this)">
+                <div class="title">
+                    <h3>Presupuesto Grande - 27,000 LEDs</h3>
+                    <span style="color: var(--text-muted); font-size: 0.85rem;">Matriz 30x30x30 | 900 tiras</span>
                 </div>
-                <div style="text-align: right;">
-                    <div style="font-size: 2rem; font-weight: 800; background: var(--gradient-1); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">$21,045 USD</div>
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <span class="price-total">$21,045 USD</span>
+                    <span class="arrow">v</span>
                 </div>
-            </div>
-            <div style="overflow-x: auto;">
-                <table class="comparison-table">
-                    <thead>
-                        <tr>
-                            <th>Item</th>
-                            <th>Cantidad</th>
-                            <th>Precio Unitario</th>
-                            <th>Total</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>LEDs WS2811 12V 10cm</strong></td>
-                            <td>270 rollos (27.000 LEDs)</td>
-                            <td>$50 USD</td>
-                            <td><strong>$13,500</strong></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Controlador deskontroller Lite V3</strong></td>
-                            <td>29 unidades</td>
-                            <td>$125 USD</td>
-                            <td><strong>$3,625</strong></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Fuente Mean Well 500W 12V</strong></td>
-                            <td>25 unidades</td>
-                            <td>$65 USD</td>
-                            <td><strong>$1,625</strong></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Switch Stack 24 puertos</strong></td>
-                            <td>2 unidades</td>
-                            <td>$150 USD</td>
-                            <td><strong>$300</strong></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Cable UTP Cat6 (500m)</strong></td>
-                            <td>5 rollos</td>
-                            <td>$25 USD</td>
-                            <td><strong>$125</strong></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Cable 18 AWG (400m)</strong></td>
-                            <td>8 rollos</td>
-                            <td>$20 USD</td>
-                            <td><strong>$160</strong></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Fusibles y portafusibles</strong></td>
-                            <td>4 kits</td>
-                            <td>$15 USD</td>
-                            <td><strong>$60</strong></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Conectores JST SM</strong></td>
-                            <td>900 unidades</td>
-                            <td>$0.50 USD</td>
-                            <td><strong>$450</strong></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Estructura aluminio 4040</strong></td>
-                            <td>1 set</td>
-                            <td>$1,200 USD</td>
-                            <td><strong>$1,200</strong></td>
-                        </tr>
-                        <tr style="background: rgba(108,92,231,0.1);">
-                            <td colspan="3"><strong>TOTAL</strong></td>
-                            <td><strong style="color: var(--secondary); font-size: 1.2rem;">$21,045 USD</strong></td>
-                        </tr>
-                    </tbody>
-                </table>
+            </button>
+            <div class="accordion-content">
+                <div style="overflow-x: auto;">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr><th>Item</th><th>Cantidad</th><th>Precio Unitario</th><th>Total</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>LEDs WS2811 12V 10cm</strong></td><td>270 rollos (27,000 LEDs)</td><td>$50 USD</td><td><strong>$13,500</strong></td></tr>
+                            <tr><td><strong>Controlador deskontroller Lite V3</strong></td><td>29 unidades</td><td>$125 USD</td><td><strong>$3,625</strong></td></tr>
+                            <tr><td><strong>Fuente Mean Well 500W 12V</strong></td><td>25 unidades</td><td>$65 USD</td><td><strong>$1,625</strong></td></tr>
+                            <tr><td><strong>Switch Stack 24 puertos</strong></td><td>2 unidades</td><td>$150 USD</td><td><strong>$300</strong></td></tr>
+                            <tr><td><strong>Cable UTP Cat6 (500m)</strong></td><td>5 rollos</td><td>$25 USD</td><td><strong>$125</strong></td></tr>
+                            <tr><td><strong>Cable 18 AWG (400m)</strong></td><td>8 rollos</td><td>$20 USD</td><td><strong>$160</strong></td></tr>
+                            <tr><td><strong>Fusibles y portafusibles</strong></td><td>4 kits</td><td>$15 USD</td><td><strong>$60</strong></td></tr>
+                            <tr><td><strong>Conectores JST SM</strong></td><td>900 unidades</td><td>$0.50 USD</td><td><strong>$450</strong></td></tr>
+                            <tr><td><strong>Estructura aluminio 4040</strong></td><td>1 set</td><td>$1,200 USD</td><td><strong>$1,200</strong></td></tr>
+                            <tr style="background: rgba(108,92,231,0.1);"><td colspan="3"><strong>TOTAL</strong></td><td><strong style="color: var(--secondary); font-size: 1.2rem;">$21,045 USD</strong></td></tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
         <!-- Presupuesto Industrial 64.000 LEDs -->
-        <div class="card fade-in" style="margin-bottom: 2rem;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
-                <div>
-                    <h3 style="font-size: 1.4rem;">Presupuesto Industrial - 64.000 LEDs</h3>
-                    <p style="color: var(--text-muted);">Matriz 40x40x40 | 1.600 tiras de 40 LEDs</p>
+        <div class="accordion fade-in">
+            <button class="accordion-header" onclick="toggleAccordion(this)">
+                <div class="title">
+                    <h3>Presupuesto Industrial - 64,000 LEDs</h3>
+                    <span style="color: var(--text-muted); font-size: 0.85rem;">Matriz 40x40x40 | 1,600 tiras</span>
                 </div>
-                <div style="text-align: right;">
-                    <div style="font-size: 2rem; font-weight: 800; background: var(--gradient-1); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">$47,140 USD</div>
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <span class="price-total">$47,140 USD</span>
+                    <span class="arrow">v</span>
                 </div>
-            </div>
-            <div style="overflow-x: auto;">
-                <table class="comparison-table">
-                    <thead>
-                        <tr>
-                            <th>Item</th>
-                            <th>Cantidad</th>
-                            <th>Precio Unitario</th>
-                            <th>Total</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>LEDs WS2811 12V 10cm</strong></td>
-                            <td>640 rollos (64.000 LEDs)</td>
-                            <td>$50 USD</td>
-                            <td><strong>$32,000</strong></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Controlador deskontroller Lite V3</strong></td>
-                            <td>50 unidades</td>
-                            <td>$125 USD</td>
-                            <td><strong>$6,250</strong></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Fuente Mean Well 500W 12V</strong></td>
-                            <td>60 unidades</td>
-                            <td>$65 USD</td>
-                            <td><strong>$3,900</strong></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Switch Core 48 puertos</strong></td>
-                            <td>1 unidad</td>
-                            <td>$500 USD</td>
-                            <td><strong>$500</strong></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Cable UTP Cat6 (1km)</strong></td>
-                            <td>10 rollos</td>
-                            <td>$25 USD</td>
-                            <td><strong>$250</strong></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Cable 18 AWG (800m)</strong></td>
-                            <td>16 rollos</td>
-                            <td>$20 USD</td>
-                            <td><strong>$320</strong></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Fusibles y portafusibles</strong></td>
-                            <td>8 kits</td>
-                            <td>$15 USD</td>
-                            <td><strong>$120</strong></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Conectores JST SM</strong></td>
-                            <td>1.600 unidades</td>
-                            <td>$0.50 USD</td>
-                            <td><strong>$800</strong></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Estructura aluminio 6060</strong></td>
-                            <td>1 set</td>
-                            <td>$3,000 USD</td>
-                            <td><strong>$3,000</strong></td>
-                        </tr>
-                        <tr style="background: rgba(108,92,231,0.1);">
-                            <td colspan="3"><strong>TOTAL</strong></td>
-                            <td><strong style="color: var(--secondary); font-size: 1.2rem;">$47,140 USD</strong></td>
-                        </tr>
-                    </tbody>
-                </table>
+            </button>
+            <div class="accordion-content">
+                <div style="overflow-x: auto;">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr><th>Item</th><th>Cantidad</th><th>Precio Unitario</th><th>Total</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>LEDs WS2811 12V 10cm</strong></td><td>640 rollos (64,000 LEDs)</td><td>$50 USD</td><td><strong>$32,000</strong></td></tr>
+                            <tr><td><strong>Controlador deskontroller Lite V3</strong></td><td>50 unidades</td><td>$125 USD</td><td><strong>$6,250</strong></td></tr>
+                            <tr><td><strong>Fuente Mean Well 500W 12V</strong></td><td>60 unidades</td><td>$65 USD</td><td><strong>$3,900</strong></td></tr>
+                            <tr><td><strong>Switch Core 48 puertos</strong></td><td>1 unidad</td><td>$500 USD</td><td><strong>$500</strong></td></tr>
+                            <tr><td><strong>Cable UTP Cat6 (1km)</strong></td><td>10 rollos</td><td>$25 USD</td><td><strong>$250</strong></td></tr>
+                            <tr><td><strong>Cable 18 AWG (800m)</strong></td><td>16 rollos</td><td>$20 USD</td><td><strong>$320</strong></td></tr>
+                            <tr><td><strong>Fusibles y portafusibles</strong></td><td>8 kits</td><td>$15 USD</td><td><strong>$120</strong></td></tr>
+                            <tr><td><strong>Conectores JST SM</strong></td><td>1,600 unidades</td><td>$0.50 USD</td><td><strong>$800</strong></td></tr>
+                            <tr><td><strong>Estructura aluminio 6060</strong></td><td>1 set</td><td>$3,000 USD</td><td><strong>$3,000</strong></td></tr>
+                            <tr style="background: rgba(108,92,231,0.1);"><td colspan="3"><strong>TOTAL</strong></td><td><strong style="color: var(--secondary); font-size: 1.2rem;">$47,140 USD</strong></td></tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
         <!-- Presupuesto Masivo 125.000 LEDs -->
-        <div class="card fade-in" style="margin-bottom: 2rem;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
-                <div>
-                    <h3 style="font-size: 1.4rem;">Presupuesto Masivo - 125.000 LEDs</h3>
-                    <p style="color: var(--text-muted);">Matriz 50x50x50 | 2.500 tiras de 50 LEDs</p>
+        <div class="accordion fade-in">
+            <button class="accordion-header" onclick="toggleAccordion(this)">
+                <div class="title">
+                    <h3>Presupuesto Masivo - 125,000 LEDs</h3>
+                    <span style="color: var(--text-muted); font-size: 0.85rem;">Matriz 50x50x50 | 2,500 tiras</span>
                 </div>
-                <div style="text-align: right;">
-                    <div style="font-size: 2rem; font-weight: 800; background: var(--gradient-1); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">$90,775 USD</div>
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <span class="price-total">$90,775 USD</span>
+                    <span class="arrow">v</span>
                 </div>
-            </div>
-            <div style="overflow-x: auto;">
-                <table class="comparison-table">
-                    <thead>
-                        <tr>
-                            <th>Item</th>
-                            <th>Cantidad</th>
-                            <th>Precio Unitario</th>
-                            <th>Total</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>LEDs WS2811 12V 10cm</strong></td>
-                            <td>1.250 rollos (125.000 LEDs)</td>
-                            <td>$50 USD</td>
-                            <td><strong>$62,500</strong></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Controlador industrial OEM</strong></td>
-                            <td>79 unidades</td>
-                            <td>$150 USD</td>
-                            <td><strong>$11,850</strong></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Fuente industrial 1000W</strong></td>
-                            <td>35 unidades</td>
-                            <td>$120 USD</td>
-                            <td><strong>$4,200</strong></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Switch Core 48 puertos</strong></td>
-                            <td>2 unidades</td>
-                            <td>$500 USD</td>
-                            <td><strong>$1,000</strong></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Cable UTP Cat6 (2km)</strong></td>
-                            <td>20 rollos</td>
-                            <td>$25 USD</td>
-                            <td><strong>$500</strong></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Cable 14 AWG (1.5km)</strong></td>
-                            <td>15 rollos</td>
-                            <td>$30 USD</td>
-                            <td><strong>$450</strong></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Fusibles industriales</strong></td>
-                            <td>16 kits</td>
-                            <td>$25 USD</td>
-                            <td><strong>$400</strong></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Conectores industriales</strong></td>
-                            <td>2.500 unidades</td>
-                            <td>$0.75 USD</td>
-                            <td><strong>$1,875</strong></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Estructura steel industrial</strong></td>
-                            <td>1 set</td>
-                            <td>$8,000 USD</td>
-                            <td><strong>$8,000</strong></td>
-                        </tr>
-                        <tr style="background: rgba(108,92,231,0.1);">
-                            <td colspan="3"><strong>TOTAL</strong></td>
-                            <td><strong style="color: var(--secondary); font-size: 1.2rem;">$90,775 USD</strong></td>
-                        </tr>
-                    </tbody>
-                </table>
+            </button>
+            <div class="accordion-content">
+                <div style="overflow-x: auto;">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr><th>Item</th><th>Cantidad</th><th>Precio Unitario</th><th>Total</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>LEDs WS2811 12V 10cm</strong></td><td>1,250 rollos (125,000 LEDs)</td><td>$50 USD</td><td><strong>$62,500</strong></td></tr>
+                            <tr><td><strong>Controlador industrial OEM</strong></td><td>79 unidades</td><td>$150 USD</td><td><strong>$11,850</strong></td></tr>
+                            <tr><td><strong>Fuente industrial 1000W</strong></td><td>35 unidades</td><td>$120 USD</td><td><strong>$4,200</strong></td></tr>
+                            <tr><td><strong>Switch Core 48 puertos</strong></td><td>2 unidades</td><td>$500 USD</td><td><strong>$1,000</strong></td></tr>
+                            <tr><td><strong>Cable UTP Cat6 (2km)</strong></td><td>20 rollos</td><td>$25 USD</td><td><strong>$500</strong></td></tr>
+                            <tr><td><strong>Cable 14 AWG (1.5km)</strong></td><td>15 rollos</td><td>$30 USD</td><td><strong>$450</strong></td></tr>
+                            <tr><td><strong>Fusibles industriales</strong></td><td>16 kits</td><td>$25 USD</td><td><strong>$400</strong></td></tr>
+                            <tr><td><strong>Conectores industriales</strong></td><td>2,500 unidades</td><td>$0.75 USD</td><td><strong>$1,875</strong></td></tr>
+                            <tr><td><strong>Estructura steel industrial</strong></td><td>1 set</td><td>$8,000 USD</td><td><strong>$8,000</strong></td></tr>
+                            <tr style="background: rgba(108,92,231,0.1);"><td colspan="3"><strong>TOTAL</strong></td><td><strong style="color: var(--secondary); font-size: 1.2rem;">$90,775 USD</strong></td></tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </section>
@@ -1000,29 +756,14 @@
         </div>
         <div class="architecture fade-in">
             <div class="arch-diagram">
-                <div class="arch-box">
-                    <h4>PC</h4>
-                    <p>TouchDesigner<br>Madrix<br>xLights</p>
-                </div>
+                <div class="arch-box"><h4>PC</h4><p>TouchDesigner<br>Madrix<br>xLights</p></div>
                 <div class="arch-arrow">--&gt;</div>
-                <div class="arch-box switch">
-                    <h4>Switch</h4>
-                    <p>Gigabit<br>Administrable</p>
-                </div>
+                <div class="arch-box switch"><h4>Switch</h4><p>Gigabit<br>Administrable</p></div>
                 <div class="arch-arrow">--&gt;</div>
-                <div class="arch-box controller">
-                    <h4>Control 1</h4>
-                    <p>16 salidas<br>DDP/Art-Net</p>
-                </div>
-                <div class="arch-box controller">
-                    <h4>Control 2</h4>
-                    <p>32 salidas<br>DDP/Art-Net</p>
-                </div>
+                <div class="arch-box controller"><h4>Control 1</h4><p>16 salidas<br>DDP/Art-Net</p></div>
+                <div class="arch-box controller"><h4>Control 2</h4><p>32 salidas<br>DDP/Art-Net</p></div>
                 <div class="arch-arrow">--&gt;</div>
-                <div class="arch-box leds">
-                    <h4>Tiras LED</h4>
-                    <p>WS2811 12V<br>1000 LEDs</p>
-                </div>
+                <div class="arch-box leds"><h4>Tiras LED</h4><p>WS2811 12V<br>1000 LEDs</p></div>
             </div>
         </div>
     </section>
@@ -1039,10 +780,7 @@
     <footer>
         <div class="footer-content">
             <div class="footer-brand">
-                <div class="logo">
-                    <div class="logo-icon">V</div>
-                    Volumetrico LED
-                </div>
+                <div class="logo"><div class="logo-icon">V</div>Volumetrico LED</div>
                 <p>Sistema de iluminacion 3D profesional. Diseno, ingenieria y provision de matrices volumetricas LED escalables.</p>
             </div>
             <div class="footer-column">
@@ -1071,19 +809,35 @@
                 </ul>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>2026 Volumetrico LED. Todos los derechos reservados.</p>
-        </div>
+        <div class="footer-bottom"><p>2026 Volumetrico LED. Todos los derechos reservados.</p></div>
     </footer>
 
     <button class="scroll-top" id="scrollTop">^</button>
 
     <script>
+        // Accordion
+        function toggleAccordion(btn) {
+            const content = btn.nextElementSibling;
+            const isActive = btn.classList.contains('active');
+            
+            // Close all
+            document.querySelectorAll('.accordion-header').forEach(h => h.classList.remove('active'));
+            document.querySelectorAll('.accordion-content').forEach(c => c.classList.remove('active'));
+            
+            // Open clicked if it was closed
+            if (!isActive) {
+                btn.classList.add('active');
+                content.classList.add('active');
+            }
+        }
+
+        // Navbar scroll
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
             navbar.classList.toggle('scrolled', window.scrollY > 50);
         });
 
+        // Scroll to top
         const scrollTopBtn = document.getElementById('scrollTop');
         window.addEventListener('scroll', () => {
             scrollTopBtn.classList.toggle('visible', window.scrollY > 500);
@@ -1092,6 +846,7 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
+        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -1100,16 +855,13 @@
             });
         });
 
+        // Fade-in
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) entry.target.classList.add('visible');
             });
         }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-        document.querySelectorAll('.cards-grid .card, .pricing-card, .supplier-card').forEach((card, i) => {
-            card.style.transitionDelay = `${i * 0.1}s`;
-        });
     </script>
 </body>
 </html>
