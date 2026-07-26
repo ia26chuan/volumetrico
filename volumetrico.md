@@ -168,7 +168,7 @@ Preferir DDP por eficiencia.
 - `resumen2.pdf` - GuÃ­a completa del proyecto
 - `resumen3.pdf` - Manual profesional - Matriz VolumÃ©trica LED
 - `info.txt` - Fabricantes, links y consulta para fabricantes
-- ImÃ¡genes: `cable1.jpeg`, `cable2.jpeg`, `info1.jpeg`, `info2.jpeg`, `tester.jpeg`, `usb.jpeg`
+- Imagenes: carpeta `img/` (controladores, LEDs, fuentes)
 
 ---
 
