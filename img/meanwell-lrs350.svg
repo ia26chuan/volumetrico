@@ -1,0 +1,16 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <rect width="400" height="300" fill="#0d0d1a"/>
+  <rect x="40" y="60" width="320" height="180" rx="4" fill="#c0c0c0" stroke="#888" stroke-width="2"/>
+  <rect x="50" y="70" width="300" height="40" rx="2" fill="#1a1a2e"/>
+  <text x="200" y="95" text-anchor="middle" fill="#ccc" font-size="12" font-family="monospace">MEAN WELL LRS-350-12</text>
+  <text x="200" y="145" text-anchor="middle" fill="#333" font-size="16" font-family="monospace">12V DC 29A 350W</text>
+  <g fill="#888">
+    <rect x="50" y="175" width="30" height="10" rx="1"/><rect x="90" y="175" width="30" height="10" rx="1"/>
+    <rect x="130" y="175" width="30" height="10" rx="1"/><rect x="170" y="175" width="30" height="10" rx="1"/>
+    <rect x="210" y="175" width="30" height="10" rx="1"/><rect x="250" y="175" width="30" height="10" rx="1"/>
+    <rect x="290" y="175" width="30" height="10" rx="1"/>
+  </g>
+  <text x="200" y="210" text-anchor="middle" fill="#666" font-size="8" font-family="monospace">AC 110/220V INPUT | DC 12V OUTPUT</text>
+  <text x="200" y="265" text-anchor="middle" fill="#4a4a6a" font-size="11" font-family="monospace">Mean Well LRS-350-12 | ~$30 USD</text>
+  <text x="200" y="285" text-anchor="middle" fill="#888" font-size="9" font-family="monospace">Fuente principal para 1,000 LEDs (~350W)</text>
+</svg>
